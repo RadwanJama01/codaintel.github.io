@@ -1,6 +1,6 @@
 {
-  "schema_version": "sombench/1.0",
-  "name": "SomBench v1 — skydheere/soomali-asr-dataset (test split, stitched)",
+  "schema_version": "sasr_eval/1.0",
+  "name": "SASR Eval: skydheere/soomali-asr-dataset (test split, stitched)",
   "description": "WER/CER benchmark on 50 stitched clips (~10s each) drawn from the skydheere/soomali-asr-dataset HuggingFace test split. Ground truth = original dataset transcriptions.",
   "dataset": "skydheere/soomali-asr-dataset",
   "split": "test",

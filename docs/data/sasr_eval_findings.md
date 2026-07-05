@@ -1,4 +1,4 @@
-# SomBench v1 — Somali ASR Benchmark Findings
+# SASR Eval: Somali ASR Benchmark Findings
 
 **Dataset:** `skydheere/soomali-asr-dataset` (HuggingFace, test split)
 **Date:** June 22, 2026
@@ -20,7 +20,7 @@ This report benchmarks two production ASR systems on Somali speech using ground-
 | **ElevenLabs Scribe v1** | 50 | **0.592** | **0.580** | **0.185** | **0.167** | 0 |
 | faster-whisper large-v3 | 50 | 0.871 | 0.862 | 0.266 | 0.253 | 0 |
 
-**ElevenLabs Scribe v1 wins on every metric.** It outperforms faster-whisper large-v3 by 0.279 WER points (32% relative reduction) and 0.081 CER points (30% relative reduction). Neither system produced Arabic-script hallucinations — a known failure mode for Whisper on Somali that was present in the earlier SomBench v0 runs.
+**ElevenLabs Scribe v1 wins on every metric.** It outperforms faster-whisper large-v3 by 0.279 WER points (32% relative reduction) and 0.081 CER points (30% relative reduction). Neither system produced Arabic-script hallucinations, a known failure mode for Whisper on Somali that was present in the earlier SASR Eval pilot runs.
 
 ---
 
@@ -40,7 +40,7 @@ This report benchmarks two production ASR systems on Somali speech using ground-
 | WER | 0.871 | 0.862 | 0.619 | 1.438 | 0.140 |
 | CER | 0.266 | 0.253 | 0.136 | 0.433 | 0.063 |
 
-**Key observation:** ElevenLabs has a wider standard deviation on WER (0.188 vs 0.140), meaning it has higher upside (WER as low as 0.125) but also more variance. Whisper is more consistently mediocre — its floor is higher (min WER 0.619) but its ceiling is lower.
+**Key observation:** ElevenLabs has a wider standard deviation on WER (0.188 vs 0.140), meaning it has higher upside (WER as low as 0.125) but also more variance. Whisper is more consistently mediocre, its floor is higher (min WER 0.619) but its ceiling is lower.
 
 ---
 
@@ -105,7 +105,7 @@ ElevenLabs wins **44 of 50 clips** by WER. Whisper wins 4. 2 ties.
 
 ## Notable Clips
 
-### Best ElevenLabs performance — clip50 (WER 0.125)
+### Best ElevenLabs performance, clip50 (WER 0.125)
 
 ```
 REF:        maalaa Guriga dadka soo dhisay ma aragtay? Waxaa yimid arday badan. Waxaa aan jeclaa Emma. gurigaygan
@@ -116,7 +116,7 @@ ElevenLabs near-perfectly transcribes a full sentence. Whisper mangles several w
 
 ---
 
-### Best ElevenLabs performance — clip36 (WER 0.263)
+### Best ElevenLabs performance, clip36 (WER 0.263)
 
 ```
 REF:        Hargeysa waa magaalo weyn. Kani waa kaanaga. Warsame! farasey! Waan aqaannaa ardayda oo idil. maxkamadda gobolka qorayaasha iyo boqorrada
@@ -127,18 +127,18 @@ ElevenLabs preserves proper nouns ("Hargeysa", "Warsame", "Maxkamadda") and sent
 
 ---
 
-### Worst ElevenLabs performance — clip11 (WER 1.000)
+### Worst ElevenLabs performance, clip11 (WER 1.000)
 
 ```
 REF:        goror caanaha saca raggaa Saddexda wiil ayaad ammaantay. OSV Dhiso. maalmo afar ah oo horreysay
 ElevenLabs: Wuxuu u geystay qorayn ayaa ah goorar. Canaan saac. Ragga. Saddex daweyl ayaa dambe. Dhiso. Maalmo afar ah oo horaysay.
 Whisper:    qorar aanaha saad ragga sada dhawiyil aya dhammaante diso maalmo qafar ah oo horay say
 ```
-A clip with annotation artifacts ("OSV", pipe characters in the ground truth) threw off ElevenLabs — it appears to have hallucinated structure around ambiguous audio. Whisper at least echoed more of the phonetic surface form.
+A clip with annotation artifacts ("OSV", pipe characters in the ground truth) threw off ElevenLabs, it appears to have hallucinated structure around ambiguous audio. Whisper at least echoed more of the phonetic surface form.
 
 ---
 
-### Biggest gap — clip28 (WER: Whisper 1.438 vs ElevenLabs 0.875)
+### Biggest gap, clip28 (WER: Whisper 1.438 vs ElevenLabs 0.875)
 
 ```
 REF:        qalimmada silsiladahayga dukaanle Ninkii libaaxii qabtay miyuu la hadlay? S/SOVAV baaldiyo labo ganacsato oo waawanaagsan
@@ -153,19 +153,19 @@ Whisper fragments continuous speech into spurious sentence breaks, yielding extr
 
 The overall WER figures (0.59–0.87) appear high but are partly an artifact of the evaluation setup:
 
-1. **Short reference clips inflate WER** — many source clips are single words or short phrases (e.g. "beertaada", "waax"). A single substitution on a 1-word reference gives WER = 1.0 or higher. CER is a more stable metric here.
+1. **Short reference clips inflate WER**, many source clips are single words or short phrases (e.g. "beertaada", "waax"). A single substitution on a 1-word reference gives WER = 1.0 or higher. CER is a more stable metric here.
 
-2. **Annotation noise in the dataset** — 17 of 50 references (34%) contain artifacts like `|`, `S/SOVAV`, and `OSV`. A cleaning pass was run and re-scored; the aggregate WER shift was ±0.002, effectively zero. See Methodological Notes for the full analysis.
+2. **Annotation noise in the dataset**, 17 of 50 references (34%) contain artifacts like `|`, `S/SOVAV`, and `OSV`. A cleaning pass was run and re-scored; the aggregate WER shift was ±0.002, effectively zero. See Methodological Notes for the full analysis.
 
-3. **Stitching discontinuity** — adjacent source clips come from different speakers and contexts. Models that rely on contextual coherence (especially ElevenLabs' language model) may be partially confused by abrupt topic changes mid-clip.
+3. **Stitching discontinuity**, adjacent source clips come from different speakers and contexts. Models that rely on contextual coherence (especially ElevenLabs' language model) may be partially confused by abrupt topic changes mid-clip.
 
-4. **CER tells a cleaner story** — ElevenLabs' mean CER of 0.185 indicates it gets the character sequence roughly 81.5% correct, which is consistent with usable transcription quality for a low-resource language.
+4. **CER tells a cleaner story**, ElevenLabs' mean CER of 0.185 indicates it gets the character sequence roughly 81.5% correct, which is consistent with usable transcription quality for a low-resource language.
 
 ---
 
-## Comparison to SomBench v0
+## Comparison to SASR Eval pilot
 
-SomBench v0 (June 2026) ran a reference-free pass on 11 clips from two YouTube videos with no ground truth. Key differences:
+SASR Eval pilot (June 2026) ran a reference-free pass on 11 clips from two YouTube videos with no ground truth. Key differences:
 
 | | v0 | v1 |
 |---|---|---|
@@ -175,7 +175,7 @@ SomBench v0 (June 2026) ran a reference-free pass on 11 clips from two YouTube v
 | Script mismatches | Present (Whisper emitted Arabic) | None for either system |
 | WER/CER | Not measured | Measured |
 
-The absence of Arabic-script hallucinations in v1 compared to v0 may reflect the shorter clip length — Whisper's script confusion in v0 tended to emerge on longer clips where the model drifted.
+The absence of Arabic-script hallucinations in v1 compared to v0 may reflect the shorter clip length, Whisper's script confusion in v0 tended to emerge on longer clips where the model drifted.
 
 ---
 
@@ -194,9 +194,9 @@ def normalize(text):
     return re.sub(r"\s+", " ", text).strip()
 ```
 
-**Capitalization of proper nouns** — handled correctly. `.lower()` is applied before any comparison, so mid-sentence "Muqdisho" and "muqdisho" are treated identically. This is a non-issue.
+**Capitalization of proper nouns**, handled correctly. `.lower()` is applied before any comparison, so mid-sentence "Muqdisho" and "muqdisho" are treated identically. This is a non-issue.
 
-**Apostrophes for glottal stops** — the regex explicitly preserves ASCII apostrophe `U+0027` (e.g., `go'aan` → `go'aan`). However there is a latent inconsistency: `U+2019 RIGHT SINGLE QUOTATION MARK` (the "curly" apostrophe used by some editors and ASR outputs) is treated as punctuation and stripped, while `U+02BC MODIFIER LETTER APOSTROPHE` survives because `\w` matches it under Unicode. In practice this dataset uses **zero apostrophes** in its reference transcriptions — Somali pharyngeal sounds are encoded as standard Latin letters (`c`, `x`) rather than apostrophes — so this is a latent bug, not an active WER distortion in these results. It should be fixed before applying this scorer to other Somali datasets that do use apostrophes (e.g., some diaspora transcription conventions).
+**Apostrophes for glottal stops**, the regex explicitly preserves ASCII apostrophe `U+0027` (e.g., `go'aan` → `go'aan`). However there is a latent inconsistency: `U+2019 RIGHT SINGLE QUOTATION MARK` (the "curly" apostrophe used by some editors and ASR outputs) is treated as punctuation and stripped, while `U+02BC MODIFIER LETTER APOSTROPHE` survives because `\w` matches it under Unicode. In practice this dataset uses **zero apostrophes** in its reference transcriptions, Somali pharyngeal sounds are encoded as standard Latin letters (`c`, `x`) rather than apostrophes, so this is a latent bug, not an active WER distortion in these results. It should be fixed before applying this scorer to other Somali datasets that do use apostrophes (e.g., some diaspora transcription conventions).
 
 **Fix for future runs:**
 
@@ -229,15 +229,15 @@ def normalize(text):
 | ElevenLabs Scribe v1 | 0.592 | 0.591 | −0.001 |
 | faster-whisper large-v3 | 0.871 | 0.873 | +0.002 |
 
-The aggregate effect is **effectively zero** — under ±0.002 WER. This is counterintuitive but explainable:
+The aggregate effect is **effectively zero**, under ±0.002 WER. This is counterintuitive but explainable:
 
-1. **Pipe characters `|` were already handled.** The existing `_PUNCT` regex strips `|` as punctuation, then `_WS` collapses the resulting whitespace. So `Ma beer|f baa?` already normalizes to `ma beer f baa` under both the old and new pipeline — no change.
+1. **Pipe characters `|` were already handled.** The existing `_PUNCT` regex strips `|` as punctuation, then `_WS` collapses the resulting whitespace. So `Ma beer|f baa?` already normalizes to `ma beer f baa` under both the old and new pipeline, no change.
 
 2. **`OSV`/`SOV` tokens are one word in a ~18-word reference.** Removing one spurious word from an 18-word reference changes the WER denominator by ~5%. That's small, and the direction isn't always favorable: on clip28 Whisper's WER actually *increases* from 1.438 → 1.533 after cleaning because the SOVAV token happened to absorb a deletion penalty.
 
 3. **Cleaning can make WER worse on individual clips** (clip11 ElevenLabs: 1.000 → 1.071; clip28 Whisper: 1.438 → 1.533). Removing a reference word shrinks the denominator, inflating WER when the hypothesis already has spurious insertions at that position.
 
-**Recommendation for the paper:** Include the cleaned re-score as a robustness check (the ±0.002 delta is the honest answer to reviewer concerns), but note that the headline numbers are effectively unchanged. The more important caveat is not artifact tokens but the stitching methodology itself — see Limitations below.
+**Recommendation for the paper:** Include the cleaned re-score as a robustness check (the ±0.002 delta is the honest answer to reviewer concerns), but note that the headline numbers are effectively unchanged. The more important caveat is not artifact tokens but the stitching methodology itself, see Limitations below.
 
 ---
 
@@ -256,11 +256,11 @@ The aggregate effect is **effectively zero** — under ±0.002 WER. This is coun
 
 | File | Description |
 |---|---|
-| `results/sombench_v1.json` | Full results with per-clip rows, system metadata, and summary |
-| `results/sombench_v1.csv` | Per-clip WER/CER with hypothesis and reference text |
+| `results/sasr_eval.json` | Full results with per-clip rows, system metadata, and summary |
+| `results/sasr_eval.csv` | Per-clip WER/CER with hypothesis and reference text |
 | `transcripts/somali_public/clip*_whisper.json` | faster-whisper transcript outputs (50 files) |
 | `transcripts/somali_public/clip*_elevenlabs.json` | ElevenLabs transcript outputs (50 files) |
 | `audio/somali_public/clip01–50.wav` | Stitched WAV files used as input |
 | `references/somali_public/clip01–50.txt` | Ground-truth reference transcriptions |
 | `build_somali_public.py` | Script that built the stitched clips from the HF dataset |
-| `run_sombench_v1.py` | Script that ran ASR and scoring for this benchmark |
+| `run_sasr_eval.py` | Script that ran ASR and scoring for this benchmark |

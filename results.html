@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SomBench v1 Results — Coda Labs</title>
-<meta name="description" content="SomBench v1: First quantitative evaluation of Somali ASR. Mean WER 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper)." />
+<title>SASR Eval Results: Coda Labs</title>
+<meta name="description" content="SASR Eval: First quantitative evaluation of Somali ASR. Mean WER 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper)." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -24,7 +24,7 @@
     <ul class="site-nav">
       <li><a href="index.html">Home</a></li>
       <li><a href="capabilities.html">Capabilities</a></li>
-      <li><a href="results.html" class="active">SomBench v1</a></li>
+      <li><a href="results.html" class="active">SASR Eval</a></li>
       <li><a href="contact.html" class="nav-cta">Contact</a></li>
     </ul>
   </div>
@@ -33,8 +33,8 @@
 <div class="page-header">
   <div class="wrap">
     <div class="section-label">Benchmark</div>
-    <h1>SomBench v1</h1>
-    <p>First quantitative evaluation of Somali ASR. Mean WER: 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper). Broadcast validation in August 2026 (SomBench v2).</p>
+    <h1>SASR Eval</h1>
+    <p>First quantitative evaluation of Somali ASR. Mean WER: 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper). Broadcast validation in August 2026 (SASR Eval broadcast validation).</p>
   </div>
 </div>
 
@@ -57,31 +57,31 @@
         <tbody>
           <tr>
             <td class="system-name"><a href="docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></td>
-            <td>Full evaluation paper — methodology, results, and analysis</td>
+            <td>Full evaluation paper, methodology, results, and analysis</td>
             <td>PDF</td>
           </tr>
           <tr>
-            <td class="system-name"><a href="docs/data/sombench_v1.json" download>SomBench v1 results</a></td>
+            <td class="system-name"><a href="docs/data/sasr_eval.json" download>SASR Eval results</a></td>
             <td>Per-clip WER/CER, hypotheses, references, and summary statistics</td>
             <td>JSON</td>
           </tr>
           <tr>
-            <td class="system-name"><a href="docs/data/sombench_v1.csv" download>SomBench v1 per-clip data</a></td>
+            <td class="system-name"><a href="docs/data/sasr_eval.csv" download>SASR Eval per-clip data</a></td>
             <td>Clip-by-clip scores and transcript text</td>
             <td>CSV</td>
           </tr>
           <tr>
-            <td class="system-name"><a href="docs/data/sombench_v1_findings.md" download>SomBench v1 findings</a></td>
+            <td class="system-name"><a href="docs/data/sasr_eval_findings.md" download>SASR Eval findings</a></td>
             <td>Detailed benchmark analysis and notable clip examples</td>
             <td>Markdown</td>
           </tr>
           <tr>
-            <td class="system-name"><a href="docs/data/sombench_v0.json" download>SomBench v0 results</a></td>
+            <td class="system-name"><a href="docs/data/sasr_eval_v0.json" download>SASR Eval pilot results</a></td>
             <td>Prior reference-free evaluation (June 2026)</td>
             <td>JSON</td>
           </tr>
           <tr>
-            <td class="system-name"><a href="docs/data/sombench_v0.csv" download>SomBench v0 per-clip data</a></td>
+            <td class="system-name"><a href="docs/data/sasr_eval_v0.csv" download>SASR Eval pilot per-clip data</a></td>
             <td>Reference-free pass clip data</td>
             <td>CSV</td>
           </tr>
@@ -115,7 +115,7 @@
             </td>
             <td class="num">50</td>
             <td class="num best">0.368</td>
-            <td class="num">&mdash;</td>
+            <td class="num">-</td>
             <td class="num">244M</td>
           </tr>
           <tr>
@@ -126,7 +126,7 @@
             <td class="num">50</td>
             <td class="num">0.592</td>
             <td class="num">0.185</td>
-            <td class="num">&mdash;</td>
+            <td class="num">-</td>
           </tr>
           <tr>
             <td>
@@ -182,12 +182,12 @@
       <div class="win-card">
         <div class="win-value">In-domain</div>
         <h4>Performance on broadcast data</h4>
-        <p>On public dataset clips, ElevenLabs wins 44 of 50 by WER. Our fine-tuned model is designed for in-domain broadcast data&mdash;SomBench v2 (August 2026) will validate on regional archives.</p>
+        <p>On public dataset clips, ElevenLabs wins 44 of 50 by WER. Our fine-tuned model is designed for in-domain broadcast data, SASR Eval broadcast validation (August 2026) will validate on regional archives.</p>
       </div>
       <div class="win-card">
         <div class="win-value">~1 hour</div>
         <h4>Training efficiency</h4>
-        <p>Single T4 GPU, 500 training steps. Demonstrates that low-resource language ASR improvement does not require massive compute&mdash;relevant for rapid deployment in operational environments.</p>
+        <p>Single T4 GPU, 500 training steps. Demonstrates that low-resource language ASR improvement does not require massive compute and is relevant for rapid deployment in operational environments.</p>
       </div>
     </div>
   </div>
@@ -204,7 +204,7 @@
 
     <div class="example-block">
       <div class="example-header">
-        <h4>clip50 &mdash; Best ElevenLabs performance</h4>
+        <h4>clip50: Best ElevenLabs performance</h4>
         <div class="example-metrics">
           <span>ElevenLabs WER: 0.125</span>
           <span>Whisper WER: 0.875</span>
@@ -220,7 +220,7 @@
 
     <div class="example-block">
       <div class="example-header">
-        <h4>clip36 &mdash; Proper noun preservation</h4>
+        <h4>clip36: Proper noun preservation</h4>
         <div class="example-metrics">
           <span>ElevenLabs WER: 0.263</span>
           <span>Whisper WER: 0.842</span>
@@ -236,7 +236,7 @@
 
     <div class="example-block">
       <div class="example-header">
-        <h4>clip11 &mdash; Worst ElevenLabs performance</h4>
+        <h4>clip11: Worst ElevenLabs performance</h4>
         <div class="example-metrics">
           <span>ElevenLabs WER: 1.000</span>
           <span>Whisper WER: 0.867</span>
@@ -252,7 +252,7 @@
 
     <div class="example-block">
       <div class="example-header">
-        <h4>clip28 &mdash; Largest performance gap</h4>
+        <h4>clip28: Largest performance gap</h4>
         <div class="example-metrics">
           <span>Whisper WER: 1.438</span>
           <span>ElevenLabs WER: 0.875</span>
@@ -274,7 +274,7 @@
     <h2>ElevenLabs vs. Whisper large-v3 (baseline systems).</h2>
     <p class="section-lede">
       Per-clip WER comparison between the two baseline commercial/open-source systems evaluated
-      in SomBench v1. ElevenLabs wins 44 of 50 clips. 2 ties. Whisper wins 4.
+      in SASR Eval. ElevenLabs wins 44 of 50 clips. 2 ties. Whisper wins 4.
     </p>
 
     <div class="table-wrap" style="max-height: 480px; overflow-y: auto;">
@@ -347,22 +347,22 @@
 <section>
   <div class="wrap">
     <div class="section-label">Next steps</div>
-    <h2>SomBench v2 &mdash; August 2026</h2>
+    <h2>SASR Eval broadcast validation (August 2026)</h2>
     <p class="section-lede">
-      SomBench v1 validated our fine-tuned model on public Somali speech data. SomBench v2 will
-      evaluate performance on in-domain broadcast recordings from regional archives&mdash;the
+      SASR Eval validated our fine-tuned model on public Somali speech data. SASR Eval broadcast validation will
+      evaluate performance on in-domain broadcast recordings from regional archives. The
       data our platform is designed to process at scale.
     </p>
 
     <div class="timeline">
       <div class="timeline-item current">
-        <div class="date">June 22, 2026 &mdash; Complete</div>
-        <h4>SomBench v1</h4>
+        <div class="date">June 22, 2026 (Complete)</div>
+        <h4>SASR Eval</h4>
         <p>50 clips from skydheere/soomali-asr-dataset. Three systems evaluated. Fine-tuned Whisper small: WER 0.368.</p>
       </div>
       <div class="timeline-item future">
         <div class="date">August 2026</div>
-        <h4>SomBench v2</h4>
+        <h4>SASR Eval broadcast validation</h4>
         <p>Broadcast data validation from regional archives. Tests in-domain generalization and operational readiness.</p>
       </div>
     </div>
@@ -383,7 +383,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="capabilities.html">Capabilities</a></li>
-        <li><a href="results.html">SomBench v1</a></li>
+        <li><a href="results.html">SASR Eval</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -391,15 +391,15 @@
       <h4>Resources</h4>
       <ul>
         <li><a href="docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
-        <li><a href="docs/data/sombench_v1.json" download>SomBench v1 (JSON)</a></li>
-        <li><a href="docs/data/sombench_v1.csv" download>SomBench v1 (CSV)</a></li>
-        <li><a href="docs/data/sombench_v1_findings.md" download>Findings (MD)</a></li>
+        <li><a href="docs/data/sasr_eval.json" download>SASR Eval (JSON)</a></li>
+        <li><a href="docs/data/sasr_eval.csv" download>SASR Eval (CSV)</a></li>
+        <li><a href="docs/data/sasr_eval_findings.md" download>Findings (MD)</a></li>
         <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
       </ul>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Coda Labs</span>
-      <span>SomBench v1 &middot; June 22, 2026</span>
+      <span>SASR Eval &middot; June 22, 2026</span>
     </div>
   </div>
 </footer>

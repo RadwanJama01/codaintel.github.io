@@ -1,9 +1,9 @@
 {
-  "schema_version": "sombench/0.1",
+  "schema_version": "sasr_eval/0.1",
   "generated_at": "2026-06-15T09:10:35",
-  "name": "SomBench v0 — Horn of Africa Somali ASR reference-free pass",
-  "description": "Exploratory characterization of 4 production ASR systems on Djiboutian Somali audio sampled from 2 publicly broadcast YouTube videos. Reference-free metrics only — ground-truth transcripts have not yet been collected, so no WER/CER.",
-  "ground_truth_status": "absent — references pending native-speaker correction of ElevenLabs draft transcripts.",
+  "name": "SASR Eval pilot: Horn of Africa Somali ASR reference-free pass",
+  "description": "Exploratory characterization of 4 production ASR systems on Djiboutian Somali audio sampled from 2 publicly broadcast YouTube videos. Reference-free metrics only, ground-truth transcripts have not yet been collected, so no WER/CER.",
+  "ground_truth_status": "absent, references pending native-speaker correction of ElevenLabs draft transcripts.",
   "sampling": {
     "clip_length_seconds": 60,
     "edge_buffer_seconds": 60,
@@ -37,7 +37,7 @@
     },
     "salaf_lecture": {
       "video_url": "https://www.youtube.com/watch?v=qbvgFT5O_d4",
-      "video_title": "Salafmedia — Miisaanka lagu garto Ninka Ragga ah",
+      "video_title": "Salafmedia, Miisaanka lagu garto Ninka Ragga ah",
       "video_duration_seconds": 1550
     }
   },
@@ -46,13 +46,13 @@
     "cross-lingual misroute": "arabic char share >= 0.50 (output is in wrong language family)",
     "low diversity": "unique-word ratio < 0.45 (severe lexical collapse)",
     "trailing loop": "trailing 12-token n-gram repeat >= 3 OR max consecutive token repeats >= 4",
-    "surface-usable": "passes all of the above — HEURISTIC ONLY, not validated against ground truth",
+    "surface-usable": "passes all of the above, HEURISTIC ONLY, not validated against ground truth",
     "not_run": "no transcript exists for this (clip, vendor) pair"
   },
   "limitations": [
-    "No ground truth — surface-usable classifications are heuristic. Wait for native-speaker references for any accuracy claim.",
+    "No ground truth, surface-usable classifications are heuristic. Wait for native-speaker references for any accuracy claim.",
     "N=11 clips drawn from 2 videos = 2 speakers x timestamps, not 11 independent samples.",
-    "Single run per (clip, vendor) — failure modes are point estimates; determinism unverified.",
+    "Single run per (clip, vendor), failure modes are point estimates; determinism unverified.",
     "Deepgram ran on 3 clips only; remaining 8 were skipped after batch hung. All 3 completed runs returned empty.",
     "Vendor language-hint codes differ (som vs so vs multi) because not all vendors accept the same code."
   ],

@@ -22,7 +22,7 @@
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       if (btn) {
-        btn.textContent = 'Message sent — we\u2019ll respond shortly.';
+        btn.textContent = 'Message sent. We\u2019ll respond shortly.';
         btn.disabled = true;
       }
     });
