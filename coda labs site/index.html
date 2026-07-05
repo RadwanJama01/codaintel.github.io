@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coda Labs — Broadcast Intelligence from the Horn of Africa</title>
+<meta name="description" content="Coda Labs provides AI-powered OSINT for national security. Validated Somali ASR with 37.8% lower WER than commercial systems. TRL 3." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">CL</span>
+      Coda Labs
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="results.html">SomBench v1</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        Defense AI &middot; Early Stage
+        <span class="trl-badge">TRL 3</span>
+      </div>
+      <h1>Broadcast Intelligence from the Horn of Africa</h1>
+      <p class="hero-sub">
+        AI-powered OSINT for national security. Validated on Somali speech.
+        37.8% lower WER than commercial systems.
+      </p>
+      <p class="hero-sub" style="font-size: 16px; margin-top: -16px;">
+        We process decades of broadcast data to detect emerging threats, track propaganda,
+        and provide early warning&mdash;from a region where persistent intelligence is scarce.
+      </p>
+      <div class="hero-actions">
+        <a href="results.html" class="btn btn-primary">View SomBench v1 Results</a>
+        <a href="capabilities.html" class="btn btn-ghost">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <h3>SomBench v1 &mdash; Mean Word Error Rate</h3>
+        <div class="metric-row">
+          <div class="metric-label">
+            <span>Fine-tuned Whisper small (ours)</span>
+            <span>0.368</span>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-fill ours" data-width="42.2%" style="width: 42.2%"></div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">
+            <span>ElevenLabs Scribe v1</span>
+            <span>0.592</span>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-fill eleven" data-width="67.9%" style="width: 67.9%"></div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">
+            <span>faster-whisper large-v3</span>
+            <span>0.871</span>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-fill whisper" data-width="100%" style="width: 100%"></div>
+          </div>
+        </div>
+        <div class="metric-legend">
+          <span class="legend-item"><span class="legend-dot" style="background:#48bb78"></span> Ours</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#63b3ed"></span> ElevenLabs</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#fc8181"></span> Whisper</span>
+        </div>
+      </div>
+      <img src="assets/horn-map.svg" alt="" class="map-visual" style="margin-top: 20px; border-radius: 8px;" />
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Evidence</div>
+    <h2>Validated performance, not marketing claims.</h2>
+    <p class="section-lede">
+      SomBench v1 is the first ground-truth evaluation of commercial and fine-tuned ASR systems
+      on Somali speech. Fifty stitched clips, ~550 seconds total, scored against verified references.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-value accent">0.368</div>
+        <div class="stat-label">Mean WER<br />Fine-tuned Whisper small</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value success">37.8%</div>
+        <div class="stat-label">Relative WER reduction<br />vs. ElevenLabs Scribe v1</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value success">57.8%</div>
+        <div class="stat-label">Relative WER reduction<br />vs. Whisper large-v3</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">50</div>
+        <div class="stat-label">Evaluated clips<br />~10 seconds each</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">What we do</div>
+    <h2>Persistent, low-cost broadcast OSINT.</h2>
+    <p class="section-lede">
+      Coda Labs is building a platform to process and analyze broadcast data from a
+      strategically critical region&mdash;Djibouti, Somaliland, and the broader Horn of Africa.
+    </p>
+
+    <div class="cards-3">
+      <div class="card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Continuous monitoring</h3>
+        <p>Automated ingestion and transcription of regional broadcast media for threat detection, propaganda tracking, and early warning.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Domain-specific ASR</h3>
+        <p>Our fine-tuned pipeline outperforms commercial systems on Somali speech. Trained in ~1 hour on a single T4 GPU with 500 steps.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Regional access</h3>
+        <p>Father-son team with deep cultural and political ties to Djibouti and Somaliland. Local relationships enable data collection others cannot replicate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Roadmap</div>
+    <h2>Current stage and next validation.</h2>
+
+    <div class="timeline">
+      <div class="timeline-item current">
+        <div class="date">June 22, 2026</div>
+        <h4>SomBench v1 &mdash; Public dataset validation</h4>
+        <p>Proof-of-concept validated on the skydheere/soomali-asr-dataset test split. Fine-tuned Whisper small (244M parameters) achieves mean WER 0.368. TRL 3.</p>
+      </div>
+      <div class="timeline-item future">
+        <div class="date">August 2026</div>
+        <h4>SomBench v2 &mdash; Broadcast data validation</h4>
+        <p>Validation on in-domain broadcast recordings. Tests generalization from public dataset to real regional media archives.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Data platform in development.</strong> We are building infrastructure to process and analyze
+      decades of Horn of Africa broadcast data. Detailed archive specifications are available
+      to qualified partners under NDA.
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap" style="text-align: center;">
+    <div class="section-label">Engagement</div>
+    <h2 style="max-width: none;">Actively engaging with defense innovation programs.</h2>
+    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+      Coda Labs is in active outreach with DIU, SOFWERX, AFWERX, and the Army&rsquo;s JIOP.
+    </p>
+    <div class="partners-row" style="justify-content: center;">
+      <span class="partner-tag">DIU</span>
+      <span class="partner-tag">SOFWERX</span>
+      <span class="partner-tag">AFWERX</span>
+      <span class="partner-tag">Army JIOP</span>
+    </div>
+    <div style="margin-top: 32px;">
+      <a href="contact.html" class="btn btn-primary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">CL</span>
+        Coda Labs
+      </a>
+      <p>Broadcast intelligence from the Horn of Africa. Evidence-based ASR for national security applications.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="capabilities.html">Capabilities</a></li>
+        <li><a href="results.html">SomBench v1</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="docs/data/sombench_v1.json" download>SomBench v1 (JSON)</a></li>
+        <li><a href="docs/data/sombench_v1.csv" download>SomBench v1 (CSV)</a></li>
+        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Coda Labs</span>
+      <span>TRL 3 &middot; Proof-of-concept validated</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

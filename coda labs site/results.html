@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SomBench v1 Results — Coda Labs</title>
+<meta name="description" content="SomBench v1: First quantitative evaluation of Somali ASR. Mean WER 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper)." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">CL</span>
+      Coda Labs
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="results.html" class="active">SomBench v1</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="section-label">Benchmark</div>
+    <h1>SomBench v1</h1>
+    <p>First quantitative evaluation of Somali ASR. Mean WER: 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper). Broadcast validation in August 2026 (SomBench v2).</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="download-bar">
+      <p><strong>SASR Eval paper available.</strong> Methodology, per-clip data, and methodological notes.</p>
+      <a href="docs/SASR_Eval.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download SASR Eval</a>
+    </div>
+
+    <div class="table-wrap" style="margin-bottom: 40px;">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Document</th>
+            <th>Description</th>
+            <th>Format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="system-name"><a href="docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></td>
+            <td>Full evaluation paper — methodology, results, and analysis</td>
+            <td>PDF</td>
+          </tr>
+          <tr>
+            <td class="system-name"><a href="docs/data/sombench_v1.json" download>SomBench v1 results</a></td>
+            <td>Per-clip WER/CER, hypotheses, references, and summary statistics</td>
+            <td>JSON</td>
+          </tr>
+          <tr>
+            <td class="system-name"><a href="docs/data/sombench_v1.csv" download>SomBench v1 per-clip data</a></td>
+            <td>Clip-by-clip scores and transcript text</td>
+            <td>CSV</td>
+          </tr>
+          <tr>
+            <td class="system-name"><a href="docs/data/sombench_v1_findings.md" download>SomBench v1 findings</a></td>
+            <td>Detailed benchmark analysis and notable clip examples</td>
+            <td>Markdown</td>
+          </tr>
+          <tr>
+            <td class="system-name"><a href="docs/data/sombench_v0.json" download>SomBench v0 results</a></td>
+            <td>Prior reference-free evaluation (June 2026)</td>
+            <td>JSON</td>
+          </tr>
+          <tr>
+            <td class="system-name"><a href="docs/data/sombench_v0.csv" download>SomBench v0 per-clip data</a></td>
+            <td>Reference-free pass clip data</td>
+            <td>CSV</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-label">Summary</div>
+    <h2>Aggregate results.</h2>
+    <p class="section-lede">
+      Evaluated June 22, 2026 on 50 stitched clips (~10 seconds each, ~550 seconds total) from the
+      skydheere/soomali-asr-dataset test split. Ground-truth transcriptions used for WER and CER scoring.
+    </p>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>n</th>
+            <th>Mean WER</th>
+            <th>Mean CER</th>
+            <th>Parameters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>
+              <span class="system-name">Fine-tuned Whisper small (ours)</span>
+              <span class="system-detail">Trained ~1 hr on T4 GPU, 500 steps</span>
+            </td>
+            <td class="num">50</td>
+            <td class="num best">0.368</td>
+            <td class="num">&mdash;</td>
+            <td class="num">244M</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="system-name">ElevenLabs Scribe v1</span>
+              <span class="system-detail">Commercial ASR API</span>
+            </td>
+            <td class="num">50</td>
+            <td class="num">0.592</td>
+            <td class="num">0.185</td>
+            <td class="num">&mdash;</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="system-name">faster-whisper large-v3</span>
+              <span class="system-detail">Open-source baseline</span>
+            </td>
+            <td class="num">50</td>
+            <td class="num">0.871</td>
+            <td class="num">0.266</td>
+            <td class="num">1.5B</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stats-row" style="margin-top: 32px;">
+      <div class="stat-box">
+        <div class="stat-value success">37.8%</div>
+        <div class="stat-label">Relative WER reduction<br />vs. ElevenLabs</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value success">57.8%</div>
+        <div class="stat-label">Relative WER reduction<br />vs. Whisper large-v3</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">44 / 50</div>
+        <div class="stat-label">Clips ElevenLabs wins<br />by WER (baseline systems)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">81.5%</div>
+        <div class="stat-label">ElevenLabs char accuracy<br />Mean CER 0.185</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">Key wins</div>
+    <h2>What the numbers show.</h2>
+
+    <div class="wins-grid">
+      <div class="win-card">
+        <div class="win-value">37.8%</div>
+        <h4>Relative reduction vs. ElevenLabs</h4>
+        <p>Our fine-tuned Whisper small achieves mean WER 0.368 versus ElevenLabs Scribe v1 at 0.592. Domain-specific training on Somali closes a gap that commercial systems leave open.</p>
+      </div>
+      <div class="win-card">
+        <div class="win-value">57.8%</div>
+        <h4>Relative reduction vs. Whisper large-v3</h4>
+        <p>Despite using a model 6&times; smaller (244M vs 1.5B parameters), our fine-tuned system outperforms the large-v3 baseline by a wide margin on this evaluation set.</p>
+      </div>
+      <div class="win-card">
+        <div class="win-value">In-domain</div>
+        <h4>Performance on broadcast data</h4>
+        <p>On public dataset clips, ElevenLabs wins 44 of 50 by WER. Our fine-tuned model is designed for in-domain broadcast data&mdash;SomBench v2 (August 2026) will validate on regional archives.</p>
+      </div>
+      <div class="win-card">
+        <div class="win-value">~1 hour</div>
+        <h4>Training efficiency</h4>
+        <p>Single T4 GPU, 500 training steps. Demonstrates that low-resource language ASR improvement does not require massive compute&mdash;relevant for rapid deployment in operational environments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Notable clips</div>
+    <h2>Per-clip examples.</h2>
+    <p class="section-lede">
+      Selected clips illustrating system behavior across the evaluation set.
+      Full per-clip data in SASR Eval.
+    </p>
+
+    <div class="example-block">
+      <div class="example-header">
+        <h4>clip50 &mdash; Best ElevenLabs performance</h4>
+        <div class="example-metrics">
+          <span>ElevenLabs WER: 0.125</span>
+          <span>Whisper WER: 0.875</span>
+        </div>
+      </div>
+      <div class="example-body">
+        <div class="example-line"><span class="tag">Reference</span> maalaa Guriga dadka soo dhisay ma aragtay? Waxaa yimid arday badan. Waxaa aan jeclaa Emma. gurigaygan</div>
+        <div class="example-line"><span class="tag">ElevenLabs</span> Maalaa guriga dadka soo dhisay ma aragtay. Waxaay yimid arday badan waxa aan jeclaa emma gurigaygan.</div>
+        <div class="example-line"><span class="tag">Whisper</span> maa laa guriga dadka saadisay maa raqday waha yimid ardaybadan waha ancha laa emma guriga igan</div>
+      </div>
+      <div class="example-note">ElevenLabs near-perfectly transcribes a full sentence. Whisper mangles several words (&ldquo;saadisay&rdquo; for &ldquo;soo dhisay&rdquo;, &ldquo;raqday&rdquo; for &ldquo;aragtay&rdquo;).</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">
+        <h4>clip36 &mdash; Proper noun preservation</h4>
+        <div class="example-metrics">
+          <span>ElevenLabs WER: 0.263</span>
+          <span>Whisper WER: 0.842</span>
+        </div>
+      </div>
+      <div class="example-body">
+        <div class="example-line"><span class="tag">Reference</span> Hargeysa waa magaalo weyn. Kani waa kaanaga. Warsame! farasey! Waan aqaannaa ardayda oo idil. maxkamadda gobolka qorayaasha iyo boqorrada</div>
+        <div class="example-line"><span class="tag">ElevenLabs</span> Hargeysa waa magaalo weyn. Kani waa kaannada. Warsame. Farasay. Waan aqaana ardayda oo idil. Maxkamadda gobolka. Qorshaha iyo boqorada.</div>
+        <div class="example-line"><span class="tag">Whisper</span> Har geysa waa magaalaa weyn. Kani waa kaan naga. Huwar samay. Farasay. Waan aqaanaa radaayda oo eedil. Mahkamadda goblka. Urayaasha iyo baxar rada.</div>
+      </div>
+      <div class="example-note">ElevenLabs preserves proper nouns (&ldquo;Hargeysa&rdquo;, &ldquo;Warsame&rdquo;, &ldquo;Maxkamadda&rdquo;) and sentence structure. Whisper splits tokens and garbles proper nouns.</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">
+        <h4>clip11 &mdash; Worst ElevenLabs performance</h4>
+        <div class="example-metrics">
+          <span>ElevenLabs WER: 1.000</span>
+          <span>Whisper WER: 0.867</span>
+        </div>
+      </div>
+      <div class="example-body">
+        <div class="example-line"><span class="tag">Reference</span> goror caanaha saca raggaa Saddexda wiil ayaad ammaantay. OSV Dhiso. maalmo afar ah oo horreysay</div>
+        <div class="example-line"><span class="tag">ElevenLabs</span> Wuxuu u geystay qorayn ayaa ah goorar. Canaan saac. Ragga. Saddex daweyl ayaa dambe. Dhiso. Maalmo afar ah oo horaysay.</div>
+        <div class="example-line"><span class="tag">Whisper</span> qorar aanaha saad ragga sada dhawiyil aya dhammaante diso maalmo qafar ah oo horay say</div>
+      </div>
+      <div class="example-note">Annotation artifact (&ldquo;OSV&rdquo;) in the ground truth reference threw off ElevenLabs. Whisper echoed more of the phonetic surface form.</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">
+        <h4>clip28 &mdash; Largest performance gap</h4>
+        <div class="example-metrics">
+          <span>Whisper WER: 1.438</span>
+          <span>ElevenLabs WER: 0.875</span>
+        </div>
+      </div>
+      <div class="example-body">
+        <div class="example-line"><span class="tag">Reference</span> qalimmada silsiladahayga dukaanle Ninkii libaaxii qabtay miyuu la hadlay? S/SOVAV baaldiyo labo ganacsato oo waawanaagsan</div>
+        <div class="example-line"><span class="tag">ElevenLabs</span> Xalammada silsiladaha iga dukaan leh ninkii libaaxi qabtay miyu la hadlay baal diyo laba ganacsi ugu wanaagsan.</div>
+        <div class="example-line"><span class="tag">Whisper</span> Qalima dha. Silsila dhaha yiga. Du kaan la. Ninkin li baax hii qabtay. Miuu lahad la. Baal diyo. La baga naa sato'u buwan-buwan ahaksan.</div>
+      </div>
+      <div class="example-note">Whisper fragments continuous speech into spurious sentence breaks, inflating WER past 1.0. ElevenLabs handles run-on sentence structure better.</div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">Head-to-head</div>
+    <h2>ElevenLabs vs. Whisper large-v3 (baseline systems).</h2>
+    <p class="section-lede">
+      Per-clip WER comparison between the two baseline commercial/open-source systems evaluated
+      in SomBench v1. ElevenLabs wins 44 of 50 clips. 2 ties. Whisper wins 4.
+    </p>
+
+    <div class="table-wrap" style="max-height: 480px; overflow-y: auto;">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Clip</th>
+            <th>Whisper WER</th>
+            <th>ElevenLabs WER</th>
+            <th>Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>clip01</td><td class="num">0.938</td><td class="num">0.438</td><td>ElevenLabs</td></tr>
+          <tr><td>clip02</td><td class="num">0.684</td><td class="num">0.526</td><td>ElevenLabs</td></tr>
+          <tr><td>clip03</td><td class="num">0.812</td><td class="num">0.688</td><td>ElevenLabs</td></tr>
+          <tr><td>clip04</td><td class="num">0.722</td><td class="num">0.556</td><td>ElevenLabs</td></tr>
+          <tr><td>clip05</td><td class="num">0.957</td><td class="num">0.696</td><td>ElevenLabs</td></tr>
+          <tr><td>clip06</td><td class="num">0.850</td><td class="num">0.650</td><td>ElevenLabs</td></tr>
+          <tr><td>clip07</td><td class="num">0.850</td><td class="num">0.650</td><td>ElevenLabs</td></tr>
+          <tr><td>clip08</td><td class="num">0.727</td><td class="num">0.818</td><td>Whisper</td></tr>
+          <tr><td>clip09</td><td class="num">0.882</td><td class="num">0.588</td><td>ElevenLabs</td></tr>
+          <tr><td>clip10</td><td class="num">0.905</td><td class="num">0.857</td><td>ElevenLabs</td></tr>
+          <tr><td>clip11</td><td class="num">0.867</td><td class="num">1.000</td><td>Whisper</td></tr>
+          <tr><td>clip12</td><td class="num">0.923</td><td class="num">0.846</td><td>ElevenLabs</td></tr>
+          <tr><td>clip13</td><td class="num">0.857</td><td class="num">0.762</td><td>ElevenLabs</td></tr>
+          <tr><td>clip14</td><td class="num">0.667</td><td class="num">0.917</td><td>Whisper</td></tr>
+          <tr><td>clip15</td><td class="num">0.900</td><td class="num">0.500</td><td>ElevenLabs</td></tr>
+          <tr><td>clip16</td><td class="num">0.824</td><td class="num">0.529</td><td>ElevenLabs</td></tr>
+          <tr><td>clip17</td><td class="num">0.824</td><td class="num">0.647</td><td>ElevenLabs</td></tr>
+          <tr><td>clip18</td><td class="num">0.667</td><td class="num">0.500</td><td>ElevenLabs</td></tr>
+          <tr><td>clip19</td><td class="num">1.231</td><td class="num">0.462</td><td>ElevenLabs</td></tr>
+          <tr><td>clip20</td><td class="num">0.917</td><td class="num">0.500</td><td>ElevenLabs</td></tr>
+          <tr><td>clip21</td><td class="num">0.809</td><td class="num">0.714</td><td>ElevenLabs</td></tr>
+          <tr><td>clip22</td><td class="num">0.842</td><td class="num">0.737</td><td>ElevenLabs</td></tr>
+          <tr><td>clip23</td><td class="num">0.765</td><td class="num">0.882</td><td>Whisper</td></tr>
+          <tr><td>clip24</td><td class="num">0.944</td><td class="num">0.667</td><td>ElevenLabs</td></tr>
+          <tr><td>clip25</td><td class="num">1.000</td><td class="num">0.625</td><td>ElevenLabs</td></tr>
+          <tr><td>clip26</td><td class="num">0.765</td><td class="num">0.412</td><td>ElevenLabs</td></tr>
+          <tr><td>clip27</td><td class="num">0.950</td><td class="num">0.700</td><td>ElevenLabs</td></tr>
+          <tr><td>clip28</td><td class="num">1.438</td><td class="num">0.875</td><td>ElevenLabs</td></tr>
+          <tr><td>clip29</td><td class="num">0.818</td><td class="num">0.682</td><td>ElevenLabs</td></tr>
+          <tr><td>clip30</td><td class="num">0.867</td><td class="num">0.400</td><td>ElevenLabs</td></tr>
+          <tr><td>clip31</td><td class="num">0.733</td><td class="num">0.333</td><td>ElevenLabs</td></tr>
+          <tr><td>clip32</td><td class="num">0.889</td><td class="num">0.556</td><td>ElevenLabs</td></tr>
+          <tr><td>clip33</td><td class="num">0.950</td><td class="num">0.400</td><td>ElevenLabs</td></tr>
+          <tr><td>clip34</td><td class="num">0.938</td><td class="num">0.562</td><td>ElevenLabs</td></tr>
+          <tr><td>clip35</td><td class="num">0.769</td><td class="num">0.308</td><td>ElevenLabs</td></tr>
+          <tr><td>clip36</td><td class="num">0.842</td><td class="num">0.263</td><td>ElevenLabs</td></tr>
+          <tr><td>clip37</td><td class="num">0.778</td><td class="num">0.333</td><td>ElevenLabs</td></tr>
+          <tr><td>clip38</td><td class="num">1.000</td><td class="num">0.818</td><td>ElevenLabs</td></tr>
+          <tr><td>clip39</td><td class="num">0.941</td><td class="num">0.529</td><td>ElevenLabs</td></tr>
+          <tr><td>clip40</td><td class="num">0.682</td><td class="num">0.682</td><td>Tie</td></tr>
+          <tr><td>clip41</td><td class="num">0.800</td><td class="num">0.267</td><td>ElevenLabs</td></tr>
+          <tr><td>clip42</td><td class="num">0.833</td><td class="num">0.417</td><td>ElevenLabs</td></tr>
+          <tr><td>clip43</td><td class="num">1.059</td><td class="num">0.529</td><td>ElevenLabs</td></tr>
+          <tr><td>clip44</td><td class="num">1.000</td><td class="num">0.571</td><td>ElevenLabs</td></tr>
+          <tr><td>clip45</td><td class="num">0.923</td><td class="num">0.538</td><td>ElevenLabs</td></tr>
+          <tr><td>clip46</td><td class="num">1.000</td><td class="num">0.667</td><td>ElevenLabs</td></tr>
+          <tr><td>clip47</td><td class="num">0.933</td><td class="num">0.600</td><td>ElevenLabs</td></tr>
+          <tr><td>clip48</td><td class="num">0.789</td><td class="num">0.789</td><td>Tie</td></tr>
+          <tr><td>clip49</td><td class="num">0.619</td><td class="num">0.476</td><td>ElevenLabs</td></tr>
+          <tr><td>clip50</td><td class="num">0.875</td><td class="num">0.125</td><td>ElevenLabs</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Next steps</div>
+    <h2>SomBench v2 &mdash; August 2026</h2>
+    <p class="section-lede">
+      SomBench v1 validated our fine-tuned model on public Somali speech data. SomBench v2 will
+      evaluate performance on in-domain broadcast recordings from regional archives&mdash;the
+      data our platform is designed to process at scale.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item current">
+        <div class="date">June 22, 2026 &mdash; Complete</div>
+        <h4>SomBench v1</h4>
+        <p>50 clips from skydheere/soomali-asr-dataset. Three systems evaluated. Fine-tuned Whisper small: WER 0.368.</p>
+      </div>
+      <div class="timeline-item future">
+        <div class="date">August 2026</div>
+        <h4>SomBench v2</h4>
+        <p>Broadcast data validation from regional archives. Tests in-domain generalization and operational readiness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">CL</span>
+        Coda Labs
+      </a>
+      <p>Broadcast intelligence from the Horn of Africa.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="capabilities.html">Capabilities</a></li>
+        <li><a href="results.html">SomBench v1</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="docs/data/sombench_v1.json" download>SomBench v1 (JSON)</a></li>
+        <li><a href="docs/data/sombench_v1.csv" download>SomBench v1 (CSV)</a></li>
+        <li><a href="docs/data/sombench_v1_findings.md" download>Findings (MD)</a></li>
+        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Coda Labs</span>
+      <span>SomBench v1 &middot; June 22, 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

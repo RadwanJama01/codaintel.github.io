@@ -1,0 +1,1642 @@
+{
+  "schema_version": "sombench/1.0",
+  "name": "SomBench v1 — skydheere/soomali-asr-dataset (test split, stitched)",
+  "description": "WER/CER benchmark on 50 stitched clips (~10s each) drawn from the skydheere/soomali-asr-dataset HuggingFace test split. Ground truth = original dataset transcriptions.",
+  "dataset": "skydheere/soomali-asr-dataset",
+  "split": "test",
+  "n_clips": 50,
+  "clip_target_seconds": 10,
+  "silence_ms": 200,
+  "systems": [
+    {
+      "id": "faster-whisper:large-v3",
+      "lang_hint": "so"
+    },
+    {
+      "id": "elevenlabs:scribe_v1",
+      "lang_hint": "som"
+    }
+  ],
+  "summary": [
+    {
+      "system": "elevenlabs:scribe_v1",
+      "n_clips": 50,
+      "mean_wer": 0.5918,
+      "median_wer": 0.5798,
+      "mean_cer": 0.1852,
+      "median_cer": 0.1672,
+      "script_mismatches": 0
+    },
+    {
+      "system": "faster-whisper:large-v3",
+      "n_clips": 50,
+      "mean_wer": 0.8711,
+      "median_wer": 0.8619,
+      "mean_cer": 0.2662,
+      "median_cer": 0.2526,
+      "script_mismatches": 0
+    }
+  ],
+  "rows": [
+    {
+      "clip": "clip01",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Ber-tada. Ber-ti. Buu didda. Waaah. Aba. Ma ber-baa. Qurruxda qabarda. Marki. Waxaan arkay halrati.",
+      "ref_text": "beertaada beertii boodidda waax aabbe Ma beer|f baa? quruxda gabadha markii Waxaan arkay hal rati.",
+      "wer": 0.9375,
+      "cer": 0.2396,
+      "ref_words": 16,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip02",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "u firso sawirka, oo u shegma aalinkaaga wahaadku arakteed. Kab, nasibdarro. Tahayt. Naf, miyay timid oo yada.",
+      "ref_text": "U fiirso sawirka oo u sheeg macallinkaaga waxa aad ku aragtid. kab nasiibdarro tahay neef|m Miyay timid hooyadaa?",
+      "wer": 0.6842,
+      "cer": 0.1892,
+      "ref_words": 19,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip03",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Kismayu, ayy aadii. Mawaha, diggan tahay moqdishu. Kala. Haa, huu yaday, waitimid. Waadad. Meet.",
+      "ref_text": "Kismaayo ayay aadday. Ma waxaad deggan tahay Muqdisho? kala Haa, hooyaday way timid. Waa cadad. miid",
+      "wer": 0.8125,
+      "cer": 0.2526,
+      "ref_words": 16,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip04",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Dulalka, miiid, sifiyaan isugu garaa, isku jirkaas, labanagot, keeba urdaya, dabjog, waa laboda.",
+      "ref_text": "dulalka miid Si fiican isugu garaac isku-jirkaas. labo naagood Kee baa ordaya? dab-joog Waa la boodaa.",
+      "wer": 0.7222,
+      "cer": 0.1818,
+      "ref_words": 18,
+      "hyp_words": 13,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip05",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Yadu ma xa noosan a. Giyamitu anarki. Uy urdaan. Buqar kaya na. Xalbari o uusub. Kaniva aqal ka Ali. Ali labadisali ood. Gaariga Mahamed.",
+      "ref_text": "Iyadu ma xannuunsana. Ninkii yimid waan arkay. Way ordeen. boqorkeenna hal bare oo cusub Kani waa aqalka Cali. Cali labadiisa dhegood gaariga Maxamed",
+      "wer": 0.9565,
+      "cer": 0.3448,
+      "ref_words": 23,
+      "hyp_words": 24,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip06",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Makoo fiyadbaa Hal duke oo weyn Shaa kaadee dha Labadu mar aaha wako roh badan Kaan dhamidee Geesi Mo sooyibso",
+      "ref_text": "Ma koofiyad baa? hal tuke oo weyn sheekadeeda labo dumar ah oo qurux badan gacanta midig geesi Moos soo iibso!",
+      "wer": 0.85,
+      "cer": 0.3148,
+      "ref_words": 20,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip07",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Haa, waa narkaay. Inaan, afayyayn, mugdishu, u safray. Indi hiisa. Kabta. Kabar. Gortas, ay dabayshi kuafu fta itaalka hidi oda.",
+      "ref_text": "Haa, waan arkay. inan|f afhayeen Muqdishuu u safray. indhihiisa kabta gabar Goortaas ayay Dabayshii ku afuuftay itaalkeedii oo dhan.",
+      "wer": 0.85,
+      "cer": 0.2422,
+      "ref_words": 20,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip08",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Buuqaag Kabaynaya Oomati Mariam Ishaasir Hoeya daawa ma'alimat Dadka Oomin",
+      "ref_text": "buugaag kabaynayaa oomati Maryan ishaas yar Hooyadaa waa macallimad. dadka oomin",
+      "wer": 0.7273,
+      "cer": 0.1772,
+      "ref_words": 11,
+      "hyp_words": 10,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip09",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Kani waa u baxa. Albuqar. Shayka caayla. Fiiri. Waan heli doona. Buu gaak tiisa u soob kaya baad ahirsi. Ali miya.",
+      "ref_text": "Kani waa ubax. boqor sheeko jacayl Fiiri. Waan heli doonaa. Buugaagtiisa cusub kee baad akhrisay? Cali miyaa?",
+      "wer": 0.8824,
+      "cer": 0.2885,
+      "ref_words": 17,
+      "hyp_words": 21,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip10",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "kusobaad saa roo ayaanarka magaalo walaasha i guri gey chokta dubta saaf ma naaf ba soore gey dagan ta yado",
+      "ref_text": "Ku soo bood! Sahro ayaan arkay. magaalo Walaashay gurigay joogtaa. Dubta. seef Ma neef|f baa? fure Xagee deggen tahay iyadu?",
+      "wer": 0.9048,
+      "cer": 0.3305,
+      "ref_words": 21,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip11",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "qorar aanaha saad ragga sada dhawiyil aya dhammaante diso maalmo qafar ah oo horay say",
+      "ref_text": "goror caanaha saca raggaa Saddexda wiil ayaad ammaantay. OSV Dhiso. maalmo afar ah oo horreysay",
+      "wer": 0.8667,
+      "cer": 0.2688,
+      "ref_words": 15,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip12",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Berbera, waa, ii, uu, ti, nimaanka, wadooyinka wada, waa la'una, ri, hooyadamia, buu gawilka.",
+      "ref_text": "Berbera Waa yimid. nimanka waddooyinkooda Waa la cunaa. riday Hooyadaa miyaa? buugga wiilkee",
+      "wer": 0.9231,
+      "cer": 0.3146,
+      "ref_words": 13,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip13",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "geelaj jogee adayarkaay waxaa uu abuuda inu digaagadda dibadda inu gu suwasaaro yaayimit silsiladdeyda",
+      "ref_text": "ninkii la joogay adeerkay SVO Waxa uu awoodaa in uu digaagadda dibadda inoogu soo saaro. Yaa yimid? silsiladdayda Magaciisu waa Maxamed.",
+      "wer": 0.8571,
+      "cer": 0.4211,
+      "ref_words": 21,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip14",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Naaq. Muuyayyal. Aaf. Qayblibaax. Ananiyo. Kani waa hodan aabihayad. Ul. Sahankayana.",
+      "ref_text": "naag mooyayaal oof qayb libaax annaanniyo Kani waa Hodan aabbaheed. ul saxankeenna",
+      "wer": 0.6667,
+      "cer": 0.2346,
+      "ref_words": 12,
+      "hyp_words": 11,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip15",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Nimaan waatee taan urdiysa. Ninkibaa libaah hii qabtay. Abdi wa oo kayyariyay, Ali. Sa qabar? Aafo. Kuwas.",
+      "ref_text": "niman Waa tee tan ordaysa? Ninkii baa libaaxii qabtay. OSV Cabdi waa uu ka yar yahay Cali. gabar aafo kuwaas",
+      "wer": 0.9,
+      "cer": 0.2667,
+      "ref_words": 20,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip16",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Mara ayay ilmuhu hoyo lamay rayaan. Wa taqqaan. Qubadda miska. Weyn a'usub. Qafuweyl. Sabtiyaas. Kalkaali sadaa.",
+      "ref_text": "Maro ayay ilmuhu hooyo la mayrayaan. Waa taqaan. kubbadda miiska weyn oo cusub qof weyn Sabtigaas kalkaalisadee",
+      "wer": 0.8235,
+      "cer": 0.1835,
+      "ref_words": 17,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip17",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Sindaha oo dhannab, suruweerlo. Warihii hal yu lammalai. Mamxalayri ahda. Guwabiga. Halitir. Waa helen.",
+      "ref_text": "indhaha oo dhan surwaallo Wariyihii hal yuu la maalay? Maxaa la yiraahdaa? webiga hal litir Waa heleen.",
+      "wer": 0.8235,
+      "cer": 0.29,
+      "ref_words": 17,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip18",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "walal, skool, loogadayati, moosanarki, arruuray, istagsan, hal gabar, qalinyal, furaha guriga.",
+      "ref_text": "walaal iskuul luqadeed Muusaan arkay. Carruurey! istaagsan hal gabar qalinyaal furaha guriga",
+      "wer": 0.6667,
+      "cer": 0.2444,
+      "ref_words": 12,
+      "hyp_words": 11,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip19",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Adawgay soo maa liya A-abur Wadna hayga Tus Yar yar Aqal Uw adu fiyayay So",
+      "ref_text": "cadowga Soomaaliya aabbur wadnahayga Tus! yaryar aqal Wuu aad u fiican yahay. soo",
+      "wer": 1.2308,
+      "cer": 0.2532,
+      "ref_words": 13,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip20",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "qalima laqta hajjaj ulil kaqa magalayar shayqid qawariyar oo qorxoon wabi",
+      "ref_text": "qalimmo lacagta Hayaay! wiilkaaga magaalo yar sheegid gabadh yar oo qurxoon webi",
+      "wer": 0.9167,
+      "cer": 0.3291,
+      "ref_words": 12,
+      "hyp_words": 11,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip21",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Huay shayaktay. Bir kuuda? Huarir huay. Abid. Yii did. Maali kuula kuulbay. Falsawa orod. Essanad. Kani waa iskuulka Ahmadiye sahru.",
+      "ref_text": "Way sheegtay. wiilkooda Waa reer weyn. cabbid iidid Macallinkuu la kulmay. Bal soo orod! sannad Kani waa iskuulka Axmed iyo Sahro.",
+      "wer": 0.8095,
+      "cer": 0.344,
+      "ref_words": 21,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip22",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "wadda tali waa hamdi gaarigi mahamad ku sobaad niki jimitu waa arkay sagu hagag makabba daga",
+      "ref_text": "waddo Tani waa Xamdi. gaarigii Maxamed Ku soo bood! Ninkii yimid wuu arkay isagu. hagaag Ma kab baa? dhego",
+      "wer": 0.8421,
+      "cer": 0.2451,
+      "ref_words": 19,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip23",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Saar ayaa araktaay. Eray. Waan ka'ay. Ulu lkaas. Mariyanta. Sifiyaan u dabaalan taqaan waa sahibu d-dayda.",
+      "ref_text": "Sahro ayaa aragtay. erayo Waan kacay. ololkaas duulaya|light Maryanta si fiican u dabaalan taqaan waa saaxiibaddayda.",
+      "wer": 0.7647,
+      "cer": 0.2895,
+      "ref_words": 17,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip24",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Asago maxano wassana iyo. Ma ilin baa. Taariko Somalia. Dayi. Aanam aabta. Aan tago. Yado maxano wassana iso.",
+      "ref_text": "Isagu ma xannuunsanayo. Ma illin|m baa? taariikhda Soomaaliya Day! Caano ma cabtaa? Aan taago. Iyadu ma xannuunsanayso.",
+      "wer": 0.9444,
+      "cer": 0.3363,
+      "ref_words": 18,
+      "hyp_words": 18,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip25",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Tana ma'ir badaa Luqadda am xaaradda Uubadda Gabad Gurox badan Wa n'abayna Wa n'agaya Guwa n'imakwaara",
+      "ref_text": "Tani ma cirbadaa? luuqadda Amxaarada uubato gabadh qurux badan Waan cabbaynaa. Waan eegayaa. Kuwani ma kooraa?",
+      "wer": 1.0,
+      "cer": 0.3019,
+      "ref_words": 16,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip26",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "xal xabbo oo moosqa. Indahaan yer-yer. Aba. Rab. Bad. Hamali. Mindi. Xal ee. Subax. Hoi ya timid.",
+      "ref_text": "hal xabbo oo moos ah indhahan yaryar aabbe roob beed xammaali mindi hal ey subax Hooyaa timid.",
+      "wer": 0.7647,
+      "cer": 0.2473,
+      "ref_words": 17,
+      "hyp_words": 18,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip27",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Sadeh Yaabar Masbaanintili Magaalo Baar Makubadba Iyidid Halbabur Kusabad Aad",
+      "ref_text": "saddex yaaban Mas baa nin dilay. SOV magaalo beer|m Ma kubbad baa? iidid hal baabuur Ku soo bood! eed",
+      "wer": 0.95,
+      "cer": 0.3367,
+      "ref_words": 20,
+      "hyp_words": 10,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip28",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Qalima dha. Silsila dhaha yiga. Du kaan la. Ninkin li baax hii qabtay. Miuu lahad la. Baal diyo. La baga naa sato'u buwan-buwan ahaksan.",
+      "ref_text": "qalimmada silsiladahayga dukaanle Ninkii libaaxii qabtay miyuu la hadlay? S/SOVAV baaldiyo labo ganacsato oo waawanaagsan",
+      "wer": 1.4375,
+      "cer": 0.3667,
+      "ref_words": 16,
+      "hyp_words": 25,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip29",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Iskulka oo maa urdaya, mawadisho, aqalka martida, hasan madjifa, waxanay ma samaynaya, waxooda, aqalka, maddibiba, maskiiba, ninki, dili.",
+      "ref_text": "Iskuulka uma ordayaan. Muqdisho aqalka martida Xasan ma jiifaa? Waxna ma sameynayaan. waxooda aqalka Ma dibi baa? Maskii baa ninkii dilay. SOV",
+      "wer": 0.8182,
+      "cer": 0.2336,
+      "ref_words": 22,
+      "hyp_words": 18,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip30",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Soortan ninko kaanay, oo yaday ayaa karisay. Waddooyin. Kulli geenu xanubahan na hiddi kanan. Anchego.",
+      "ref_text": "Soorta ninku keenay hooyaday ayaa karisay. waddooyin Kulligeen waxaan u baahan nahay degganaan. Aan sheego.",
+      "wer": 0.8667,
+      "cer": 0.25,
+      "ref_words": 15,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip31",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Hargaysa wa maqaalaw weyn. Shakadab Mahamad Qabanayyo. Wabihi buqaq. Ilka hayda las geel. Markay u safartay.",
+      "ref_text": "Hargeysa waa magaalo weyn. shaqada Maxamed qabanayo webigii buugaag ilkaheeda Laas Geel Markay u safartay.",
+      "wer": 0.7333,
+      "cer": 0.2019,
+      "ref_words": 15,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip32",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Soortii ban karina yaa Ooman Dar Mahay samayna yaa, u labada qabdoot Kani waad, kin Mindidi Mahamad Awaynayd",
+      "ref_text": "Soortii baan karinayaa. oomman Cab! daar|f Maxay sameynayaan labada gabdhood? Kani waa kiinna. mindidii Maxamed ee weynayd",
+      "wer": 0.8889,
+      "cer": 0.2458,
+      "ref_words": 18,
+      "hyp_words": 18,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip33",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Ab, aal, wayimid, suldaanka, wayi oktahay, abhiis, wayimid, bidax, ishayar. Arda daka muu qata, sawirka, ma hay fiyir raya.",
+      "ref_text": "Cab! ceel Waa yimid. suldaanka Way og tahay. Aabbihiis wuu yimid. bidix isha yar Ardada ka muuqata sawirka maxay fiirinayaan?",
+      "wer": 0.95,
+      "cer": 0.225,
+      "ref_words": 20,
+      "hyp_words": 19,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip34",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Anu u kalloon ma'a noo. Waalibaxiyo. Tani ma'a ma'a limadisa. Aba. Burahas. Bixinaya. Hu yadid shagada ayay ahdi.",
+      "ref_text": "Anigu kalluun ma cuno. Waa libaaxyo. Tani ma macallimaddiisaa? aabbe buurahaas bixinaya Hooyadeed shaqada ayay aadday.",
+      "wer": 0.9375,
+      "cer": 0.2807,
+      "ref_words": 16,
+      "hyp_words": 18,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip35",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Tani waa gabar Iibsada Iradi Kayiga Nafsasho Maa arak tayi, dadka dhisa ya guriga Lantayda",
+      "ref_text": "Tani waa gabadh. Iibsada. iraadi kayga neefsasho Ma aragtay dadka dhisaya guriga? laantayda",
+      "wer": 0.7692,
+      "cer": 0.1364,
+      "ref_words": 13,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip36",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Har geysa waa magaalaa weyn. Kani waa kaan naga. Huwar samay. Farasay. Waan aqaanaa radaayda oo eedil. Mahkamadda goblka. Urayaasha iyo baxar rada.",
+      "ref_text": "Hargeysa waa magaalo weyn. Kani waa kaanaga. Warsame! farasey! Waan aqaannaa ardayda oo idil. maxkamadda gobolka qorayaasha iyo boqorrada",
+      "wer": 0.8421,
+      "cer": 0.1894,
+      "ref_words": 19,
+      "hyp_words": 23,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip37",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Waxaan arkayxal fati iyaxal maroodi Magaalu Taibtu Addaan Daayyar Af amxari Sa Wa inan Suban",
+      "ref_text": "Waxaan arkay hal rati iyo hal maroodi. magaalo taagto daanka daanyeer af-Amxaari soo Waa inan|m. Suubban",
+      "wer": 0.7778,
+      "cer": 0.2451,
+      "ref_words": 18,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip38",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Peri lady Somaliya Somalida Biya da Idan Dadka Eek, bisaddu awa intahay",
+      "ref_text": "beeraleydii Soomaaliyeed Soomaalida biyodhac idan dadkaa Éeg! Bisaddu waa weyn tahay.",
+      "wer": 1.0,
+      "cer": 0.3373,
+      "ref_words": 11,
+      "hyp_words": 12,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip39",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Faras kaaga kanu agur iya ali iyo saa roo. Bodit biyaha. Hibib geel maaysamay naysaa hoyo. Aanog riyaad. Ning kan.",
+      "ref_text": "faraskaaga Kani waa gurigii Cali iyo Sahro. boodid biyaha hilib geel Maxay samaynaysaa hooyo? caano riyaad ninkan",
+      "wer": 0.9412,
+      "cer": 0.2162,
+      "ref_words": 17,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip40",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Af, ee dur huwaa eriyadey. Hel, weelka, huwaayoon la lomaay. Arad, haa burburin, buu soo daa. Haa waan arkay, handa kawar.",
+      "ref_text": "af ey dhurwaa eryaday OSV Hel wiilka hooyo la lumay. orod Ha burburin.|tr Wuu socdaa. Haa, waan arkay hadda ka hor.",
+      "wer": 0.6818,
+      "cer": 0.3091,
+      "ref_words": 22,
+      "hyp_words": 21,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip41",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "waraaabaa muran wazzaradda waxbarashadda berbera buutagaya ilmuhu, xooya, maraab miyayla mayrayaam",
+      "ref_text": "waraabe Ma cabbayno. muran wasaaradda waxbarashada Berbera buu tagayaa. Ilmuhu hooyo maro miyay la mayrayaan?",
+      "wer": 0.8,
+      "cer": 0.217,
+      "ref_words": 15,
+      "hyp_words": 11,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip42",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Madh Bukilir aanu ku jira. Liin Naseeb Doliyada Waatimid Maraya Fertada",
+      "ref_text": "mood bakeeriga caano ku jiro liin nasiib doolliyada Waa timid. marayaa feertaada",
+      "wer": 0.8333,
+      "cer": 0.2532,
+      "ref_words": 12,
+      "hyp_words": 11,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip43",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Duxiga afafka ee jam'aadda mux dixoo. Ama qabdaha dabaal waya qa naan. Daan no. Dayaka a medyadi. Mamma alim baatahay. Laan teyda.",
+      "ref_text": "dugsiga afafka ee jaamacadda Muqdisho Ama gabdhaha dabaal way yaqaannaan. daanno dayaxgacmeedyadii Ma macallin baa tahay? laantayda",
+      "wer": 1.0588,
+      "cer": 0.2326,
+      "ref_words": 17,
+      "hyp_words": 22,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip44",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Waaddeen Qadana Qubaxaa uguu Dayaha qaamayad qooda Moogi Nafida barro Qoodad Qubadda aqta",
+      "ref_text": "Waa diin|m. Hodon ubaxa ugu weyn dayaxgacmeedkooda Ma ogi. lafdhabarro guudad kubbadda cagta",
+      "wer": 1.0,
+      "cer": 0.4333,
+      "ref_words": 14,
+      "hyp_words": 13,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip45",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Hestaa abuwaa, buu diddaa. Muduuktii hara. Faraggari. Zuban hadal keeda. Ilmuhu, yaanyuur, mahalaan.",
+      "ref_text": "heestee abboowe boodidda Mudugtii hore fure gaari Suubban hadalkeeda Ilmuhu yaanyuur ma heleen?",
+      "wer": 0.9231,
+      "cer": 0.2979,
+      "ref_words": 13,
+      "hyp_words": 13,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip46",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Id maad la ku lan tasharay. Faadumu uaysu geysa. Maanarki war samay. So ibsu. Fasalkaya dhigata. Baar. Buuk aya isi samariya.",
+      "ref_text": "Cidmaad la kulantay shalay? Faadumo way sugaysaa. Waxaan arkay Warsame. Soo iibso! Fasalkee dhigataa? beer|m Buug ayay i siisay Maryan.",
+      "wer": 1.0,
+      "cer": 0.3178,
+      "ref_words": 21,
+      "hyp_words": 21,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip47",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Laum maalmoot oordaadeer. Bukhar rado. Qad. Quraal. Maga uyaal. Wan ega. Maraa. Harisdarro. Oorda.",
+      "ref_text": "labo maalmood oo dhaadheer boqorado Qod! qoraal magac-u-yaal Waan eegaa. maraa naxariisdarro Orda.",
+      "wer": 0.9333,
+      "cer": 0.2526,
+      "ref_words": 15,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip48",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "ferka, urda, wadda, sahra, wayyata hai, hadalka, suuban, taas, hassan ma imaan, adakar miya taktay maga hada.",
+      "ref_text": "feerka Orda. waddo Sahro way yar tahay. hadalka Suubban taas Xasan ma imaan. Hadda ka hor miyaad tagtay magaaladan?",
+      "wer": 0.7895,
+      "cer": 0.2162,
+      "ref_words": 19,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip49",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "Habaay shakadii waa kayyamti. Yaad lakulantay shalay. Garsoore. Muqdeesha ayu u safray. Kuriga weyn. Pas kuwa weyn yaay. Laaam.",
+      "ref_text": "Aabbahay shaqadii waa ka yimid. Yaad la kulantay shalay? garsoore Muqdisho ayuu u safray. guriga weyn Basku waa weyn yahay. laan",
+      "wer": 0.619,
+      "cer": 0.1694,
+      "ref_words": 21,
+      "hyp_words": 19,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip50",
+      "system": "faster-whisper:large-v3",
+      "hyp_text": "maa laa guriga dadka saadisay maa raqday waha yimid ardaybadan waha ancha laa emma guriga igan",
+      "ref_text": "maalaa Guriga dadka soo dhisay ma aragtay? Waxaa yimid arday badan. Waxaa aan jeclaa Emma. gurigaygan",
+      "wer": 0.875,
+      "cer": 0.2143,
+      "ref_words": 16,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip01",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Beertaada. Beertii. Boodidda. Waax. Aabe ma berbaa. Quruxda gabadha. Markii u ahan arkay hal ratti.",
+      "ref_text": "beertaada beertii boodidda waax aabbe Ma beer|f baa? quruxda gabadha markii Waxaan arkay hal rati.",
+      "wer": 0.4375,
+      "cer": 0.1042,
+      "ref_words": 16,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip02",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "u fiirso sawirka oo u sheeg ma calinkaaga waxaa adku aragtay. Kab nasiib darro tahay noof miyay timid hooyada.",
+      "ref_text": "U fiirso sawirka oo u sheeg macallinkaaga waxa aad ku aragtid. kab nasiibdarro tahay neef|m Miyay timid hooyadaa?",
+      "wer": 0.5263,
+      "cer": 0.1171,
+      "ref_words": 19,
+      "hyp_words": 19,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip03",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Ku ismaayo ayee aad iyo? Ma waxaad degantahay Mogadishu? Khala'. Ha ah hooyaday way timid waa cadad? Miit.",
+      "ref_text": "Kismaayo ayay aadday. Ma waxaad deggan tahay Muqdisho? kala Haa, hooyaday way timid. Waa cadad. miid",
+      "wer": 0.6875,
+      "cer": 0.1895,
+      "ref_words": 16,
+      "hyp_words": 18,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip04",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Dulalka. Miid. Si fiican isugu garaa isku jirkaas. Laba nagood. Keeba urdaayo. Dabjoog. Waan la booda.",
+      "ref_text": "dulalka miid Si fiican isugu garaac isku-jirkaas. labo naagood Kee baa ordaya? dab-joog Waa la boodaa.",
+      "wer": 0.5556,
+      "cer": 0.1111,
+      "ref_words": 18,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip05",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Iyo aduun maxan u sanaac? Inkii yimid waan arkay. Waa jordan? Bu qor keenna. Xal bare oo cusub. Tani waa aqalka caali. Caali labadiisa dhiigooda. Gaariga Maxamed.",
+      "ref_text": "Iyadu ma xannuunsana. Ninkii yimid waan arkay. Way ordeen. boqorkeenna hal bare oo cusub Kani waa aqalka Cali. Cali labadiisa dhegood gaariga Maxamed",
+      "wer": 0.6957,
+      "cer": 0.1724,
+      "ref_words": 23,
+      "hyp_words": 27,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip06",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Ma koofiyad baa? Hal duuke oo weyn. Shee ka dheeda. Laba dumar ahaa oo qorax badan. Gaar ahaan tamid aye. Geesi. Moosoo iibso.",
+      "ref_text": "Ma koofiyad baa? hal tuke oo weyn sheekadeeda labo dumar ah oo qurux badan gacanta midig geesi Moos soo iibso!",
+      "wer": 0.65,
+      "cer": 0.2222,
+      "ref_words": 20,
+      "hyp_words": 23,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip07",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Ha waa markay. Inan. Afhayeen? Mogadishu u safray. Indhi hiisa? Kabta. Gabar? Gortas ay dabayshii ku ku cufuftay dhiital keedii oo dhan.",
+      "ref_text": "Haa, waan arkay. inan|f afhayeen Muqdishuu u safray. indhihiisa kabta gabar Goortaas ayay Dabayshii ku afuuftay itaalkeedii oo dhan.",
+      "wer": 0.65,
+      "cer": 0.1875,
+      "ref_words": 20,
+      "hyp_words": 22,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip08",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Buugaag. Ka baa inay oo mati. Maryaam. Ishaasi yar. Hooyada waa maclimad. Dadka. Oomin.",
+      "ref_text": "buugaag kabaynayaa oomati Maryan ishaas yar Hooyadaa waa macallimad. dadka oomin",
+      "wer": 0.8182,
+      "cer": 0.1646,
+      "ref_words": 11,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip09",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Kani waaba, la boqor. Shey ka jecayl? Fiiri, waan helidoona. Buugaagtiisa cusub kay baad akhristi? Cali miya.",
+      "ref_text": "Kani waa ubax. boqor sheeko jacayl Fiiri. Waan heli doonaa. Buugaagtiisa cusub kee baad akhrisay? Cali miyaa?",
+      "wer": 0.5882,
+      "cer": 0.1538,
+      "ref_words": 17,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip10",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Kuso bad. Saero ayaan harkay. Magalo. Walaashay gurigii joogtaa. Dhubta. Dhubta. Seeef. Muneef baah. Foree. Agyee degantaa ayadoo.",
+      "ref_text": "Ku soo bood! Sahro ayaan arkay. magaalo Walaashay gurigay joogtaa. Dubta. seef Ma neef|f baa? fure Xagee deggen tahay iyadu?",
+      "wer": 0.8571,
+      "cer": 0.2966,
+      "ref_words": 21,
+      "hyp_words": 18,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip11",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Wuxuu u geystay qorayn ayaa ah goorar. Canaan saac. Ragga. Saddex daweyl ayaa dambe. Dhiso. Maalmo afar ah oo horaysay.",
+      "ref_text": "goror caanaha saca raggaa Saddexda wiil ayaad ammaantay. OSV Dhiso. maalmo afar ah oo horreysay",
+      "wer": 1.0,
+      "cer": 0.6129,
+      "ref_words": 15,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip12",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "BERBERA Waa yi mit nimaanka. Waddooyin kooda. Waa lacuna. Bihooyada miya bu gaawilkee.",
+      "ref_text": "Berbera Waa yimid. nimanka waddooyinkooda Waa la cunaa. riday Hooyadaa miyaa? buugga wiilkee",
+      "wer": 0.8462,
+      "cer": 0.191,
+      "ref_words": 13,
+      "hyp_words": 13,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip13",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Waxaa u abooda inuu digaagadda dibada inoo ku soo saaro. Yaayimiti silsiladeeda magaciisu waa Maxamed.",
+      "ref_text": "ninkii la joogay adeerkay SVO Waxa uu awoodaa in uu digaagadda dibadda inoogu soo saaro. Yaa yimid? silsiladdayda Magaciisu waa Maxamed.",
+      "wer": 0.7619,
+      "cer": 0.3308,
+      "ref_words": 21,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip14",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Naag. Moo yey yaal, oof. Qayb libaa. Anaan iyo. Kaani waa hodan waa bixid. Ul. Saxan keenna.",
+      "ref_text": "naag mooyayaal oof qayb libaax annaanniyo Kani waa Hodan aabbaheed. ul saxankeenna",
+      "wer": 0.9167,
+      "cer": 0.1852,
+      "ref_words": 12,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip15",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Niman waa tee tan ordaysa? Ninkii baa liba ah xiix qabtay. Abdi waa oo ka yaryahay cali inta gabar. Afo. Kuwaas.",
+      "ref_text": "niman Waa tee tan ordaysa? Ninkii baa libaaxii qabtay. OSV Cabdi waa uu ka yar yahay Cali. gabar aafo kuwaas",
+      "wer": 0.5,
+      "cer": 0.1714,
+      "ref_words": 20,
+      "hyp_words": 21,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip16",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Maro ayay ilmuhu hooyo la mayrayeen. Waa dhaqan. Kubadda miiska. Weeyne cusub. Qof weeyn. Sabtidas. Kalkaalisa dee.",
+      "ref_text": "Maro ayay ilmuhu hooyo la mayrayaan. Waa taqaan. kubbadda miiska weyn oo cusub qof weyn Sabtigaas kalkaalisadee",
+      "wer": 0.5294,
+      "cer": 0.1284,
+      "ref_words": 17,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip17",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Dhaawac danabe. Surweyd lo. Way yiyi. Hal yuu la maalay. Waa biga. Hal itir. Waa heleen.",
+      "ref_text": "indhaha oo dhan surwaallo Wariyihii hal yuu la maalay? Maxaa la yiraahdaa? webiga hal litir Waa heleen.",
+      "wer": 0.6471,
+      "cer": 0.37,
+      "ref_words": 17,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip18",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Walaal, iskuul luuqadeed, muusaan harkay, arruuray, istaagsan, hal qabar, qalli yaal furaha guriga.",
+      "ref_text": "walaal iskuul luqadeed Muusaan arkay. Carruurey! istaagsan hal gabar qalinyaal furaha guriga",
+      "wer": 0.5,
+      "cer": 0.0778,
+      "ref_words": 12,
+      "hyp_words": 13,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip19",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Aduunka Somaliya. Aabur. Wadnahayga. Tus. Yaryar. Aqal. Aad u fiicanyahay. Soo.",
+      "ref_text": "cadowga Soomaaliya aabbur wadnahayga Tus! yaryar aqal Wuu aad u fiican yahay. soo",
+      "wer": 0.4615,
+      "cer": 0.1646,
+      "ref_words": 13,
+      "hyp_words": 11,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip20",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Qalimo. Lacagta. Xayaay. Wanig kaaga. Magaalo yar. Sheegid. Ka hor yar oo qurxoon. Webi.",
+      "ref_text": "qalimmo lacagta Hayaay! wiilkaaga magaalo yar sheegid gabadh yar oo qurxoon webi",
+      "wer": 0.5,
+      "cer": 0.1392,
+      "ref_words": 12,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip21",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Wey sheegtay. Birkooda? Waa reer wey. Abid? Iydid? Maclay kuula kulmay. Ralse hore. Isanadii? Kani wa iskuulka Ahmadiyya yahano.",
+      "ref_text": "Way sheegtay. wiilkooda Waa reer weyn. cabbid iidid Macallinkuu la kulmay. Bal soo orod! sannad Kani waa iskuulka Axmed iyo Sahro.",
+      "wer": 0.7143,
+      "cer": 0.264,
+      "ref_words": 21,
+      "hyp_words": 19,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip22",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Waddo? Taariikhda hamdi gaarigii Mahamud ku soo bood. Haggag. Makaba. Dego.",
+      "ref_text": "waddo Tani waa Xamdi. gaarigii Maxamed Ku soo bood! Ninkii yimid wuu arkay isagu. hagaag Ma kab baa? dhego",
+      "wer": 0.7368,
+      "cer": 0.4314,
+      "ref_words": 19,
+      "hyp_words": 11,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip23",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Isaga la ogeyn sara aya aragtay. Eray waan ka cay olol kaas. Haadayaa maraynta si fiican u dabaalan taqaano saaxiibadeeda.",
+      "ref_text": "Sahro ayaa aragtay. erayo Waan kacay. ololkaas duulaya|light Maryanta si fiican u dabaalan taqaan waa saaxiibaddayda.",
+      "wer": 0.8824,
+      "cer": 0.3333,
+      "ref_words": 17,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip24",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Isagoo ma xanuunsaneyso ma ilinba taariikhda Soomaaliya. Dayn aan ma cabsi taan aan taagu iyadoo ma xanuunsaneyso.",
+      "ref_text": "Isagu ma xannuunsanayo. Ma illin|m baa? taariikhda Soomaaliya Day! Caano ma cabtaa? Aan taago. Iyadu ma xannuunsanayso.",
+      "wer": 0.6667,
+      "cer": 0.1947,
+      "ref_words": 18,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip25",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Tanim cirbada. Looqadda amxaarada. Uuubato. Gabad. Warox badan. Waan cabbaynaa. Waan eegayaa. Waan mukaaraa.",
+      "ref_text": "Tani ma cirbadaa? luuqadda Amxaarada uubato gabadh qurux badan Waan cabbaynaa. Waan eegayaa. Kuwani ma kooraa?",
+      "wer": 0.625,
+      "cer": 0.1698,
+      "ref_words": 16,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip26",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Hal xabbo oo moos ah indho haan yaryar A B roob bad hamali mindi hal eey subax hooyaa timid.",
+      "ref_text": "hal xabbo oo moos ah indhahan yaryar aabbe roob beed xammaali mindi hal ey subax Hooyaa timid.",
+      "wer": 0.4118,
+      "cer": 0.129,
+      "ref_words": 17,
+      "hyp_words": 19,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip27",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "3 yaabbaan. Ma shubaa niin tileey magaalo. Beec. Ma ku badbaa iidiid. Hal baabuur. Ku soo bad. Heed.",
+      "ref_text": "saddex yaaban Mas baa nin dilay. SOV magaalo beer|m Ma kubbad baa? iidid hal baabuur Ku soo bood! eed",
+      "wer": 0.7,
+      "cer": 0.2857,
+      "ref_words": 20,
+      "hyp_words": 18,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip28",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Xalammada silsiladaha iga dukaan leh ninkii libaaxi qabtay miyu la hadlay baal diyo laba ganacsi ugu wanaagsan.",
+      "ref_text": "qalimmada silsiladahayga dukaanle Ninkii libaaxii qabtay miyuu la hadlay? S/SOVAV baaldiyo labo ganacsato oo waawanaagsan",
+      "wer": 0.875,
+      "cer": 0.225,
+      "ref_words": 16,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip29",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Dhiskulka uu ma ordeyn? Mogdisho? Aqalka martida. Xasa ma jiifaa? Waxni ma samaynaya? Waxoo da. Aqalka ma dibibaa. Ma skiibaan ninkii dilay.",
+      "ref_text": "Iskuulka uma ordayaan. Muqdisho aqalka martida Xasan ma jiifaa? Waxna ma sameynayaan. waxooda aqalka Ma dibi baa? Maskii baa ninkii dilay. SOV",
+      "wer": 0.6818,
+      "cer": 0.1752,
+      "ref_words": 22,
+      "hyp_words": 22,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip30",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Suurta ninku keenay hooyaday ayaa karisay waddooyin ku ligeenu xanub ahan nahay degenaan aan sheego.",
+      "ref_text": "Soorta ninku keenay hooyaday ayaa karisay. waddooyin Kulligeen waxaan u baahan nahay degganaan. Aan sheego.",
+      "wer": 0.4,
+      "cer": 0.1154,
+      "ref_words": 15,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip31",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Hargeysa waa magaalo wayn. Shaqada Maxamed Qaban ayuu hubi boogaag ilkaheeda Laas Geel markay u safartay.",
+      "ref_text": "Hargeysa waa magaalo weyn. shaqada Maxamed qabanayo webigii buugaag ilkaheeda Laas Geel Markay u safartay.",
+      "wer": 0.3333,
+      "cer": 0.1058,
+      "ref_words": 15,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip32",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Suwortii baan karinayaa? Ooman ab daar. Macay samaynaya labada gabdhoodh. Kani waa kiina. Mindidi Maxamed ee waynayd.",
+      "ref_text": "Soortii baan karinayaa. oomman Cab! daar|f Maxay sameynayaan labada gabdhood? Kani waa kiinna. mindidii Maxamed ee weynayd",
+      "wer": 0.5556,
+      "cer": 0.1186,
+      "ref_words": 18,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip33",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Ab-cal waa yimid Sudaanka. Way og tahay Abyhiis wuu yimid? Bidix in shay yar. Ardada ka muuqata sawirka maxay fiiri rayaan.",
+      "ref_text": "Cab! ceel Waa yimid. suldaanka Way og tahay. Aabbihiis wuu yimid. bidix isha yar Ardada ka muuqata sawirka maxay fiirinayaan?",
+      "wer": 0.4,
+      "cer": 0.1,
+      "ref_words": 20,
+      "hyp_words": 22,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip34",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Anigu kalloon macno. Waa libaaxiyo. Tani ma maalimi diisa? Abe. Buurahaas. Bixinaya. Hoyadeed shaqada ayay aaday?",
+      "ref_text": "Anigu kalluun ma cuno. Waa libaaxyo. Tani ma macallimaddiisaa? aabbe buurahaas bixinaya Hooyadeed shaqada ayay aadday.",
+      "wer": 0.5625,
+      "cer": 0.1228,
+      "ref_words": 16,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip35",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Tani waa geber? Iibsada. Iraaddi. Kayga. Neefsasho. Ma aragtay dadka dhisaya gurya? Laantayida.",
+      "ref_text": "Tani waa gabadh. Iibsada. iraadi kayga neefsasho Ma aragtay dadka dhisaya guriga? laantayda",
+      "wer": 0.3077,
+      "cer": 0.0909,
+      "ref_words": 13,
+      "hyp_words": 13,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip36",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Hargeysa waa magaalo weyn. Kani waa kaannada. Warsame. Farasay. Waan aqaana ardayda oo idil. Maxkamadda gobolka. Qorshaha iyo boqorada.",
+      "ref_text": "Hargeysa waa magaalo weyn. Kani waa kaanaga. Warsame! farasey! Waan aqaannaa ardayda oo idil. maxkamadda gobolka qorayaasha iyo boqorrada",
+      "wer": 0.2632,
+      "cer": 0.0758,
+      "ref_words": 19,
+      "hyp_words": 19,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip37",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Waxaan arkay hal rati iyo hal maroodi magaalo. Taagto daan daayer af amxaari. So waa inaan suban.",
+      "ref_text": "Waxaan arkay hal rati iyo hal maroodi. magaalo taagto daanka daanyeer af-Amxaari soo Waa inan|m. Suubban",
+      "wer": 0.3333,
+      "cer": 0.098,
+      "ref_words": 18,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip38",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Bereleydi Soomaaliye Soomalida biyoodha. Idan dadka eeg bisadda waawayn tahay.",
+      "ref_text": "beeraleydii Soomaaliyeed Soomaalida biyodhac idan dadkaa Éeg! Bisaddu waa weyn tahay.",
+      "wer": 0.8182,
+      "cer": 0.1566,
+      "ref_words": 11,
+      "hyp_words": 10,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip39",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Xalaaskaaga kanoo guriyay cali iyo seero boodid biyaha xibib geel maxay samaynaysaa hooyo caano riyada. Nin karn.",
+      "ref_text": "faraskaaga Kani waa gurigii Cali iyo Sahro. boodid biyaha hilib geel Maxay samaynaysaa hooyo? caano riyaad ninkan",
+      "wer": 0.5294,
+      "cer": 0.1712,
+      "ref_words": 17,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip40",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "\"af\" ay duruwa reeyay, \"xel\" wiilka hooyo lalo may, \"orad\" ha burburin buu socda, ha waa narka handa ka hor.",
+      "ref_text": "af ey dhurwaa eryaday OSV Hel wiilka hooyo la lumay. orod Ha burburin.|tr Wuu socdaa. Haa, waan arkay hadda ka hor.",
+      "wer": 0.6818,
+      "cer": 0.2455,
+      "ref_words": 22,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip41",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Waraabe. Ma cabbeyna. Muran. Wazaaradda Waxbarashada. Berbera buu tegaya. Ilmuhu hooyo maro miyay la mayrayeen.",
+      "ref_text": "waraabe Ma cabbayno. muran wasaaradda waxbarashada Berbera buu tagayaa. Ilmuhu hooyo maro miyay la mayrayaan?",
+      "wer": 0.2667,
+      "cer": 0.066,
+      "ref_words": 15,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip42",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Mood(bikilii racaanu ku jiro), Lean (nasiib, dawlada, waa timid), Maraya (feertaada).",
+      "ref_text": "mood bakeeriga caano ku jiro liin nasiib doolliyada Waa timid. marayaa feertaada",
+      "wer": 0.4167,
+      "cer": 0.2025,
+      "ref_words": 12,
+      "hyp_words": 12,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip43",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Dugsiga afafka ee Jaamacadda Mogdishu. Ama gabdhaha dabool way yaqaanaan daanna day xagameedyadii. Ma macalin baatahay laantayda.",
+      "ref_text": "dugsiga afafka ee jaamacadda Muqdisho Ama gabdhaha dabaal way yaqaannaan. daanno dayaxgacmeedyadii Ma macallin baa tahay? laantayda",
+      "wer": 0.5294,
+      "cer": 0.093,
+      "ref_words": 17,
+      "hyp_words": 17,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip44",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Waa diin. Xadana ubaxa ugu weyn dayax-gacmeedkooda ma ogi in la dhabooro... Guudad. Kubadda cagta.",
+      "ref_text": "Waa diin|m. Hodon ubaxa ugu weyn dayaxgacmeedkooda Ma ogi. lafdhabarro guudad kubbadda cagta",
+      "wer": 0.5714,
+      "cer": 0.1556,
+      "ref_words": 14,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip45",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Oo hestee? Aboowee. Boodiida. Muddiktii hore. Farag gaari. Subban hadalkeeda. Ilmuhu yaanyuur ma heleen.",
+      "ref_text": "heestee abboowe boodidda Mudugtii hore fure gaari Suubban hadalkeeda Ilmuhu yaanyuur ma heleen?",
+      "wer": 0.5385,
+      "cer": 0.1489,
+      "ref_words": 13,
+      "hyp_words": 14,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip46",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Cid maad la kulan tay sharay. Faadumo way sugaysaa. Waxaan harkaysan yahay. Soo iibso. Fasalkayey dhigata. Baar. Buug ayay isistee Mariam.",
+      "ref_text": "Cidmaad la kulantay shalay? Faadumo way sugaysaa. Waxaan arkay Warsame. Soo iibso! Fasalkee dhigataa? beer|m Buug ayay i siisay Maryan.",
+      "wer": 0.6667,
+      "cer": 0.2093,
+      "ref_words": 21,
+      "hyp_words": 21,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip47",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Laabum maalmood oo daadheer. Boqorado. Dad. Qoraal. Magaac u yaan. Waan eega. Maraaa. Xarista roo.",
+      "ref_text": "labo maalmood oo dhaadheer boqorado Qod! qoraal magac-u-yaal Waan eegaa. maraa naxariisdarro Orda.",
+      "wer": 0.6,
+      "cer": 0.2,
+      "ref_words": 15,
+      "hyp_words": 15,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip48",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Firrka. Waddo. Sahro weyerta hey. Halaal ka suban. Taas? Xusanahay imaan? Hadda ka hor iman yahay takreeq ma kacale dan.",
+      "ref_text": "feerka Orda. waddo Sahro way yar tahay. hadalka Suubban taas Xasan ma imaan. Hadda ka hor miyaad tagtay magaaladan?",
+      "wer": 0.7895,
+      "cer": 0.3514,
+      "ref_words": 19,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip49",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Habahay shaqadii waa ka yimid. Iyadoo la kulantay shalay. Garsoore. Muuqdisho ayuu u safray. Kuriga wayn. Baskuwaa wayn yaay. La'aan.",
+      "ref_text": "Aabbahay shaqadii waa ka yimid. Yaad la kulantay shalay? garsoore Muqdisho ayuu u safray. guriga weyn Basku waa weyn yahay. laan",
+      "wer": 0.4762,
+      "cer": 0.1129,
+      "ref_words": 21,
+      "hyp_words": 20,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    },
+    {
+      "clip": "clip50",
+      "system": "elevenlabs:scribe_v1",
+      "hyp_text": "Maalaa guriga dadka soo dhisay ma aragtay. Waxaay yimid arday badan waxa aan jeclaa emma gurigaygan.",
+      "ref_text": "maalaa Guriga dadka soo dhisay ma aragtay? Waxaa yimid arday badan. Waxaa aan jeclaa Emma. gurigaygan",
+      "wer": 0.125,
+      "cer": 0.0204,
+      "ref_words": 16,
+      "hyp_words": 16,
+      "hyp_script": {
+        "latin": 1.0,
+        "arabic": 0.0,
+        "other": 0.0
+      },
+      "script_mismatch": false
+    }
+  ]
+}
