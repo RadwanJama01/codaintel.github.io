@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Afar Has No Speech Recognition Anywhere in the World</title>
+<meta name="description" content="Afar is spoken by millions across Djibouti, Ethiopia, and Eritrea. There is no speech recognition dataset, no model, and no commercial coverage for it anywhere." />
+<link rel="canonical" href="https://codaintel.github.io/blog/afar-language-speech-recognition/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Phoenix Rising Group" />
+<meta property="og:title" content="Afar Has No Speech Recognition Anywhere in the World" />
+<meta property="og:description" content="Afar is spoken by millions across Djibouti, Ethiopia, and Eritrea. There is no speech recognition dataset, no model, and no commercial coverage for it anywhere." />
+<meta property="og:url" content="https://codaintel.github.io/blog/afar-language-speech-recognition/" />
+<meta property="og:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Afar Has No Speech Recognition Anywhere in the World" />
+<meta name="twitter:description" content="Afar is spoken by millions across Djibouti, Ethiopia, and Eritrea. There is no speech recognition dataset, no model, and no commercial coverage for it anywhere." />
+<meta name="twitter:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Afar Has No Speech Recognition Anywhere in the World",
+  "description": "Afar is spoken by millions across Djibouti, Ethiopia, and Eritrea. There is no speech recognition dataset, no model, and no commercial coverage for it anywhere.",
+  "url": "https://codaintel.github.io/blog/afar-language-speech-recognition/",
+  "author": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "publisher": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "datePublished": "2026-08-11",
+  "inLanguage": "en",
+  "keywords": ["Afar language AI", "Afar ASR", "Afar speech recognition", "Horn of Africa languages"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">PR</span>
+      Phoenix Rising Group
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../capabilities.html">Capabilities</a></li>
+      <li><a href="../index.html" class="active">Blog</a></li>
+      <li><a href="../../results.html">SASR Eval</a></li>
+      <li><a href="../../contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="section-label">Afar language AI</div>
+    <h1>Afar Has No Speech Recognition Anywhere in the World</h1>
+    <p>Afar is spoken by millions across Djibouti, Ethiopia, and Eritrea. There is no speech recognition dataset, no model, and no commercial coverage for it anywhere.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="article-body">
+      <p class="article-meta">Phoenix Rising Group &middot; August 2026</p>
+
+      <p>Somali has a data problem. Afar has an absence.</p>
+
+      <p>Afar is spoken by somewhere between two and four million people across Djibouti, Ethiopia, and Eritrea. It is one of the two national languages of Djibouti alongside Somali. It has a written form in Latin script, a national broadcaster that has produced Afar-language programming for decades, and a living literary and oral tradition.</p>
+
+      <p>It has no speech recognition system.</p>
+
+      <p>Not a poor one. Not an experimental one. As far as we can determine, there has never been a published automatic speech recognition model for Afar, nor a public dataset suitable for training one, nor a benchmark against which such a model could be measured.</p>
+
+      <h2>What &ldquo;no coverage&rdquo; actually means</h2>
+
+      <p>When we say a language has no ASR coverage, it is worth being specific about what has been checked.</p>
+
+      <p>Whisper&rsquo;s language list does not include Afar. Neither do the commercial APIs from the major cloud providers. Meta&rsquo;s Massively Multilingual Speech project, which extended coverage to over a thousand languages, does not include usable Afar ASR. Searching the major open model repositories for Afar speech models returns nothing.</p>
+
+      <p>There is no Afar entry in Common Voice. There is no Afar speech corpus in the standard linguistic data archives at a scale useful for training. Academic work on Afar exists in descriptive linguistics &mdash; grammars, phonological studies, lexicons &mdash; but not in speech technology.</p>
+
+      <p>The practical consequence is that if you have an hour of recorded Afar and you want it transcribed, your only option is a human who speaks Afar.</p>
+
+      <h2>Why no one has built it</h2>
+
+      <p>The economics are straightforward and unforgiving.</p>
+
+      <p>Building an ASR system for a language requires transcribed audio &mdash; typically tens to hundreds of hours, produced by people who speak the language and can write it accurately. That is expensive, slow, and requires access to both the audio and the speakers.</p>
+
+      <p>For a commercial provider, the return on that investment is calculated against the addressable market. Two to four million speakers, concentrated in three countries with limited enterprise software spending, does not justify the cost of assembling a corpus from scratch. So it never gets built, and the absence persists indefinitely.</p>
+
+      <p>This is not a judgement about the companies involved. It is a structural feature of how language technology gets funded. Languages get coverage roughly in proportion to the commercial value of their speaker base, which means a large number of languages with millions of speakers each will simply never be reached by the market.</p>
+
+      <h2>The archive problem</h2>
+
+      <p>There is a further difficulty specific to languages like Afar, and it is the one we find most interesting.</p>
+
+      <p>The audio exists. It has existed for decades. National and regional broadcasters across the Horn of Africa have been producing Afar-language news, cultural programming, interviews, and music since the mid-twentieth century. Some of that material is preserved on tape, some has been digitised, and much of it sits in archives that were built for broadcast purposes rather than research.</p>
+
+      <p>What does not exist is the transcription. Broadcast archives are catalogued by programme, date, and topic &mdash; not by word. The audio is there; the paired text that would make it usable as training data is not.</p>
+
+      <p>So the raw material for an Afar speech recognition system exists in principle, and has for fifty years, but the work of turning it into a usable corpus has never been done.</p>
+
+      <p>That work is not technically difficult. It is a matter of access, native-speaker transcription capacity, and someone deciding it is worth doing.</p>
+
+      <h2>Why it matters beyond the technology</h2>
+
+      <p>An absence in speech technology becomes an absence everywhere downstream.</p>
+
+      <p>If there is no Afar ASR, there are no Afar captions, no Afar voice interfaces, no searchable Afar archives, and no Afar in any product built on top of speech recognition. Every subsequent layer of language technology &mdash; translation, summarisation, search, voice assistance &mdash; inherits the gap.</p>
+
+      <p>For a population that speaks Afar as a first language and encounters administrative and digital life in French, Amharic, or Arabic, this compounds an existing exclusion rather than relieving it.</p>
+
+      <p>There is also a preservation argument. Broadcast archives degrade. Tape deteriorates, formats become unreadable, and institutional memory of what a recording contains disappears with the people who made it. Audio that is never transcribed is audio that becomes progressively harder to find, and eventually is not found at all.</p>
+
+      <h2>What we are doing</h2>
+
+      <p>Our first published work is an evaluation of Somali speech recognition. Afar is the harder and, we think, more important case, precisely because there is nothing to compare against.</p>
+
+      <p>The first Afar ASR result will be, by definition, the best in the world &mdash; because it will be the only one. That is not a boast. It is a description of how empty the field is.</p>
+
+      <p>We would rather it were not empty. If you work with Afar language material &mdash; broadcast, academic, cultural, or otherwise &mdash; we would like to hear from you.</p>
+
+      <div class="article-cta">
+        <p>See our published Somali ASR benchmark, and get in touch if you work with Afar or Horn of Africa language material.</p>
+        <div class="cta-links">
+          <a href="../../results.html" class="btn btn-primary">View SASR Eval</a>
+          <a href="../../contact.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="../../index.html">
+        <span class="brand-mark">PR</span>
+        Phoenix Rising Group
+      </a>
+      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../capabilities.html">Capabilities</a></li>
+        <li><a href="../index.html">Blog</a></li>
+        <li><a href="../../results.html">SASR Eval</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="../../docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="../../docs/data/sasr_eval.json" download>SASR Eval (JSON)</a></li>
+        <li><a href="../../docs/data/sasr_eval.csv" download>SASR Eval (CSV)</a></li>
+        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Phoenix Rising Group</span>
+      <span>Research stage</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

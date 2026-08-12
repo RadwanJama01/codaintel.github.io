@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Horn of Africa and the Language Technology Gap</title>
+<meta name="description" content="Tens of millions of people in the Horn of Africa speak languages with little or no coverage in modern language technology. This is what that gap looks like in practice." />
+<link rel="canonical" href="https://codaintel.github.io/blog/horn-of-africa-language-technology-gap/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Phoenix Rising Group" />
+<meta property="og:title" content="The Horn of Africa and the Language Technology Gap" />
+<meta property="og:description" content="Tens of millions of people in the Horn of Africa speak languages with little or no coverage in modern language technology. This is what that gap looks like in practice." />
+<meta property="og:url" content="https://codaintel.github.io/blog/horn-of-africa-language-technology-gap/" />
+<meta property="og:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Horn of Africa and the Language Technology Gap" />
+<meta name="twitter:description" content="Tens of millions of people in the Horn of Africa speak languages with little or no coverage in modern language technology. This is what that gap looks like in practice." />
+<meta name="twitter:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Horn of Africa and the Language Technology Gap",
+  "description": "Tens of millions of people in the Horn of Africa speak languages with little or no coverage in modern language technology. This is what that gap looks like in practice.",
+  "url": "https://codaintel.github.io/blog/horn-of-africa-language-technology-gap/",
+  "author": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "publisher": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "datePublished": "2026-08-11",
+  "inLanguage": "en",
+  "keywords": ["Horn of Africa language technology", "low-resource languages", "Somali ASR", "Afar ASR"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">PR</span>
+      Phoenix Rising Group
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../capabilities.html">Capabilities</a></li>
+      <li><a href="../index.html" class="active">Blog</a></li>
+      <li><a href="../../results.html">SASR Eval</a></li>
+      <li><a href="../../contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="section-label">Horn of Africa language technology</div>
+    <h1>The Horn of Africa and the Language Technology Gap</h1>
+    <p>Tens of millions of people in the Horn of Africa speak languages with little or no coverage in modern language technology. This is what that gap looks like in practice.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="article-body">
+      <p class="article-meta">Phoenix Rising Group &middot; August 2026</p>
+
+      <p>There is a map you can draw of the world&rsquo;s languages sorted by how well they are served by modern language technology. English sits at one end with tens of thousands of hours of training data behind it. At the other end are several thousand languages with effectively nothing.</p>
+
+      <p>The Horn of Africa sits close to the empty end, and it is worth being specific about what that means.</p>
+
+      <h2>The languages</h2>
+
+      <p><strong>Somali</strong> &mdash; roughly 25 million speakers across Somalia, Somaliland, Djibouti, Ethiopia, and Kenya, plus a substantial global diaspora. Minimal training data, poor performance from every system we have tested.</p>
+
+      <p><strong>Amharic</strong> &mdash; over 30 million first-language speakers and a working language of the Ethiopian federal government. Better served than most languages in the region, with some academic datasets and partial commercial coverage, but still far below what its speaker numbers would suggest.</p>
+
+      <p><strong>Oromo</strong> &mdash; comparable to Amharic in speaker numbers, considerably worse in coverage. Very limited data, minimal commercial support.</p>
+
+      <p><strong>Tigrinya</strong> &mdash; roughly seven million speakers across Eritrea and northern Ethiopia. Almost no speech technology coverage.</p>
+
+      <p><strong>Afar</strong> &mdash; between two and four million speakers across Djibouti, Ethiopia, and Eritrea. No published ASR model, no public training corpus, no benchmark. Nothing.</p>
+
+      <p>That is on the order of a hundred million people whose first language ranges from underserved to entirely absent in speech technology.</p>
+
+      <h2>What the gap looks like in practice</h2>
+
+      <p>The abstraction &ldquo;low-resource language&rdquo; obscures what the consequence actually is, so it is worth making concrete.</p>
+
+      <p>It means a person who speaks Somali fluently but reads French with difficulty cannot use a voice interface to access a government service, because the voice interface does not understand them.</p>
+
+      <p>It means decades of radio and television archives across the region are effectively unsearchable. The audio exists. Finding the moment where a particular person spoke about a particular event requires someone to listen to all of it.</p>
+
+      <p>It means a doctor and a patient who do not share a language depend on whoever happens to be available to interpret, with no automated support and no record.</p>
+
+      <p>It means every product built on top of speech recognition &mdash; captions, transcription, search, voice assistance, accessibility tooling &mdash; simply does not exist for these languages, and will not until the layer beneath it does.</p>
+
+      <h2>Why the market does not fix it</h2>
+
+      <p>Language technology coverage tracks commercial addressable market fairly closely, and the arithmetic for these languages does not work out.</p>
+
+      <p>Building speech recognition for a language requires assembling transcribed audio at scale, which requires access to the audio, native speakers who can transcribe accurately, and money and time to coordinate both. For a large provider evaluating that investment against a speaker population with limited enterprise software spending, it does not clear the threshold. So it does not get built, and the absence is stable rather than temporary.</p>
+
+      <p>Waiting for the market to reach these languages means waiting indefinitely.</p>
+
+      <h2>Why the archives matter</h2>
+
+      <p>The most useful thing about the Horn of Africa specifically is that the raw material largely exists already.</p>
+
+      <p>National and regional broadcasters across Djibouti, Somaliland, Somalia, Ethiopia, and Eritrea have produced radio and television programming in local languages for decades &mdash; in some cases since before independence. News, interviews, cultural programming, music, public affairs, oral history. Thousands of hours accumulated year on year.</p>
+
+      <p>What that material lacks is transcription. It is catalogued by programme and date, not by word, which makes it inaccessible to search and useless as training data in its current form.</p>
+
+      <p>The work required is not conceptually hard. It is access to the archives, native-speaker transcription capacity, careful handling of audio that in some cases is decades old, and the sustained effort to do it properly. That combination has simply not been assembled before.</p>
+
+      <h2>Preservation and capability are the same problem</h2>
+
+      <p>We think the framing matters here.</p>
+
+      <p>There is a version of this work that treats broadcast archives purely as a training resource &mdash; raw material to be processed into model weights. There is another version that treats the archive as what it also is: a record of a region&rsquo;s public life, its music, its arguments, its history as it was described at the time.</p>
+
+      <p>These are not in tension. The transcription that makes an archive usable as training data is the same transcription that makes it searchable, citable, and legible to students, researchers, and families. A well-transcribed archive serves both purposes at once.</p>
+
+      <p>The order in which they are pursued does matter, though. Building the capability without regard for the material produces a model and an archive left exactly as inaccessible as before. Building it as preservation produces both.</p>
+
+      <h2>Where we start</h2>
+
+      <p>We started with Somali because it has the largest speaker population in the region and because a small amount of public data existed to establish a baseline against. That work is published as SASR Eval.</p>
+
+      <p>Afar comes next, and it is the harder case &mdash; there is nothing to compare against, no dataset, no prior model, no benchmark.</p>
+
+      <p>After that, the same approach extends to the other languages of the region. Each one requires its own archive relationships, its own native-speaker transcription capacity, and its own careful evaluation. There is no shortcut that covers all of them at once.</p>
+
+      <p>We are a research project based around Djibouti, working outward. If you work with language material from the region &mdash; broadcast, academic, cultural, or otherwise &mdash; we would like to hear from you.</p>
+
+      <div class="article-cta">
+        <p>See our published Somali ASR benchmark, or get in touch about Horn of Africa language material.</p>
+        <div class="cta-links">
+          <a href="../../results.html" class="btn btn-primary">View SASR Eval</a>
+          <a href="../../contact.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="../../index.html">
+        <span class="brand-mark">PR</span>
+        Phoenix Rising Group
+      </a>
+      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../capabilities.html">Capabilities</a></li>
+        <li><a href="../index.html">Blog</a></li>
+        <li><a href="../../results.html">SASR Eval</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="../../docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="../../docs/data/sasr_eval.json" download>SASR Eval (JSON)</a></li>
+        <li><a href="../../docs/data/sasr_eval.csv" download>SASR Eval (CSV)</a></li>
+        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Phoenix Rising Group</span>
+      <span>Research stage</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

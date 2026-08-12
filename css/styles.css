@@ -907,6 +907,127 @@ form.contact button[type="submit"]:disabled {
   color: var(--navy);
 }
 
+/* Article / blog */
+.article-body {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.article-meta {
+  font-size: 13px;
+  color: var(--slate-light);
+  margin-bottom: 8px;
+}
+
+.article-body h2 {
+  font-size: 24px;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 44px 0 16px;
+}
+.article-body h2:first-child { margin-top: 0; }
+
+.article-body h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 32px 0 12px;
+}
+
+.article-body p {
+  font-size: 16px;
+  color: var(--slate);
+  line-height: 1.75;
+  margin: 0 0 20px;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 20px;
+  padding-left: 22px;
+  color: var(--slate);
+}
+
+.article-body li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.article-body .table-wrap {
+  margin: 24px 0 28px;
+}
+
+.article-cta {
+  margin-top: 48px;
+  padding: 24px 28px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.article-cta p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--navy);
+  font-weight: 500;
+}
+
+.article-cta .cta-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.post-list {
+  display: grid;
+  gap: 20px;
+}
+
+.post-card {
+  display: block;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 28px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  border-color: var(--gray-200);
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+}
+
+.post-card .post-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.post-card h3 {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+
+.post-card p {
+  font-size: 14px;
+  color: var(--slate);
+  margin: 0;
+  line-height: 1.6;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .hero .wrap { grid-template-columns: 1fr; gap: 40px; }

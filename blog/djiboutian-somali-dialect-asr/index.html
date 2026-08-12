@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Djiboutian Somali and Standard Somali: Why Dialect Breaks Speech Recognition</title>
+<meta name="description" content="A speech recognition model trained on standard Somali does not reliably transcribe Djiboutian Somali. Here is why dialect, not language, is the real unit of the problem." />
+<link rel="canonical" href="https://codaintel.github.io/blog/djiboutian-somali-dialect-asr/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Phoenix Rising Group" />
+<meta property="og:title" content="Djiboutian Somali and Standard Somali: Why Dialect Breaks Speech Recognition" />
+<meta property="og:description" content="A speech recognition model trained on standard Somali does not reliably transcribe Djiboutian Somali. Here is why dialect, not language, is the real unit of the problem." />
+<meta property="og:url" content="https://codaintel.github.io/blog/djiboutian-somali-dialect-asr/" />
+<meta property="og:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Djiboutian Somali and Standard Somali: Why Dialect Breaks Speech Recognition" />
+<meta name="twitter:description" content="A speech recognition model trained on standard Somali does not reliably transcribe Djiboutian Somali. Here is why dialect, not language, is the real unit of the problem." />
+<meta name="twitter:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Djiboutian Somali and Standard Somali: Why Dialect Breaks Speech Recognition",
+  "description": "A speech recognition model trained on standard Somali does not reliably transcribe Djiboutian Somali. Here is why dialect, not language, is the real unit of the problem.",
+  "url": "https://codaintel.github.io/blog/djiboutian-somali-dialect-asr/",
+  "author": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "publisher": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "datePublished": "2026-08-11",
+  "inLanguage": "en",
+  "keywords": ["Djiboutian Somali ASR", "Somali dialect speech recognition", "Somali ASR"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">PR</span>
+      Phoenix Rising Group
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../capabilities.html">Capabilities</a></li>
+      <li><a href="../index.html" class="active">Blog</a></li>
+      <li><a href="../../results.html">SASR Eval</a></li>
+      <li><a href="../../contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="section-label">Somali dialect and ASR</div>
+    <h1>Djiboutian Somali and Standard Somali: Why Dialect Breaks Speech Recognition</h1>
+    <p>A speech recognition model trained on standard Somali does not reliably transcribe Djiboutian Somali. Here is why dialect, not language, is the real unit of the problem.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="article-body">
+      <p class="article-meta">Phoenix Rising Group &middot; August 2026</p>
+
+      <p>There is a common assumption in language technology that a language is the right unit of coverage. A model either supports Somali or it does not.</p>
+
+      <p>For speech recognition this assumption is wrong, and it is wrong in ways that show up immediately when you test a system on real audio from a specific place.</p>
+
+      <h2>The dialect landscape</h2>
+
+      <p>Somali is conventionally divided into three broad dialect groups: Northern Somali, on which the standard written form is based; Benaadir, spoken along the central coast including Mogadishu; and Maay, spoken in the southern interior and different enough that mutual intelligibility with the standard is limited.</p>
+
+      <p>Within Northern Somali there is further variation, and the Somali spoken in Djibouti sits within that range while carrying its own characteristics. Djiboutian Somali has absorbed vocabulary from French and Arabic through a distinct colonial and administrative history. It sits alongside Afar in a bilingual environment that shapes pronunciation. Its broadcast register &mdash; the Somali of radio and television news &mdash; has its own conventions developed over decades of national broadcasting.</p>
+
+      <p>None of this makes Djiboutian Somali a separate language. Speakers understand each other across the region without difficulty. But automatic speech recognition is considerably less flexible than a human listener.</p>
+
+      <h2>What a model actually learns</h2>
+
+      <p>A speech recognition model learns a mapping from acoustic patterns to text. That mapping is built entirely from the examples it has seen.</p>
+
+      <p>When a model is trained predominantly on standard Somali read speech &mdash; which describes most of the publicly available Somali data &mdash; it learns the acoustic realisations present in that data. Presented with a pronunciation it has not encountered, or a loanword outside its vocabulary, or a rhythm characteristic of a different region, it does not gracefully approximate. It produces the nearest thing it knows, which can be quite far away.</p>
+
+      <p>This is why aggregate word error rates on a language can be misleading. A system reported as achieving reasonable performance on Somali may have been evaluated on data from one dialect region and one speech register, and may perform substantially worse on another.</p>
+
+      <h2>Domain compounds dialect</h2>
+
+      <p>Dialect is one axis. Domain is a second, and the two multiply.</p>
+
+      <p>Most available Somali speech data is read speech &mdash; someone reading prepared text in a quiet environment. Broadcast audio is different in almost every respect. Speakers talk at natural pace with natural disfluency. There are multiple speakers, sometimes overlapping. There is background music, room tone, telephone-quality remote audio, and the acoustic signature of whatever equipment recorded it, which for archival material may be several decades old.</p>
+
+      <p>A model trained on clean read standard Somali and evaluated on Djiboutian broadcast audio is being asked to generalise across dialect and domain simultaneously. Performance degrades on both axes.</p>
+
+      <h2>What this implies for solving it</h2>
+
+      <p>The implication is fairly direct: the training data has to match the dialect and the domain where the system will be used.</p>
+
+      <p>This is not a novel finding in speech recognition &mdash; domain match has been understood as critical for decades. It is worth restating in this context because it changes what the actual bottleneck is.</p>
+
+      <p>The bottleneck is not model architecture. Fine-tuning a small existing model on well-matched data outperforms a much larger model on mismatched data, which we observed directly: a 244-million-parameter model fine-tuned for an hour beat a system many times its size that had never seen comparable data.</p>
+
+      <p>The bottleneck is the data. Specifically, it is transcribed audio from the dialect and domain in question, produced by native speakers who can hear the distinctions that matter.</p>
+
+      <h2>Why broadcast archives are the right source</h2>
+
+      <p>For a dialect-and-domain matched corpus, broadcast archives are close to ideal, for reasons that are worth spelling out.</p>
+
+      <p>They are large. National broadcasters produce material daily over decades, which accumulates into a volume no purpose-built collection effort could match on a reasonable budget.</p>
+
+      <p>They are naturally domain-matched to a wide range of uses. Broadcast speech includes prepared news reading, spontaneous interview, discussion, and public address &mdash; a spread of registers rather than a single narrow one.</p>
+
+      <p>They are dialectally coherent. A national broadcaster in Djibouti produces Djiboutian Somali, consistently, because that is who its presenters are and who its audience is.</p>
+
+      <p>And they are culturally significant independently of their technical utility. The same archive that would train a speech recognition system is also a record of a country&rsquo;s public life, which is a reason to work with it carefully rather than merely extractively.</p>
+
+      <h2>The unit of the problem</h2>
+
+      <p>The practical conclusion is that &ldquo;does this system support Somali&rdquo; is the wrong question. The right question is whether it has been trained and evaluated on the specific variety the user actually speaks, in conditions resembling how they will actually use it.</p>
+
+      <p>For most of the world&rsquo;s languages, and for most dialects within those languages, the honest answer is no. That is the gap we are working in.</p>
+
+      <p>Our evaluation methodology and results are published as SASR Eval.</p>
+
+      <div class="article-cta">
+        <p>See our full methodology and per-clip results, or get in touch about dialect-matched Somali data.</p>
+        <div class="cta-links">
+          <a href="../../results.html" class="btn btn-primary">View SASR Eval</a>
+          <a href="../../contact.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="../../index.html">
+        <span class="brand-mark">PR</span>
+        Phoenix Rising Group
+      </a>
+      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../capabilities.html">Capabilities</a></li>
+        <li><a href="../index.html">Blog</a></li>
+        <li><a href="../../results.html">SASR Eval</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="../../docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="../../docs/data/sasr_eval.json" download>SASR Eval (JSON)</a></li>
+        <li><a href="../../docs/data/sasr_eval.csv" download>SASR Eval (CSV)</a></li>
+        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Phoenix Rising Group</span>
+      <span>Research stage</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Why Commercial Speech Recognition Fails on Somali</title>
+<meta name="description" content="We tested the leading commercial speech recognition systems on Somali audio. The best one gets nearly six out of ten words wrong. Here is why." />
+<link rel="canonical" href="https://codaintel.github.io/blog/why-commercial-asr-fails-on-somali/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Phoenix Rising Group" />
+<meta property="og:title" content="Why Commercial Speech Recognition Fails on Somali" />
+<meta property="og:description" content="We tested the leading commercial speech recognition systems on Somali audio. The best one gets nearly six out of ten words wrong. Here is why." />
+<meta property="og:url" content="https://codaintel.github.io/blog/why-commercial-asr-fails-on-somali/" />
+<meta property="og:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Why Commercial Speech Recognition Fails on Somali" />
+<meta name="twitter:description" content="We tested the leading commercial speech recognition systems on Somali audio. The best one gets nearly six out of ten words wrong. Here is why." />
+<meta name="twitter:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Commercial Speech Recognition Fails on Somali",
+  "description": "We tested the leading commercial speech recognition systems on Somali audio. The best one gets nearly six out of ten words wrong. Here is why.",
+  "url": "https://codaintel.github.io/blog/why-commercial-asr-fails-on-somali/",
+  "author": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "publisher": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "datePublished": "2026-08-11",
+  "inLanguage": "en",
+  "keywords": ["Somali speech recognition", "Somali ASR", "word error rate"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">PR</span>
+      Phoenix Rising Group
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../capabilities.html">Capabilities</a></li>
+      <li><a href="../index.html" class="active">Blog</a></li>
+      <li><a href="../../results.html">SASR Eval</a></li>
+      <li><a href="../../contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="section-label">Somali speech recognition</div>
+    <h1>Why Commercial Speech Recognition Fails on Somali</h1>
+    <p>We tested the leading commercial speech recognition systems on Somali audio. The best one gets nearly six out of ten words wrong. Here is why.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="article-body">
+      <p class="article-meta">Phoenix Rising Group &middot; August 2026</p>
+
+      <p>Speech recognition is a solved problem in English. Modern systems transcribe clean English audio with word error rates below 5% &mdash; accurate enough that most people no longer think about it. Dictation works. Captions work. Voice assistants understand you.</p>
+
+      <p>Somali is spoken by roughly 25 million people across Somalia, Somaliland, Djibouti, Ethiopia, and Kenya, plus a large global diaspora. For those speakers, none of this works.</p>
+
+      <p>We wanted to know exactly how badly it fails, so we measured it.</p>
+
+      <h2>What we tested</h2>
+
+      <p>We built a small evaluation set of 50 Somali audio clips, roughly ten seconds each, drawn from a publicly available Somali speech dataset with human-written reference transcripts. We ran three systems against it and computed word error rate &mdash; the standard measure of how often a system gets a word wrong through substitution, deletion, or insertion.</p>
+
+      <p>The results:</p>
+
+      <ul>
+        <li>faster-whisper large-v3 &mdash; 87.1% word error rate</li>
+        <li>ElevenLabs Scribe v1 &mdash; 59.2% word error rate</li>
+        <li>AssemblyAI Universal-2 &mdash; returned Arabic text on 100% of clips tested in an earlier round</li>
+      </ul>
+
+      <p>A word error rate of 59% means that for every ten words spoken, roughly six come back wrong. At 87%, the output bears almost no relationship to what was said.</p>
+
+      <p>The AssemblyAI result is a different kind of failure and worth dwelling on. It did not produce bad Somali. It produced Arabic &mdash; confidently, on every single clip. The system does not recognise that Somali exists as a distinct language and routes the audio to the nearest thing in its training distribution.</p>
+
+      <h2>Why this happens</h2>
+
+      <p>The reason is not that Somali is unusually hard to transcribe. Somali has a straightforward Latin orthography, a relatively small phoneme inventory, and no tonal complexity of the kind that makes some languages genuinely difficult for automatic systems.</p>
+
+      <p>The reason is data.</p>
+
+      <p>Modern speech recognition systems learn from large quantities of paired audio and text. Whisper was trained on roughly 680,000 hours of audio. The overwhelming majority of that is English, with substantial coverage of the other major world languages &mdash; Spanish, Mandarin, French, German, Arabic, Hindi.</p>
+
+      <p>Languages outside that set are described in the literature as &ldquo;low-resource,&rdquo; which is a polite way of saying almost no training data exists. For Somali, the largest publicly available speech dataset we are aware of contains a few dozen hours. Compare that to the tens of thousands of hours behind English.</p>
+
+      <p>A model cannot learn what it has never heard. When Whisper encounters Somali it does its best with representations built almost entirely from other languages, and the result is what we measured.</p>
+
+      <h2>The dialect problem underneath the data problem</h2>
+
+      <p>There is a second layer that the aggregate numbers hide.</p>
+
+      <p>The small amount of Somali training data that does exist skews heavily toward standard written Somali &mdash; the register used in formal writing and education, closest to the Northern Somali on which the standard orthography was based. It does not represent the range of dialectal variation across the Somali-speaking world.</p>
+
+      <p>Djiboutian Somali differs from the standard in vocabulary, pronunciation, and rhythm. So does the Somali spoken in Somaliland, and in the Ogaden, and in the Kenyan northeast. A system trained on standard Somali and evaluated on Djiboutian broadcast speech faces a harder problem than the headline numbers suggest.</p>
+
+      <p>This matters because it means the gap cannot be closed simply by collecting more Somali data in general. The data has to match the dialect and the domain where the system will actually be used.</p>
+
+      <h2>What we found when we fine-tuned</h2>
+
+      <p>We took Whisper small &mdash; 244 million parameters, a fraction of the size of large-v3 &mdash; and fine-tuned it on Somali data for about an hour on a single free-tier T4 GPU.</p>
+
+      <p>It reached 36.8% word error rate on the validation split.</p>
+
+      <p>That is a 57.8% relative improvement over base Whisper large-v3 and 37.8% better than the strongest commercial system, achieved with a much smaller model and roughly a dollar of compute.</p>
+
+      <p>An important caveat, which we state clearly in our evaluation report: this result is in-domain. The fine-tuned model was trained and evaluated on the same dataset distribution, while the commercial systems were evaluated out-of-domain on data they had never seen. The numbers are not directly comparable and we do not claim they are.</p>
+
+      <p>What the result does show is narrower and more useful: the performance gap between general-purpose commercial systems and a domain-matched specialist model is very large, and it closes quickly with the right training data. Model size is not the binding constraint. Data match is.</p>
+
+      <h2>Why this is worth solving</h2>
+
+      <p>Every argument for speech recognition in English applies to Somali. Searchable archives. Accessible media. Documentation that does not require someone to type. Access to digital services for people who speak but do not write fluently in the administrative language of their country.</p>
+
+      <p>Somali speakers get none of it, not because the problem is hard but because the data required to solve it has never been assembled.</p>
+
+      <p>That is the problem we are working on.</p>
+
+      <div class="article-cta">
+        <p>Our full evaluation, including per-clip results, methodology, and limitations, is published as SASR Eval.</p>
+        <div class="cta-links">
+          <a href="../../results.html" class="btn btn-primary">View SASR Eval</a>
+          <a href="../../contact.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="../../index.html">
+        <span class="brand-mark">PR</span>
+        Phoenix Rising Group
+      </a>
+      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../capabilities.html">Capabilities</a></li>
+        <li><a href="../index.html">Blog</a></li>
+        <li><a href="../../results.html">SASR Eval</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="../../docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="../../docs/data/sasr_eval.json" download>SASR Eval (JSON)</a></li>
+        <li><a href="../../docs/data/sasr_eval.csv" download>SASR Eval (CSV)</a></li>
+        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Phoenix Rising Group</span>
+      <span>Research stage</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

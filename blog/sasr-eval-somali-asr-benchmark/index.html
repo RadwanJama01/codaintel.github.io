@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Building SASR Eval: A Benchmark for Somali Speech Recognition</title>
+<meta name="description" content="How we built the first ground-truth word error rate benchmark for Somali speech recognition, what we found, and what the results do and do not show." />
+<link rel="canonical" href="https://codaintel.github.io/blog/sasr-eval-somali-asr-benchmark/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Phoenix Rising Group" />
+<meta property="og:title" content="Building SASR Eval: A Benchmark for Somali Speech Recognition" />
+<meta property="og:description" content="How we built the first ground-truth word error rate benchmark for Somali speech recognition, what we found, and what the results do and do not show." />
+<meta property="og:url" content="https://codaintel.github.io/blog/sasr-eval-somali-asr-benchmark/" />
+<meta property="og:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Building SASR Eval: A Benchmark for Somali Speech Recognition" />
+<meta name="twitter:description" content="How we built the first ground-truth word error rate benchmark for Somali speech recognition, what we found, and what the results do and do not show." />
+<meta name="twitter:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building SASR Eval: A Benchmark for Somali Speech Recognition",
+  "description": "How we built the first ground-truth word error rate benchmark for Somali speech recognition, what we found, and what the results do and do not show.",
+  "url": "https://codaintel.github.io/blog/sasr-eval-somali-asr-benchmark/",
+  "author": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "publisher": { "@type": "Organization", "name": "Phoenix Rising Group", "url": "https://codaintel.github.io/" },
+  "datePublished": "2026-08-11",
+  "inLanguage": "en",
+  "keywords": ["Somali ASR benchmark", "SASR Eval", "word error rate", "Somali speech recognition"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">PR</span>
+      Phoenix Rising Group
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../capabilities.html">Capabilities</a></li>
+      <li><a href="../index.html" class="active">Blog</a></li>
+      <li><a href="../../results.html">SASR Eval</a></li>
+      <li><a href="../../contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="section-label">Somali ASR benchmark</div>
+    <h1>Building SASR Eval: A Benchmark for Somali Speech Recognition</h1>
+    <p>How we built the first ground-truth word error rate benchmark for Somali speech recognition, what we found, and what the results do and do not show.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="article-body">
+      <p class="article-meta">Phoenix Rising Group &middot; August 2026</p>
+
+      <p>You cannot improve what you do not measure. Before we could argue that Somali speech recognition was inadequate, we needed to establish how inadequate, with numbers that someone else could reproduce.</p>
+
+      <p>This is a description of how we built SASR Eval, what it found, and &mdash; equally important &mdash; what it does not establish.</p>
+
+      <h2>Why a benchmark was needed</h2>
+
+      <p>Before we started, our understanding of Somali ASR performance was anecdotal. People who had tried commercial transcription tools on Somali audio reported that the output was unusable. That is a useful signal but not a measurement, and it does not distinguish between systems, quantify the gap, or give anyone a target to improve against.</p>
+
+      <p>For most widely spoken languages, standard benchmarks exist and have existed for years. Researchers compare against them, improvements are measurable, and progress accumulates. For Somali there was no equivalent, which meant there was no way to make a specific claim about the state of the art or to demonstrate that a new approach was better.</p>
+
+      <h2>The first attempt and why it was insufficient</h2>
+
+      <p>Our first evaluation used real broadcast and lecture audio, which is the material we actually care about. It surfaced two clear failure modes: one commercial system returned Arabic script for Somali audio on every clip, and another produced repetition loops on longer religious lecture recordings.</p>
+
+      <p>Those are real findings. But the evaluation had a fundamental limitation: there were no ground-truth transcripts. Without a reference, you cannot compute word error rate. We could describe failures qualitatively and detect obvious script mismatches, but we could not produce a number.</p>
+
+      <p>A qualitative finding is arguable. A word error rate is not.</p>
+
+      <h2>The methodology</h2>
+
+      <p>For the second evaluation we used a publicly available Somali speech dataset with human-written transcripts, which gave us the ground truth the first attempt lacked.</p>
+
+      <p>We constructed 50 evaluation clips of roughly ten seconds each from the held-out test split, concatenating shorter samples with brief silence padding to reach a consistent length. Clips were exported as 16 kHz mono WAV. We ran three systems against them: a leading commercial API, an open-source large model running locally, and a model we fine-tuned ourselves.</p>
+
+      <p>Scoring used the standard jiwer library for word error rate and character error rate, with text normalisation applied to both hypothesis and reference before comparison &mdash; Unicode normalisation, apostrophe standardisation, lowercasing, and punctuation stripping.</p>
+
+      <p>We fixed one scoring bug in the process, which is worth mentioning because it is the kind of thing that silently distorts results: our earlier scorer treated Unicode curly apostrophes as punctuation and stripped them while preserving ASCII apostrophes. This had no effect on the dataset we used, which contains no apostrophes, but it would matter for Somali corpora that use apostrophes to mark pharyngeal consonants. We fixed it before publishing.</p>
+
+      <h2>The results</h2>
+
+      <p>Across the 50-clip set:</p>
+
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>System</th>
+              <th>Mean WER</th>
+              <th>Mean CER</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="system-name">Commercial API</td>
+              <td class="num">0.592</td>
+              <td class="num">0.185</td>
+            </tr>
+            <tr>
+              <td class="system-name">Open-source large model</td>
+              <td class="num">0.871</td>
+              <td class="num">0.266</td>
+            </tr>
+            <tr class="highlight">
+              <td class="system-name">Our fine-tuned model (validation)</td>
+              <td class="num best">0.368</td>
+              <td class="num">&mdash;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The commercial system outperformed the larger open-source model on 44 of 50 clips.</p>
+
+      <p>An observation worth noting: the commercial system had higher variance. Its best clip came in at 12.5% word error rate &mdash; genuinely usable &mdash; while its worst returned 100%. The open-source model was more consistently mediocre, with a higher floor and a higher ceiling. Character error rate tells a somewhat gentler story than word error rate throughout, which is expected when a system gets phonemes approximately right but word boundaries wrong.</p>
+
+      <h2>The caveat that matters most</h2>
+
+      <p>Our fine-tuned model&rsquo;s 36.8% figure is in-domain. It was trained on the training split of the same dataset used for evaluation, while the commercial systems were evaluated out-of-domain on data they had never seen.</p>
+
+      <p>Comparing those numbers directly overstates our model&rsquo;s advantage, and we say so explicitly in the report.</p>
+
+      <p>What the result supports is a narrower claim, which we think is the more interesting one: a small model &mdash; 244 million parameters, fine-tuned for roughly an hour on free-tier hardware &mdash; substantially outperforms a much larger general-purpose model on the same distribution. Scale is not the binding constraint here. Data match is.</p>
+
+      <p>Whether that advantage persists on out-of-domain broadcast audio, where neither system has a training advantage, is an open question. We expect it to, because domain-matched training data is exactly what the specialist has and the generalist does not. But expecting is not measuring, and the next evaluation is designed to settle it.</p>
+
+      <h2>Other limitations</h2>
+
+      <p>Beyond the in-domain confound, several limitations apply.</p>
+
+      <p>Concatenating short clips creates unnatural speaker and topic changes within a single clip, which production systems are not designed for. Results on continuous natural speech will differ.</p>
+
+      <p>Short references inflate word error rate &mdash; a single substitution on a one-word reference produces a WER of 1.0, and an insertion pushes it above 1.0. Character error rate is the more stable metric on this distribution.</p>
+
+      <p>We took the dataset&rsquo;s transcripts as given rather than re-verifying them with native speakers. Roughly a third of the clips contained annotation artefacts &mdash; stray markup and syntactic labels that leaked into the reference text &mdash; though we measured their aggregate effect on the scores as negligible.</p>
+
+      <p>And the dataset represents standard Somali read speech rather than the Djiboutian broadcast dialect that is our actual target.</p>
+
+      <h2>What comes next</h2>
+
+      <p>The next evaluation addresses the central limitation: it will use real broadcast audio with native-speaker ground-truth transcription, evaluated out-of-domain, with dialect annotation. It will also include the first evaluation of any speech recognition system on Afar, in any domain.</p>
+
+      <p>We publish the methodology, per-clip results, and limitations in full because a benchmark that cannot be checked is not a benchmark. The evaluation set and results data are available on our site.</p>
+
+      <div class="article-cta">
+        <p>Download the full SASR Eval paper, per-clip data, and methodology.</p>
+        <div class="cta-links">
+          <a href="../../results.html" class="btn btn-primary">View SASR Eval</a>
+          <a href="../../contact.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="../../index.html">
+        <span class="brand-mark">PR</span>
+        Phoenix Rising Group
+      </a>
+      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../capabilities.html">Capabilities</a></li>
+        <li><a href="../index.html">Blog</a></li>
+        <li><a href="../../results.html">SASR Eval</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="../../docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="../../docs/data/sasr_eval.json" download>SASR Eval (JSON)</a></li>
+        <li><a href="../../docs/data/sasr_eval.csv" download>SASR Eval (CSV)</a></li>
+        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Phoenix Rising Group</span>
+      <span>Research stage</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

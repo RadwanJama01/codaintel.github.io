@@ -3,8 +3,56 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SASR Eval Results: Coda Labs</title>
-<meta name="description" content="SASR Eval: First quantitative evaluation of Somali ASR. Mean WER 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper)." />
+<title>SASR Eval: Somali ASR Benchmark — Word Error Rate Results</title>
+<meta name="description" content="SASR Eval: the first Somali ASR benchmark with ground-truth word error rate results. Mean WER 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper)." />
+<link rel="canonical" href="https://codaintel.github.io/results.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Phoenix Rising Group" />
+<meta property="og:title" content="SASR Eval: Somali ASR Benchmark — Word Error Rate Results" />
+<meta property="og:description" content="The first Somali ASR benchmark with ground-truth WER results. Mean WER 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper)." />
+<meta property="og:url" content="https://codaintel.github.io/results.html" />
+<meta property="og:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SASR Eval: Somali ASR Benchmark — Word Error Rate Results" />
+<meta name="twitter:description" content="The first Somali ASR benchmark with ground-truth WER results. Mean WER 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper)." />
+<meta name="twitter:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "SASR Eval",
+  "description": "First ground-truth evaluation of commercial and fine-tuned ASR systems on Somali speech. Fifty stitched clips, approximately 550 seconds total, scored against verified references for word error rate (WER) and character error rate (CER).",
+  "url": "https://codaintel.github.io/results.html",
+  "creator": {
+    "@type": "Organization",
+    "name": "Phoenix Rising Group",
+    "url": "https://codaintel.github.io/"
+  },
+  "datePublished": "2026-06-22",
+  "inLanguage": "so",
+  "keywords": ["Somali ASR", "speech recognition benchmark", "word error rate", "Horn of Africa languages"],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/pdf",
+      "contentUrl": "https://codaintel.github.io/docs/SASR_Eval.pdf"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://codaintel.github.io/docs/data/sasr_eval.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://codaintel.github.io/docs/data/sasr_eval.csv"
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -15,8 +63,8 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <span class="brand-mark">CL</span>
-      Coda Labs
+      <span class="brand-mark">PR</span>
+      Phoenix Rising Group
     </a>
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -24,6 +72,7 @@
     <ul class="site-nav">
       <li><a href="index.html">Home</a></li>
       <li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
       <li><a href="results.html" class="active">SASR Eval</a></li>
       <li><a href="contact.html" class="nav-cta">Contact</a></li>
     </ul>
@@ -373,16 +422,17 @@
   <div class="wrap">
     <div class="footer-brand">
       <a class="brand" href="index.html">
-        <span class="brand-mark">CL</span>
-        Coda Labs
+        <span class="brand-mark">PR</span>
+        Phoenix Rising Group
       </a>
-      <p>Broadcast intelligence from the Horn of Africa.</p>
+      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
     </div>
     <div>
       <h4>Pages</h4>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="capabilities.html">Capabilities</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
         <li><a href="results.html">SASR Eval</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -398,7 +448,7 @@
       </ul>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Coda Labs</span>
+      <span>&copy; 2026 Phoenix Rising Group</span>
       <span>SASR Eval &middot; June 22, 2026</span>
     </div>
   </div>
