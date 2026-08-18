@@ -26,6 +26,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://codaintel.github.io/products/index.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://codaintel.github.io/products/horn-transcribe/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://codaintel.github.io/blog/why-commercial-asr-fails-on-somali/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>

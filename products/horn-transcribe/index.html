@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Horn Transcribe: Phoenix Rising Group — Somali &amp; Afar Annotation Platform</title>
+<meta name="description" content="Horn Transcribe: an in-house annotation platform where AI drafts Somali and Afar broadcast transcripts and human transcribers correct them." />
+<link rel="canonical" href="https://codaintel.github.io/products/horn-transcribe/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Phoenix Rising Group" />
+<meta property="og:title" content="Horn Transcribe: Phoenix Rising Group" />
+<meta property="og:description" content="An in-house annotation platform where AI drafts Somali and Afar broadcast transcripts and human transcribers correct them." />
+<meta property="og:url" content="https://codaintel.github.io/products/horn-transcribe/" />
+<meta property="og:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Horn Transcribe: Phoenix Rising Group" />
+<meta name="twitter:description" content="An in-house annotation platform where AI drafts Somali and Afar broadcast transcripts and human transcribers correct them." />
+<meta name="twitter:image" content="https://codaintel.github.io/assets/horn-map.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">PR</span>
+      Phoenix Rising Group
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../capabilities.html">Capabilities</a></li>
+      <li><a href="../../blog/index.html">Blog</a></li>
+      <li><a href="../index.html" class="active">Products</a></li>
+      <li><a href="../../results.html">SASR Eval</a></li>
+      <li><a href="../../contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="section-label">Annotation platform</div>
+    <h1>Horn Transcribe</h1>
+    <p>An in-house workspace for turning Horn of Africa broadcast audio into corrected, ground-truth transcripts &mdash; the same kind of human-in-the-loop workflow behind SASR Eval, built into a tool.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Overview</div>
+    <h2>AI drafts, a transcriber corrects.</h2>
+    <p class="section-lede">
+      An admin uploads short broadcast clips. Somali audio gets a draft transcript from Whisper; Afar
+      audio &mdash; which has no existing ASR coverage anywhere, so there is nothing to compare against
+      &mdash; gets a draft from Meta&rsquo;s MMS model. A transcriber then plays the clip, corrects the
+      draft against what they actually hear, and submits. No AI output is ever treated as final.
+    </p>
+
+    <div class="cards-3">
+      <div class="card">
+        <h3>Built for low-resource languages</h3>
+        <p>Somali and Afar don&rsquo;t have mature ASR the way major languages do, so the workflow assumes the draft will often be wrong and is built around fast correction, not fast approval.</p>
+      </div>
+      <div class="card">
+        <h3>Claim-based queue</h3>
+        <p>Each transcriber gets clips one at a time from their assigned language queue, with an automatic timeout if a clip is abandoned mid-session, so nothing sits stuck or gets duplicated.</p>
+      </div>
+      <div class="card">
+        <h3>Fast correction UI</h3>
+        <p>Rewind 3 seconds, adjustable playback speed, and keyboard shortcuts that never steal focus from the text box &mdash; built for someone correcting dozens of short clips in a row.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>This is an early, internal-use MVP.</strong> Accounts are created by an admin, not
+      self-service. If you want to help transcribe Somali or Afar broadcast archives, or you have
+      archives that need this kind of workflow, <a href="../../contact.html">get in touch</a>.
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap" style="text-align: center;">
+    <h2>Have login credentials?</h2>
+    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+      Sign in to the transcription workspace.
+    </p>
+    <a href="https://horn-transcribe.vercel.app/login" class="btn btn-primary" target="_blank" rel="noopener">Sign in to Horn Transcribe</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="text-align: center;">
+    <div class="section-label">Related</div>
+    <h2>Read the research behind it.</h2>
+    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+      SASR Eval is the benchmark that motivated this tool, and our blog covers the Somali and Afar
+      ASR gap in more depth.
+    </p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a href="../../results.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">View SASR Eval</a>
+      <a href="../../blog/afar-language-speech-recognition/index.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">Read: The Afar ASR gap</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="../../index.html">
+        <span class="brand-mark">PR</span>
+        Phoenix Rising Group
+      </a>
+      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../capabilities.html">Capabilities</a></li>
+        <li><a href="../../blog/index.html">Blog</a></li>
+        <li><a href="../index.html">Products</a></li>
+        <li><a href="../../results.html">SASR Eval</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="../../docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Phoenix Rising Group</span>
+      <span>Research stage</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

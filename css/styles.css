@@ -1028,6 +1028,90 @@ form.contact button[type="submit"]:disabled {
   line-height: 1.6;
 }
 
+/* Password gate */
+.gate-wrap {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+}
+
+.gate-box {
+  width: 100%;
+  max-width: 380px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 32px;
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+
+.gate-box h2 {
+  font-size: 20px;
+  margin: 0 0 8px;
+  color: var(--navy);
+}
+
+.gate-box p.gate-lede {
+  font-size: 14px;
+  color: var(--slate);
+  margin: 0 0 24px;
+  line-height: 1.55;
+}
+
+.gate-box label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.gate-box input {
+  width: 100%;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  margin-bottom: 16px;
+}
+
+.gate-box input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.gate-box button {
+  width: 100%;
+  background: var(--navy);
+  color: var(--white);
+  border: 0;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.gate-box button:hover { background: var(--navy-mid); }
+
+.gate-error {
+  display: none;
+  font-size: 13px;
+  color: #c53030;
+  margin: -8px 0 16px;
+}
+
+.gate-hint {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--slate-light);
+  line-height: 1.5;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
