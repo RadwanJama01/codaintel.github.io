@@ -243,6 +243,15 @@ img, svg { display: block; max-width: 100%; }
   color: var(--white);
 }
 
+.btn-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-navy:hover {
+  background: var(--navy-mid);
+  color: var(--white);
+}
+
 .hero-visual {
   position: relative;
 }
@@ -797,6 +806,105 @@ form.contact button[type="submit"]:disabled {
   border-color: var(--accent);
 }
 
+#about {
+  scroll-margin-top: 88px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-body p {
+  font-size: 16px;
+  color: var(--slate);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.about-list {
+  margin: 0 0 20px;
+  padding-left: 20px;
+  color: var(--slate);
+}
+
+.about-list li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.about-aside {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.about-aside h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.about-aside .role {
+  font-size: 13px;
+  color: var(--slate-light);
+  margin: 0 0 20px;
+}
+
+.eval-note {
+  margin: 28px 0 0;
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.65;
+  max-width: 760px;
+}
+
+.eval-note a {
+  font-weight: 500;
+}
+
+.contact-strip h2 {
+  max-width: none;
+}
+
+.contact-strip .section-lede {
+  margin-bottom: 12px;
+}
+
+.contact-line {
+  font-size: 17px;
+  margin: 0 0 24px;
+  color: var(--navy);
+}
+
+.contact-line a {
+  color: var(--navy);
+  border-bottom: 1px solid var(--gray-300);
+  font-weight: 500;
+}
+.contact-line a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.contact-sep {
+  margin: 0 10px;
+  color: var(--slate-light);
+}
+
+.form-fallback {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--slate-light);
+  line-height: 1.5;
+}
+
 /* Page header (inner pages) */
 .page-header {
   background: var(--gray-100);
@@ -1120,6 +1228,7 @@ form.contact button[type="submit"]:disabled {
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .wins-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .site-footer .wrap { grid-template-columns: 1fr; gap: 28px; }
 }
 

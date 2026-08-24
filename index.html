@@ -4,18 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Phoenix Rising Group — Somali Speech Recognition and Horn of Africa Language AI</title>
-<meta name="description" content="Phoenix Rising Group builds AI speech technology to preserve Horn of Africa languages. Our fine-tuned Somali ASR model achieves 37.8% lower word error rate than commercial systems." />
+<meta name="description" content="Phoenix Rising Group builds speech technology for the Horn of Africa, starting with high-accuracy Somali ASR. Led by Radwan Jama. Fine-tuned model: 37.8% lower word error rate than commercial systems." />
 <link rel="canonical" href="https://codaintel.github.io/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Phoenix Rising Group" />
 <meta property="og:title" content="Phoenix Rising Group — Somali Speech Recognition and Horn of Africa Language AI" />
-<meta property="og:description" content="AI speech technology to preserve Horn of Africa languages. Fine-tuned Somali ASR with 37.8% lower word error rate than commercial systems." />
+<meta property="og:description" content="Speech technology for the Horn of Africa, starting with high-accuracy Somali ASR. Fine-tuned model with 37.8% lower word error rate than commercial systems. Led by Radwan Jama." />
 <meta property="og:url" content="https://codaintel.github.io/" />
 <meta property="og:image" content="https://codaintel.github.io/assets/horn-map.svg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Phoenix Rising Group — Somali Speech Recognition and Horn of Africa Language AI" />
-<meta name="twitter:description" content="AI speech technology to preserve Horn of Africa languages. Fine-tuned Somali ASR with 37.8% lower word error rate than commercial systems." />
+<meta name="twitter:description" content="Speech technology for the Horn of Africa, starting with high-accuracy Somali ASR. Led by Radwan Jama." />
 <meta name="twitter:image" content="https://codaintel.github.io/assets/horn-map.svg" />
 
 <script type="application/ld+json">
@@ -24,10 +24,22 @@
   "@type": "ResearchOrganization",
   "name": "Phoenix Rising Group",
   "url": "https://codaintel.github.io/",
-  "description": "Phoenix Rising Group builds AI speech technology to preserve Horn of Africa languages, including Somali speech recognition validated against commercial systems.",
-  "email": "rjama@colgate.edu",
-  "areaServed": "Horn of Africa",
-  "knowsAbout": ["Somali speech recognition", "Automatic speech recognition", "Horn of Africa languages", "Language preservation"]
+  "description": "Phoenix Rising Group builds speech technology for the Horn of Africa, starting with high-accuracy Somali ASR grounded in regional broadcast and cultural archives, and applied to documentation and institutional systems.",
+  "email": "radwanjama099@gmail.com",
+  "areaServed": ["Horn of Africa", "Djibouti", "California"],
+  "knowsAbout": ["Somali speech recognition", "Automatic speech recognition", "Horn of Africa languages", "Language preservation", "Institutional documentation"],
+  "founder": {
+    "@type": "Person",
+    "name": "Radwan Jama",
+    "jobTitle": "Founder",
+    "email": "radwanjama099@gmail.com",
+    "url": "https://www.linkedin.com/in/rjama",
+    "sameAs": ["https://www.linkedin.com/in/rjama"],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Colgate University"
+    }
+  }
 }
 </script>
 
@@ -67,16 +79,16 @@
       </div>
       <h1>Preserving Horn of Africa Languages Through Speech AI</h1>
       <p class="hero-sub">
-        Phoenix Rising Group builds Somali speech recognition technology validated against
-        commercial systems. 37.8% lower word error rate than off-the-shelf ASR.
+        Phoenix Rising Group is building speech technology for the Horn of Africa, starting with
+        high-accuracy Somali ASR. 37.8% lower word error rate than commercial systems.
       </p>
       <p class="hero-sub" style="font-size: 16px; margin-top: -16px;">
-        We process decades of Horn of Africa broadcast, oral history, and cultural archives so that
-        Somali, Afar, and other regional languages are represented in the AI systems being built today.
+        The work is grounded in regional broadcast and cultural archives, and is being applied to
+        practical systems for documentation and institutional use in Djibouti and the wider region.
       </p>
       <div class="hero-actions">
         <a href="results.html" class="btn btn-primary">View SASR Eval Results</a>
-        <a href="capabilities.html" class="btn btn-ghost">Learn More</a>
+        <a href="#about" class="btn btn-ghost">About the founder</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -122,11 +134,12 @@
 
 <section>
   <div class="wrap">
-    <div class="section-label">Evidence</div>
+    <div class="section-label">Key result</div>
     <h2>Validated performance, not marketing claims.</h2>
     <p class="section-lede">
-      SASR Eval is the first ground-truth evaluation of commercial and fine-tuned ASR systems
-      on Somali speech. Fifty stitched clips, ~550 seconds total, scored against verified references.
+      SASR Eval is a ground-truth evaluation of commercial and fine-tuned ASR systems on Somali speech.
+      The current result is public-data validation: 50 stitched clips, ~550 seconds total, scored against
+      verified references. Broadcast-domain validation on regional archives is in progress.
     </p>
 
     <div class="stats-row">
@@ -144,19 +157,25 @@
       </div>
       <div class="stat-box">
         <div class="stat-value">50</div>
-        <div class="stat-label">Evaluated clips<br />~10 seconds each</div>
+        <div class="stat-label">Evaluation clips<br />~550 seconds total</div>
       </div>
     </div>
+
+    <p class="eval-note">
+      Model: fine-tuned Whisper-small (244M parameters), trained in ~1 hour on a single T4 GPU (500 steps).
+      Evaluation set: public Somali speech data (skydheere/soomali-asr-dataset test split).
+      <a href="results.html">Full SASR Eval methodology and per-clip results &rarr;</a>
+    </p>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap">
-    <div class="section-label">What we do</div>
-    <h2>Language preservation through speech AI.</h2>
+    <div class="section-label">What we build</div>
+    <h2>Speech systems for archives and institutions.</h2>
     <p class="section-lede">
-      Phoenix Rising Group is building a platform to process and preserve broadcast, oral history,
-      and cultural archives from Djibouti, Somaliland, and the broader Horn of Africa.
+      High-accuracy Somali ASR is the technical core. The applied work is digitizing Horn of Africa
+      archives and supporting speech-enabled documentation workflows in the region.
     </p>
 
     <div class="cards-3">
@@ -172,61 +191,134 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
         <h3>Domain-specific ASR</h3>
-        <p>Our fine-tuned pipeline outperforms commercial systems on Somali speech. Trained in ~1 hour on a single T4 GPU with 500 steps.</p>
+        <p>Fine-tuned Whisper-small, trained in ~1 hour on a single T4 GPU. Outperforms commercial systems on the current Somali evaluation set.</p>
       </div>
       <div class="card">
         <div class="card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
         </div>
-        <h3>Regional access</h3>
-        <p>Father-son team with deep cultural and political ties to Djibouti and Somaliland. Local relationships enable data collection and community partnerships others cannot replicate.</p>
+        <h3>Applied documentation systems</h3>
+        <p>Speech-enabled workflows for institutional documentation and archival use in Djibouti and the wider Horn of Africa.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">About</div>
+    <h2>Led by Radwan Jama.</h2>
+
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          Phoenix Rising Group is led by Radwan Jama, a software engineer with experience in applied
+          machine learning and large-scale systems (Palo Alto Networks, Google Fellowship, Fidelity).
+          He is building Phoenix Rising Group independently, focused on speech technology for Somali
+          and other Horn of Africa languages.
+        </p>
+        <p>The project combines:</p>
+        <ul class="about-list">
+          <li>Fine-tuned speech recognition validated against commercial systems</li>
+          <li>Work on regional broadcast and cultural archives</li>
+          <li>Applied systems for institutional documentation use cases</li>
+        </ul>
+        <p>
+          Radwan holds a B.A. in Computer Science from Colgate University and has previously worked
+          on ML-powered static analysis, large-scale systems, and AI security tooling.
+        </p>
+      </div>
+      <aside class="about-aside">
+        <h3>Radwan Jama</h3>
+        <p class="role">Founder, Phoenix Rising Group</p>
+        <dl class="contact-detail">
+          <dt>Location</dt>
+          <dd>California-based, working on Horn of Africa language technology</dd>
+        </dl>
+        <dl class="contact-detail">
+          <dt>Email</dt>
+          <dd><a href="mailto:radwanjama099@gmail.com">radwanjama099@gmail.com</a></dd>
+        </dl>
+        <dl class="contact-detail">
+          <dt>LinkedIn</dt>
+          <dd><a href="https://www.linkedin.com/in/rjama" target="_blank" rel="noopener">linkedin.com/in/rjama</a></dd>
+        </dl>
+        <dl class="contact-detail">
+          <dt>Education</dt>
+          <dd>B.A. Computer Science, Colgate University</dd>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">Current stage</div>
+    <h2>Public-data validation complete. Broadcast validation in progress.</h2>
+
+    <div class="timeline">
+      <div class="timeline-item current">
+        <div class="date">June 22, 2026 &middot; Complete</div>
+        <h4>SASR Eval: public-data validation</h4>
+        <p>50 clips, ~550 seconds, from the skydheere/soomali-asr-dataset test split. Fine-tuned Whisper-small (244M parameters) achieves mean WER 0.368.</p>
+      </div>
+      <div class="timeline-item future">
+        <div class="date">August 2026 &middot; In progress</div>
+        <h4>SASR Eval: broadcast-domain validation</h4>
+        <p>Validation on in-domain broadcast recordings from regional archives. Tests generalization from public data to the media the platform is built to process.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Honest stage.</strong> Proof-of-concept is validated on public Somali speech data.
+      Broadcast-domain results are not yet published. Archive specifications are available to
+      qualified partners under NDA.
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="section-label">Roadmap</div>
-    <h2>Current stage and next validation.</h2>
+    <div class="section-label">Who we work with</div>
+    <h2>Research, archival, and institutional partners.</h2>
+    <p class="section-lede">
+      Phoenix Rising Group works with organizations that need accurate speech systems for
+      Horn of Africa languages, not generic commercial ASR.
+    </p>
 
-    <div class="timeline">
-      <div class="timeline-item current">
-        <div class="date">June 22, 2026</div>
-        <h4>SASR Eval: Public dataset validation</h4>
-        <p>Validated on the skydheere/soomali-asr-dataset test split. Fine-tuned Whisper small (244M parameters) achieves mean WER 0.368.</p>
+    <div class="cards-3">
+      <div class="card">
+        <h3>Research and cultural institutions</h3>
+        <p>Universities, archives, and language programs focused on Horn of Africa languages and low-resource speech technology.</p>
       </div>
-      <div class="timeline-item future">
-        <div class="date">August 2026</div>
-        <h4>SASR Eval broadcast validation: Broadcast data validation</h4>
-        <p>Validation on in-domain broadcast recordings. Tests generalization from public dataset to real regional media archives.</p>
+      <div class="card">
+        <h3>Documentation and archival organizations</h3>
+        <p>Groups digitizing broadcast, oral history, and cultural collections that need reliable Somali and regional-language transcription.</p>
       </div>
-    </div>
-
-    <div class="notice">
-      <strong>Data platform in development.</strong> We are building infrastructure to process and analyze
-      decades of Horn of Africa broadcast and cultural archives. Detailed archive specifications are available
-      to qualified partners under NDA.
+      <div class="card">
+        <h3>Institutional partners</h3>
+        <p>Public-sector and regional institutions exploring speech-enabled documentation workflows in Djibouti and the wider Horn of Africa.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="alt">
-  <div class="wrap" style="text-align: center;">
-    <div class="section-label">Engagement</div>
-    <h2 style="max-width: none;">Actively engaging with cultural and academic partners.</h2>
-    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
-      Phoenix Rising Group is in active outreach with universities, cultural institutions, and language
-      preservation organizations.
+  <div class="wrap contact-strip">
+    <div class="section-label">Contact</div>
+    <h2>Reach Radwan directly.</h2>
+    <p class="section-lede">
+      For SASR Eval briefings, partnership discussions, or technical review.
     </p>
-    <div class="partners-row" style="justify-content: center;">
-      <span class="partner-tag">Universities</span>
-      <span class="partner-tag">Cultural Institutions</span>
-      <span class="partner-tag">Diaspora Organizations</span>
-      <span class="partner-tag">NLP Research Labs</span>
-    </div>
-    <div style="margin-top: 32px;">
-      <a href="contact.html" class="btn btn-primary">Contact Us</a>
+    <p class="contact-line">
+      <a href="mailto:radwanjama099@gmail.com">radwanjama099@gmail.com</a>
+      <span class="contact-sep" aria-hidden="true">&middot;</span>
+      <a href="https://www.linkedin.com/in/rjama" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-primary">Contact form</a>
+      <a href="mailto:radwanjama099@gmail.com" class="btn btn-navy">Email Radwan</a>
     </div>
   </div>
 </section>
@@ -238,7 +330,7 @@
         <span class="brand-mark">PR</span>
         Phoenix Rising Group
       </a>
-      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
+      <p>Speech technology for the Horn of Africa, starting with high-accuracy Somali ASR.</p>
     </div>
     <div>
       <h4>Pages</h4>
@@ -257,12 +349,13 @@
         <li><a href="docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
         <li><a href="docs/data/sasr_eval.json" download>SASR Eval (JSON)</a></li>
         <li><a href="docs/data/sasr_eval.csv" download>SASR Eval (CSV)</a></li>
-        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+        <li><a href="mailto:radwanjama099@gmail.com">radwanjama099@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/rjama" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Phoenix Rising Group</span>
-      <span>Research stage &middot; Proof-of-concept validated</span>
+      <span>California &middot; Horn of Africa</span>
     </div>
   </div>
 </footer>

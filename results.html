@@ -25,11 +25,19 @@
   "name": "SASR Eval",
   "description": "First ground-truth evaluation of commercial and fine-tuned ASR systems on Somali speech. Fifty stitched clips, approximately 550 seconds total, scored against verified references for word error rate (WER) and character error rate (CER).",
   "url": "https://codaintel.github.io/results.html",
-  "creator": {
-    "@type": "Organization",
-    "name": "Phoenix Rising Group",
-    "url": "https://codaintel.github.io/"
-  },
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "Radwan Jama",
+      "url": "https://www.linkedin.com/in/rjama",
+      "email": "radwanjama099@gmail.com"
+    },
+    {
+      "@type": "Organization",
+      "name": "Phoenix Rising Group",
+      "url": "https://codaintel.github.io/"
+    }
+  ],
   "datePublished": "2026-06-22",
   "inLanguage": "so",
   "keywords": ["Somali ASR", "speech recognition benchmark", "word error rate", "Horn of Africa languages"],
@@ -84,7 +92,7 @@
   <div class="wrap">
     <div class="section-label">Benchmark</div>
     <h1>SASR Eval</h1>
-    <p>First quantitative evaluation of Somali ASR. Mean WER: 0.368 (ours) vs 0.592 (ElevenLabs) vs 0.871 (Whisper). Broadcast validation in August 2026 (SASR Eval broadcast validation).</p>
+    <p>Public-data validation of Somali ASR on 50 clips (~550 seconds). Mean WER: 0.368 (fine-tuned Whisper-small) vs 0.592 (ElevenLabs) vs 0.871 (Whisper large-v3). Broadcast-domain validation is in progress. Conducted by Radwan Jama, Phoenix Rising Group.</p>
   </div>
 </div>
 
@@ -93,6 +101,13 @@
     <div class="download-bar">
       <p><strong>SASR Eval paper available.</strong> Methodology, per-clip data, and methodological notes.</p>
       <a href="docs/SASR_Eval.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download SASR Eval</a>
+    </div>
+
+    <div class="notice" style="margin-top: 0; margin-bottom: 40px;">
+      <strong>Evaluation scope.</strong> Current numbers are public-data validation on 50 stitched clips
+      (~550 seconds total) from the skydheere/soomali-asr-dataset test split. The model is fine-tuned
+      Whisper-small (244M), trained in ~1 hour on a single T4 GPU. Broadcast-domain validation on
+      regional archives is in progress.
     </div>
 
     <div class="table-wrap" style="margin-bottom: 40px;">
@@ -144,6 +159,7 @@
     <p class="section-lede">
       Evaluated June 22, 2026 on 50 stitched clips (~10 seconds each, ~550 seconds total) from the
       skydheere/soomali-asr-dataset test split. Ground-truth transcriptions used for WER and CER scoring.
+      This is public-data validation. Broadcast-domain validation on regional archives is in progress.
     </p>
 
     <div class="table-wrap">
@@ -399,9 +415,9 @@
     <div class="section-label">Next steps</div>
     <h2>SASR Eval broadcast validation (August 2026)</h2>
     <p class="section-lede">
-      SASR Eval validated our fine-tuned model on public Somali speech data. SASR Eval broadcast validation will
-      evaluate performance on in-domain broadcast recordings from regional archives. The
-      data our platform is designed to process at scale.
+      SASR Eval is public-data validation on 50 clips (~550 seconds). Broadcast-domain validation will
+      evaluate the same fine-tuned Whisper-small model on in-domain broadcast recordings from regional
+      archives &mdash; the data the platform is designed to process at scale.
     </p>
 
     <div class="timeline">
@@ -426,7 +442,7 @@
         <span class="brand-mark">PR</span>
         Phoenix Rising Group
       </a>
-      <p>Preserving Horn of Africa languages and culture through speech AI.</p>
+      <p>Speech technology for the Horn of Africa, starting with high-accuracy Somali ASR.</p>
     </div>
     <div>
       <h4>Pages</h4>
@@ -446,7 +462,8 @@
         <li><a href="docs/data/sasr_eval.json" download>SASR Eval (JSON)</a></li>
         <li><a href="docs/data/sasr_eval.csv" download>SASR Eval (CSV)</a></li>
         <li><a href="docs/data/sasr_eval_findings.md" download>Findings (MD)</a></li>
-        <li><a href="mailto:rjama@colgate.edu">rjama@colgate.edu</a></li>
+        <li><a href="mailto:radwanjama099@gmail.com">radwanjama099@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/rjama" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </div>
     <div class="footer-bottom">

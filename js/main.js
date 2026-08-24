@@ -20,11 +20,20 @@
   document.querySelectorAll('form.contact').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      if (btn) {
-        btn.textContent = 'Message sent. We\u2019ll respond shortly.';
-        btn.disabled = true;
-      }
+      const name = (form.name && form.name.value) || '';
+      const email = (form.email && form.email.value) || '';
+      const org = (form.org && form.org.value) || '';
+      const role = (form.role && form.role.value) || '';
+      const interest = (form.interest && form.interest.value) || '';
+      const subject = encodeURIComponent('Phoenix Rising Group — inquiry from ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name +
+        '\nEmail: ' + email +
+        '\nOrganization: ' + org +
+        '\nRole: ' + role +
+        '\n\n' + interest
+      );
+      window.location.href = 'mailto:radwanjama099@gmail.com?subject=' + subject + '&body=' + body;
     });
   });
 
