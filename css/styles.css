@@ -425,6 +425,24 @@ section h2 {
   color: var(--accent);
 }
 
+.rule-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0 0;
+}
+
+.gate-wrap.gate-study {
+  min-height: 0;
+  padding: 24px 24px 80px;
+  align-items: flex-start;
+}
+
+.gate-study .gate-box {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
 .process-list li {
   display: grid;
   grid-template-columns: minmax(0, 220px) 1fr;
@@ -890,7 +908,8 @@ form.contact button[type="submit"]:disabled {
 }
 
 #about,
-#products {
+#products,
+#case-study {
   scroll-margin-top: 72px;
 }
 

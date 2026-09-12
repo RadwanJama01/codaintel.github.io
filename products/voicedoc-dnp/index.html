@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>VoiceDoc: Phoenix Rising Group</title>
-<meta name="description" content="VoiceDoc: a mobile-first, offline-capable voice documentation platform for field agencies. Restricted case study access." />
+<meta name="description" content="VoiceDoc: a mobile-first, offline-capable voice documentation platform for field agencies. Open the live demo, or request the partner case study." />
 <meta name="robots" content="noindex" />
 <link rel="canonical" href="https://www.phoenixrisinggroups.com/products/voicedoc-dnp/" />
 
@@ -37,19 +37,32 @@
   </div>
 </header>
 
-<div id="gate" class="gate-wrap">
-  <div class="gate-box">
-    <h2>Restricted case study</h2>
-    <p class="gate-lede">VoiceDoc details are shared with verified partners only. Enter your credentials, or request access from our team.</p>
+<div class="page-header">
+  <div class="wrap spine">
+    <div class="section-label">Voice documentation &middot; Field agencies</div>
+    <h1>VoiceDoc</h1>
+    <p>A mobile-first, offline-capable voice documentation platform for field agencies. Try the live product here. The lock below is only for the written case study &mdash; it is not the app login.</p>
+    <p class="rule-actions">
+      <a class="btn btn-primary" href="https://dnp-voiceai.vercel.app" target="_blank" rel="noopener">Open live demo</a>
+      <a class="btn btn-ghost" href="#case-study">Case study (partners)</a>
+    </p>
+  </div>
+</div>
+
+<div id="gate" class="gate-wrap gate-study">
+  <div class="gate-box" id="case-study">
+    <p class="rule-kicker">Partner writeup &mdash; not the product login</p>
+    <h2>Case study (partners)</h2>
+    <p class="gate-lede">This form unlocks a restricted writeup for verified partners. It does not sign you into VoiceDoc. To use the product, open the live demo above.</p>
     <form id="gate-form">
-      <label for="gate-user">Username</label>
+      <label for="gate-user">Partner username</label>
       <input id="gate-user" type="text" autocomplete="username" required />
-      <label for="gate-pass">Password</label>
+      <label for="gate-pass">Partner password</label>
       <input id="gate-pass" type="password" autocomplete="current-password" required />
-      <div id="gate-error" class="gate-error">Incorrect username or password.</div>
-      <button type="submit">Unlock</button>
+      <div id="gate-error" class="gate-error">Those partner credentials were not recognized.</div>
+      <button type="submit">Unlock case study</button>
     </form>
-    <p class="gate-hint">Don&rsquo;t have credentials? <a href="../../contact.html">Contact us</a> to request a briefing.</p>
+    <p class="gate-hint">Need partner access? <a href="../../contact.html">Contact us</a> for a briefing. Looking for the app? <a href="https://dnp-voiceai.vercel.app" target="_blank" rel="noopener">Open the live demo</a>.</p>
   </div>
 </div>
 
@@ -135,7 +148,10 @@
         We work with government and public-sector partners to adapt VoiceDoc to their reporting workflows
         and language needs.
       </p>
-      <a href="../../contact.html" class="btn btn-primary">Contact us</a>
+      <div class="hero-actions" style="justify-content: center;">
+        <a href="https://dnp-voiceai.vercel.app" class="btn btn-primary" target="_blank" rel="noopener">Open live demo</a>
+        <a href="../../contact.html" class="btn btn-ghost">Contact us</a>
+      </div>
     </div>
   </section>
 
