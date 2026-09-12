@@ -89,7 +89,8 @@ img, svg { display: block; max-width: 100%; }
 .site-header {
   background: var(--canvas);
   border-bottom: 1px solid var(--line);
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 100;
 }
 
@@ -171,7 +172,7 @@ img, svg { display: block; max-width: 100%; }
 .hero {
   background: var(--canvas);
   color: var(--ink);
-  padding: 104px 0 72px;
+  padding: 128px 0 96px;
   position: relative;
   overflow: visible;
 }
@@ -221,11 +222,7 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.65;
   color: var(--muted);
   max-width: 640px;
-  margin: 0 0 18px;
-}
-
-.hero-sub + .hero-sub {
-  margin-bottom: 32px;
+  margin: 0 0 36px;
 }
 
 .lang-row { display: none; }
@@ -894,7 +891,7 @@ form.contact button[type="submit"]:disabled {
 
 #about,
 #products {
-  scroll-margin-top: 24px;
+  scroll-margin-top: 72px;
 }
 
 .about-grid {
@@ -1485,7 +1482,7 @@ form.contact button[type="submit"]:disabled {
   .stats-row { grid-template-columns: 1fr 1fr; }
   form.contact { grid-template-columns: 1fr; }
   .page-header h1 { font-size: 32px; }
-  .hero { padding: 64px 0 48px; }
+  .hero { padding: 72px 0 56px; }
   .hero-fr { font-size: 18px; }
   .eval-number { font-size: 56px; }
   .compare-line { flex-direction: column; gap: 10px; }
