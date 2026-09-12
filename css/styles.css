@@ -150,16 +150,16 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .nav-cta {
-  background: var(--ink);
-  color: var(--canvas) !important;
-  padding: 7px 14px;
+  background: transparent;
+  color: var(--ink) !important;
+  padding: 0;
   font-size: 13px !important;
-  border-radius: var(--radius);
+  border-radius: 0;
+  font-weight: 500;
 }
 .nav-cta:hover {
-  background: var(--ink);
-  color: var(--canvas) !important;
-  opacity: 0.82;
+  background: transparent;
+  color: var(--muted) !important;
 }
 
 .menu-toggle {
@@ -175,7 +175,7 @@ img, svg { display: block; max-width: 100%; }
 .hero {
   background: var(--canvas);
   color: var(--ink);
-  padding: 128px 0 96px;
+  padding: 160px 0 128px;
   position: relative;
   overflow: visible;
 }
@@ -202,11 +202,11 @@ img, svg { display: block; max-width: 100%; }
 
 .hero h1 {
   font-family: var(--serif);
-  font-size: 52px;
+  font-size: 56px;
   line-height: 1.12;
   letter-spacing: -0.02em;
   font-weight: 400;
-  margin: 0 0 20px;
+  margin: 0 0 28px;
   max-width: 720px;
   color: var(--ink);
 }
@@ -216,16 +216,16 @@ img, svg { display: block; max-width: 100%; }
   font-style: normal;
   font-size: 20px;
   color: var(--muted);
-  margin: 0 0 22px;
+  margin: 0 0 28px;
   max-width: 640px;
 }
 
 .hero-sub {
   font-size: 18px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--muted);
   max-width: 640px;
-  margin: 0 0 36px;
+  margin: 0 0 48px;
 }
 
 .lang-row { display: none; }
@@ -243,12 +243,12 @@ img, svg { display: block; max-width: 100%; }
   padding: 11px 18px;
   font-size: 14px;
   font-weight: 500;
-  border-radius: var(--radius);
+  border-radius: 4px;
   border: 0;
   cursor: pointer;
   font-family: inherit;
   letter-spacing: 0.01em;
-  transition: background 150ms ease, color 150ms ease, border-color 150ms ease, transform 150ms ease;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
   text-decoration: none;
 }
 
@@ -259,7 +259,7 @@ img, svg { display: block; max-width: 100%; }
 .btn-primary:hover {
   background: var(--ink);
   color: var(--canvas);
-  transform: translateY(-1px);
+  opacity: 0.88;
 }
 
 .btn-ghost {
@@ -270,7 +270,6 @@ img, svg { display: block; max-width: 100%; }
 .btn-ghost:hover {
   border-color: var(--ink);
   color: var(--ink);
-  transform: translateY(-1px);
 }
 
 .btn-navy,
@@ -283,7 +282,6 @@ img, svg { display: block; max-width: 100%; }
 .btn-ink:hover {
   border-color: var(--ink);
   color: var(--ink);
-  transform: translateY(-1px);
 }
 
 .hero-visual,
@@ -413,10 +411,10 @@ section h2 {
 }
 
 .rule-list h3 {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: -0.015em;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   margin: 0 0 8px;
   color: var(--ink);
 }
@@ -510,7 +508,7 @@ section h2 {
   border-radius: var(--radius);
   padding: 28px 28px 32px;
   box-shadow: none;
-  transition: border-color 150ms ease, transform 150ms ease;
+  transition: border-color 150ms ease;
 }
 
 .card.featured {
@@ -519,20 +517,19 @@ section h2 {
 
 .card:hover {
   border-color: #c4c4c4;
-  transform: translateY(-2px);
 }
 
 .card h3 {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 500;
   margin: 0 0 10px;
   letter-spacing: -0.01em;
   font-style: normal;
 }
 
 .card.featured h3 {
-  font-size: 28px;
+  font-size: 22px;
 }
 
 .card p {
@@ -851,9 +848,9 @@ table.data .system-detail {
 }
 
 .timeline-item h4 {
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 500;
   margin: 0 0 6px;
 }
 
@@ -947,9 +944,9 @@ form.contact button[type="submit"]:disabled {
 }
 
 .contact-info h3 {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 500;
   margin: 0 0 20px;
 }
 
@@ -1018,7 +1015,7 @@ form.contact button[type="submit"]:disabled {
   border-radius: var(--radius);
   padding: 28px;
   box-shadow: none;
-  transition: border-color 150ms ease, transform 150ms ease;
+  transition: border-color 150ms ease;
 }
 
 .about-aside h3 {
@@ -1307,7 +1304,7 @@ form.contact button[type="submit"]:disabled {
   box-shadow: none;
   color: inherit;
   margin-bottom: 16px;
-  transition: border-color 150ms ease, transform 150ms ease;
+  transition: border-color 150ms ease;
 }
 
 .post-card:last-child {
@@ -1317,7 +1314,6 @@ form.contact button[type="submit"]:disabled {
 .post-card:hover {
   border-color: #c4c4c4;
   color: inherit;
-  transform: translateY(-2px);
 }
 
 .post-card .post-eyebrow {
@@ -1330,9 +1326,9 @@ form.contact button[type="submit"]:disabled {
 }
 
 .post-card h3 {
-  font-family: var(--serif);
-  font-size: 26px;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 500;
   color: var(--ink);
   margin: 0 0 12px;
   letter-spacing: -0.015em;
@@ -1402,9 +1398,9 @@ form.contact button[type="submit"]:disabled {
 
 .process-rail strong {
   display: block;
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 500;
   color: var(--ink);
   margin-bottom: 4px;
 }
@@ -1436,9 +1432,9 @@ form.contact button[type="submit"]:disabled {
 }
 
 .gate-box h2 {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 500;
   margin: 0 0 8px;
   color: var(--ink);
 }
@@ -1616,7 +1612,7 @@ form.contact button[type="submit"]:disabled {
   .stats-row { grid-template-columns: 1fr 1fr; }
   form.contact { grid-template-columns: 1fr; }
   .page-header h1 { font-size: 32px; }
-  .hero { padding: 72px 0 56px; }
+  .hero { padding: 88px 0 72px; }
   .hero-fr { font-size: 18px; }
   .eval-number { font-size: 56px; }
   .compare-line { flex-direction: column; gap: 10px; }
