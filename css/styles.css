@@ -806,7 +806,8 @@ form.contact button[type="submit"]:disabled {
   border-color: var(--accent);
 }
 
-#about {
+#about,
+#products {
   scroll-margin-top: 88px;
 }
 
@@ -1098,6 +1099,10 @@ form.contact button[type="submit"]:disabled {
   gap: 20px;
 }
 
+.post-list.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .post-card {
   display: block;
   border: 1px solid var(--gray-200);
@@ -1225,6 +1230,7 @@ form.contact button[type="submit"]:disabled {
   .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
   .hero h1 { font-size: 36px; }
   .cards-3 { grid-template-columns: 1fr; }
+  .post-list.cols-2 { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .wins-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
