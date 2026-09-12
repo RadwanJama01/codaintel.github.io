@@ -46,7 +46,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1,400,500,700&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -102,15 +102,17 @@
   </div>
 
   <div class="wrap">
-    <div class="eval-figure">
-      <div class="eval-number ours">0.368</div>
-      <p class="eval-caption">Mean WER &middot; Fine-tuned Whisper small (ours)</p>
+    <div class="card eval-card">
+      <div class="eval-figure">
+        <div class="eval-number ours">0.368</div>
+        <p class="eval-caption">Mean WER &middot; Fine-tuned Whisper small (ours)</p>
+      </div>
+      <p class="compare-line">
+        <span><b>37.8%</b> relative WER reduction vs. ElevenLabs Scribe v1 (0.592)</span>
+        <span><b>57.8%</b> vs. Whisper large-v3 (0.871)</span>
+        <span><b>50</b> clips &middot; ~550 seconds</span>
+      </p>
     </div>
-    <p class="compare-line">
-      <span><b>37.8%</b> relative WER reduction vs. ElevenLabs Scribe v1 (0.592)</span>
-      <span><b>57.8%</b> vs. Whisper large-v3 (0.871)</span>
-      <span><b>50</b> clips &middot; ~550 seconds</span>
-    </p>
   </div>
 
   <div class="wrap spine">
@@ -131,44 +133,49 @@
       correct, and keep. Policy into <span lang="fr">actions concrètes</span> &mdash; not a black box offshore.
     </p>
 
-    <ol class="rule-list process-list" aria-label="Documentation workflow">
-      <li>
-        <span class="rule-kicker">01 &middot; Voice</span>
-        <p>A statement, in the language spoken.</p>
-      </li>
-      <li>
-        <span class="rule-kicker">02 &middot; Structured draft</span>
-        <p>AI fills fixed fields. Nothing is filed.</p>
-      </li>
-      <li>
-        <span class="rule-kicker">03 &middot; Human review</span>
-        <p>A person edits every field.</p>
-      </li>
-      <li>
-        <span class="rule-kicker">04 &middot; Signed record</span>
-        <p>Submit, then a durable PDF.</p>
-      </li>
-    </ol>
-    <p class="process-caption">A product capability for field documentation &mdash; not a claim of adoption.</p>
+  </div>
 
-    <div class="rule-list">
-      <article>
+  <div class="wrap">
+    <div class="card process-card">
+      <ol class="process-list" aria-label="Documentation workflow">
+        <li>
+          <span class="rule-kicker">01 &middot; Voice</span>
+          <p>A statement, in the language spoken.</p>
+        </li>
+        <li>
+          <span class="rule-kicker">02 &middot; Structured draft</span>
+          <p>AI fills fixed fields. Nothing is filed.</p>
+        </li>
+        <li>
+          <span class="rule-kicker">03 &middot; Human review</span>
+          <p>A person edits every field.</p>
+        </li>
+        <li>
+          <span class="rule-kicker">04 &middot; Signed record</span>
+          <p>Submit, then a durable PDF.</p>
+        </li>
+      </ol>
+      <p class="process-caption">A product capability for field documentation &mdash; not a claim of adoption.</p>
+    </div>
+
+    <div class="card-grid">
+      <article class="card featured">
         <h3>Filing speed and an audit trail</h3>
         <p>Voice to a structured record, then review, then a signed PDF. Faster filing without silent automation &mdash; every step is reconstructable.</p>
       </article>
-      <article>
+      <article class="card">
         <h3>National languages, first-class</h3>
         <p>Somali, Afar, Arabic, and French are the working languages &mdash; not an afterthought bolted onto an English-only pipeline.</p>
       </article>
-      <article>
+      <article class="card">
         <h3>Honest evaluation</h3>
         <p>SASR Eval publishes method, clips, and scores. No &ldquo;best ASR in Africa.&rdquo; No magic number without a published eval.</p>
       </article>
-      <article>
+      <article class="card">
         <h3>Skills and local capacity</h3>
         <p>Built so Djiboutian talent can run the loop &mdash; formation and review, not an offshore service that disappears at the end of a contract.</p>
       </article>
-      <article>
+      <article class="card">
         <h3>Institutional seriousness</h3>
         <p>Public-service tempo. Long-horizon records that outlast a project cycle. Quiet competence &mdash; not a launch countdown.</p>
       </article>
@@ -184,28 +191,29 @@
       Annotation for the languages we evaluate, and voice documentation for field agencies.
       AI drafts; a human decides.
     </p>
+  </div>
 
-    <div class="rule-list">
-      <article>
-        <span class="rule-kicker">Annotation platform &middot; Somali &amp; Afar</span>
-        <h3>Horn Transcribe</h3>
-        <p>An in-house workspace where AI drafts Somali and Afar broadcast transcripts and a human transcriber corrects them &mdash; the workflow behind SASR Eval, built into a tool.</p>
-        <p class="rule-actions">
-          <a class="btn btn-primary" href="https://horn-transcribe.vercel.app" target="_blank" rel="noopener">Open live product</a>
-          <a class="btn btn-ghost" href="products/horn-transcribe/index.html">About Horn Transcribe</a>
-        </p>
-      </article>
-      <article>
+  <div class="wrap">
+    <div class="products-grid">
+      <article class="card featured">
         <span class="rule-kicker">Voice documentation &middot; Field agencies</span>
         <h3>VoiceDoc</h3>
-        <p>A mobile-first, offline-capable voice documentation platform for field agencies: record a statement, get an AI-structured draft, review and submit.</p>
+        <p>Record a statement, review an AI-structured draft, submit. The person in the field decides.</p>
         <p class="rule-actions">
           <a class="btn btn-primary" href="https://dnp-voiceai.vercel.app" target="_blank" rel="noopener">Open live demo</a>
           <a class="btn btn-ghost" href="products/voicedoc-dnp/index.html">Case study (partners)</a>
         </p>
       </article>
+      <article class="card">
+        <span class="rule-kicker">Annotation &middot; Somali &amp; Afar</span>
+        <h3>Horn Transcribe</h3>
+        <p>AI drafts a broadcast transcript. A transcriber corrects it.</p>
+        <p class="rule-actions">
+          <a class="btn btn-primary" href="https://horn-transcribe.vercel.app" target="_blank" rel="noopener">Open live product</a>
+          <a class="btn btn-ghost" href="products/horn-transcribe/index.html">About</a>
+        </p>
+      </article>
     </div>
-
     <p class="eval-note">
       <a href="products/index.html">View all products &rarr;</a>
     </p>
@@ -294,17 +302,19 @@
       Organizations that need speech systems for Horn of Africa languages and documentation
       workflows that a person can stand behind &mdash; not generic commercial ASR.
     </p>
+  </div>
 
-    <div class="rule-list">
-      <article>
+  <div class="wrap">
+    <div class="card-grid partners-grid">
+      <article class="card featured">
         <h3>Research and cultural institutions</h3>
         <p>Universities, archives, and language programs focused on Horn of Africa languages and low-resource speech technology.</p>
       </article>
-      <article>
+      <article class="card">
         <h3>Documentation and archival organizations</h3>
         <p>Groups digitizing collections that need reliable Somali and regional-language transcription, with a human correction step.</p>
       </article>
-      <article>
+      <article class="card">
         <h3>Institutional partners</h3>
         <p>Public-sector and regional institutions exploring speech-enabled documentation in Djibouti and the wider Horn of Africa.</p>
       </article>
@@ -327,7 +337,7 @@
     </p>
     <div class="hero-actions">
       <a href="contact.html" class="btn btn-primary">Contact form</a>
-      <a href="mailto:radwanjama099@gmail.com" class="btn btn-ink">Email Radwan</a>
+      <a href="mailto:radwanjama099@gmail.com" class="btn btn-ghost">Email Radwan</a>
     </div>
   </div>
 </section>
