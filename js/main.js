@@ -56,4 +56,22 @@
       }
     });
   }
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var revealables = document.querySelectorAll('.hero .spine, .eval-card, .card, .about-aside, .timeline');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    revealables.forEach(function (el) {
+      el.classList.add('reveal');
+      revealObserver.observe(el);
+    });
+  }
 })();
