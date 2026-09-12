@@ -42,9 +42,11 @@
 }
 </script>
 
+<link rel="preconnect" href="https://api.fontshare.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@1,400,500,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -54,11 +56,11 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <span class="brand-mark">PR</span>
-      Phoenix Rising Group
+      <span class="brand-mark" aria-hidden="true">P</span>
+      Phoenix Rising
     </a>
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
     </button>
     <ul class="site-nav">
       <li><a href="index.html" class="active">Home</a></li>
@@ -73,76 +75,28 @@
 
 <main id="main">
 <section class="hero">
-  <div class="hero-map" aria-hidden="true">
-    <img src="assets/horn-map.svg" alt="" />
-  </div>
-  <div class="wrap">
-    <div class="hero-content">
-      <div class="hero-eyebrow">
-        Langues nationales &middot; Research stage
-        <span class="trl-badge">Somali ASR</span>
-      </div>
-      <h1>The missing layer between speech and a durable record.</h1>
-      <p class="hero-fr" lang="fr">Langues nationales. Services publics. Humains dans la boucle.</p>
-      <p class="hero-sub">
-        Phoenix Rising builds speech and documentation AI for the Horn of Africa &mdash;
-        Somali, Afar, Arabic, and French &mdash; so public institutions can work in the
-        languages people actually speak.
-      </p>
-      <ul class="lang-row" aria-label="Languages we work with">
-        <li>Soomaali</li>
-        <li>Qafar</li>
-        <li lang="ar" dir="rtl">العربية</li>
-        <li lang="fr">Français</li>
-      </ul>
-      <div class="hero-actions">
-        <a href="results.html" class="btn btn-primary">Read SASR Eval</a>
-        <a href="#products" class="btn btn-ghost">See products</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-card">
-        <h3>SASR Eval &middot; Mean word error rate</h3>
-        <div class="metric-row">
-          <div class="metric-label">
-            <span>Fine-tuned Whisper small (ours)</span>
-            <span>0.368</span>
-          </div>
-          <div class="metric-bar">
-            <div class="metric-fill ours" data-width="42.2%" style="width: 42.2%"></div>
-          </div>
-        </div>
-        <div class="metric-row">
-          <div class="metric-label">
-            <span>ElevenLabs Scribe v1</span>
-            <span>0.592</span>
-          </div>
-          <div class="metric-bar">
-            <div class="metric-fill eleven" data-width="67.9%" style="width: 67.9%"></div>
-          </div>
-        </div>
-        <div class="metric-row">
-          <div class="metric-label">
-            <span>faster-whisper large-v3</span>
-            <span>0.871</span>
-          </div>
-          <div class="metric-bar">
-            <div class="metric-fill whisper" data-width="100%" style="width: 100%"></div>
-          </div>
-        </div>
-        <div class="metric-legend">
-          <span class="legend-item"><span class="legend-dot" style="background:#8fbc8f"></span> Ours</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#8ab0c8"></span> ElevenLabs</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#c48a7a"></span> Whisper</span>
-        </div>
-        <p class="hero-card-note">Published public-data result. Not a ranking of “best ASR.”</p>
-      </div>
+  <div class="wrap spine">
+    <p class="hero-eyebrow">Research stage &middot; Somali ASR</p>
+    <h1>Speech and documentation AI for the Horn of Africa.</h1>
+    <p class="hero-fr" lang="fr">Langues nationales. Services publics. Humains dans la boucle.</p>
+    <p class="hero-sub">
+      Phoenix Rising builds speech and documentation AI for the Horn of Africa &mdash;
+      Somali, Afar, Arabic, and French &mdash; so public institutions can work in the
+      languages people actually speak, with humans in the loop.
+    </p>
+    <p class="hero-sub">
+      Fine-tuned Somali ASR: 37.8% lower word error rate than commercial systems.
+      The work is grounded in regional broadcast and cultural archives.
+    </p>
+    <div class="hero-actions">
+      <a href="results.html" class="btn btn-primary">Read SASR Eval</a>
+      <a href="#products" class="btn btn-ghost">See products</a>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
+<section class="eval-section">
+  <div class="wrap spine">
     <div class="section-label">Honest evaluation</div>
     <h2>Validated on public data. Methods in the open.</h2>
     <p class="section-lede">
@@ -150,26 +104,21 @@
       The current result is public-data validation: 50 stitched clips, ~550 seconds total, scored against
       verified references. Broadcast-domain validation on regional archives is in progress.
     </p>
+  </div>
 
-    <div class="stats-row">
-      <div class="stat-box">
-        <div class="stat-value accent">0.368</div>
-        <div class="stat-label">Mean WER<br />Fine-tuned Whisper small</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-value success">37.8%</div>
-        <div class="stat-label">Relative WER reduction<br />vs. ElevenLabs Scribe v1</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-value success">57.8%</div>
-        <div class="stat-label">Relative WER reduction<br />vs. Whisper large-v3</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-value">50</div>
-        <div class="stat-label">Evaluation clips<br />~550 seconds total</div>
-      </div>
+  <div class="wrap">
+    <div class="eval-figure">
+      <div class="eval-number ours">0.368</div>
+      <p class="eval-caption">Mean WER &middot; Fine-tuned Whisper small (ours)</p>
     </div>
+    <p class="compare-line">
+      <span><b>37.8%</b> relative WER reduction vs. ElevenLabs Scribe v1 (0.592)</span>
+      <span><b>57.8%</b> vs. Whisper large-v3 (0.871)</span>
+      <span><b>50</b> clips &middot; ~550 seconds</span>
+    </p>
+  </div>
 
+  <div class="wrap spine">
     <p class="eval-note">
       Model: fine-tuned Whisper-small (244M parameters), trained in ~1 hour on a single T4 GPU (500 steps).
       Evaluation set: public Somali speech data (skydheere/soomali-asr-dataset test split).
@@ -178,8 +127,8 @@
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap">
+<section>
+  <div class="wrap spine">
     <div class="section-label">What we build</div>
     <h2>Speech systems for archives and institutions.</h2>
     <p class="section-lede">
@@ -187,63 +136,44 @@
       correct, and keep. Policy into <span lang="fr">actions concrètes</span> &mdash; not a black box offshore.
     </p>
 
-    <ol class="process-rail" aria-label="Documentation workflow">
+    <ol class="rule-list process-list" aria-label="Documentation workflow">
       <li>
-        <span class="process-step">01</span>
-        <strong>Voice</strong>
-        <span>A statement, in the language spoken.</span>
+        <span class="rule-kicker">01 &middot; Voice</span>
+        <p>A statement, in the language spoken.</p>
       </li>
       <li>
-        <span class="process-step">02</span>
-        <strong>Structured draft</strong>
-        <span>AI fills fixed fields. Nothing is filed.</span>
+        <span class="rule-kicker">02 &middot; Structured draft</span>
+        <p>AI fills fixed fields. Nothing is filed.</p>
       </li>
       <li>
-        <span class="process-step">03</span>
-        <strong>Human review</strong>
-        <span>A person edits every field.</span>
+        <span class="rule-kicker">03 &middot; Human review</span>
+        <p>A person edits every field.</p>
       </li>
       <li>
-        <span class="process-step">04</span>
-        <strong>Signed record</strong>
-        <span>Submit, then a durable PDF.</span>
+        <span class="rule-kicker">04 &middot; Signed record</span>
+        <p>Submit, then a durable PDF.</p>
       </li>
     </ol>
     <p class="process-caption">A product capability for field documentation &mdash; not a claim of adoption.</p>
 
-    <div class="theme-grid">
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 19V6M8 10l4-4 4 4"/><path d="M5 19h14"/></svg>
-        </div>
+    <div class="rule-list">
+      <article>
         <h3>Filing speed and an audit trail</h3>
         <p>Voice to a structured record, then review, then a signed PDF. Faster filing without silent automation &mdash; every step is reconstructable.</p>
       </article>
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
-        </div>
+      <article>
         <h3>National languages, first-class</h3>
         <p>Somali, Afar, Arabic, and French are the working languages &mdash; not an afterthought bolted onto an English-only pipeline.</p>
       </article>
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19V5h10l6 6v8H4z"/><path d="M14 5v6h6"/></svg>
-        </div>
+      <article>
         <h3>Honest evaluation</h3>
-        <p>SASR Eval publishes method, clips, and scores. No “best ASR in Africa.” No magic number without a published eval.</p>
+        <p>SASR Eval publishes method, clips, and scores. No &ldquo;best ASR in Africa.&rdquo; No magic number without a published eval.</p>
       </article>
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3l2.2 4.6L19 8.2l-3.5 3.4.8 4.9L12 14.2 7.7 16.5l.8-4.9L5 8.2l4.8-.6L12 3z"/></svg>
-        </div>
+      <article>
         <h3>Skills and local capacity</h3>
         <p>Built so Djiboutian talent can run the loop &mdash; formation and review, not an offshore service that disappears at the end of a contract.</p>
       </article>
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 20V8l8-4 8 4v12"/><path d="M9 20v-6h6v6"/></svg>
-        </div>
+      <article>
         <h3>Institutional seriousness</h3>
         <p>Public-service tempo. Long-horizon records that outlast a project cycle. Quiet competence &mdash; not a launch countdown.</p>
       </article>
@@ -252,7 +182,7 @@
 </section>
 
 <section id="products">
-  <div class="wrap">
+  <div class="wrap spine">
     <div class="section-label">Products</div>
     <h2>Two tools. A person remains in the loop.</h2>
     <p class="section-lede">
@@ -260,15 +190,15 @@
       AI drafts; a human decides.
     </p>
 
-    <div class="post-list cols-2">
-      <a class="post-card product-card" href="products/horn-transcribe/index.html">
-        <div class="post-eyebrow">Annotation platform &middot; Somali &amp; Afar</div>
+    <div class="rule-list">
+      <a class="rule-link" href="products/horn-transcribe/index.html">
+        <span class="rule-kicker">Annotation platform &middot; Somali &amp; Afar</span>
         <h3>Horn Transcribe</h3>
         <p>An in-house workspace where AI drafts Somali and Afar broadcast transcripts and a human transcriber corrects them &mdash; the workflow behind SASR Eval, built into a tool.</p>
         <span class="card-more">Open Horn Transcribe</span>
       </a>
-      <a class="post-card product-card" href="products/voicedoc-dnp/index.html">
-        <div class="post-eyebrow">Voice documentation &middot; Field agencies</div>
+      <a class="rule-link" href="products/voicedoc-dnp/index.html">
+        <span class="rule-kicker">Voice documentation &middot; Field agencies</span>
         <h3>VoiceDoc</h3>
         <p>A mobile-first, offline-capable voice documentation platform for field agencies: record a statement, get an AI-structured draft, review and submit. Case study access is restricted &mdash; contact us for a briefing.</p>
         <span class="card-more">Request a briefing</span>
@@ -282,7 +212,7 @@
 </section>
 
 <section id="about">
-  <div class="wrap">
+  <div class="wrap spine">
     <div class="section-label">About</div>
     <h2>Led by Radwan Jama.</h2>
 
@@ -329,8 +259,8 @@
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap">
+<section>
+  <div class="wrap spine">
     <div class="section-label">Current stage</div>
     <h2>Public-data validation complete. Broadcast validation in progress.</h2>
 
@@ -347,16 +277,16 @@
       </div>
     </div>
 
-    <div class="notice">
+    <p class="notice">
       <strong>Honest stage.</strong> Proof-of-concept is validated on public Somali speech data.
       Broadcast-domain results are not yet published. Archive specifications are available to
       qualified partners under NDA.
-    </div>
+    </p>
   </div>
 </section>
 
 <section>
-  <div class="wrap">
+  <div class="wrap spine">
     <div class="section-label">Who we work with</div>
     <h2>Research, archival, and institutional partners.</h2>
     <p class="section-lede">
@@ -364,25 +294,25 @@
       workflows that a person can stand behind &mdash; not generic commercial ASR.
     </p>
 
-    <div class="cards-3">
-      <div class="card">
+    <div class="rule-list">
+      <article>
         <h3>Research and cultural institutions</h3>
         <p>Universities, archives, and language programs focused on Horn of Africa languages and low-resource speech technology.</p>
-      </div>
-      <div class="card">
+      </article>
+      <article>
         <h3>Documentation and archival organizations</h3>
         <p>Groups digitizing collections that need reliable Somali and regional-language transcription, with a human correction step.</p>
-      </div>
-      <div class="card">
+      </article>
+      <article>
         <h3>Institutional partners</h3>
         <p>Public-sector and regional institutions exploring speech-enabled documentation in Djibouti and the wider Horn of Africa.</p>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap contact-strip">
+<section>
+  <div class="wrap spine contact-strip">
     <div class="section-label">Contact</div>
     <h2>Reach Radwan directly.</h2>
     <p class="section-lede">
@@ -396,7 +326,7 @@
     </p>
     <div class="hero-actions">
       <a href="contact.html" class="btn btn-primary">Contact form</a>
-      <a href="mailto:radwanjama099@gmail.com" class="btn btn-navy">Email Radwan</a>
+      <a href="mailto:radwanjama099@gmail.com" class="btn btn-ink">Email Radwan</a>
     </div>
   </div>
 </section>
@@ -406,8 +336,8 @@
   <div class="wrap">
     <div class="footer-brand">
       <a class="brand" href="index.html">
-        <span class="brand-mark">PR</span>
-        Phoenix Rising Group
+        <span class="brand-mark" aria-hidden="true">P</span>
+        Phoenix Rising
       </a>
       <p>Speech and documentation AI for the Horn of Africa &mdash; Somali, Afar, Arabic, and French.</p>
     </div>
