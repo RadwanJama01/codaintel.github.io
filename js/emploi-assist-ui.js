@@ -1,11 +1,7 @@
 (function () {
-  // TODO: When VoiceDoc's Emploi counsellor frontend PR merges, set
-  // EMPLOI_ASSIST_UI_URL here only. Every [data-emploi-ui] control then
-  // becomes "Open live demo".
-  // Intended UI (still a DNP shell — do not enable yet):
-  //   https://voicedoc-emploi.vercel.app
-  // Do NOT use https://voicedoc-emploi-api.fly.dev — that host is API-only.
-  var EMPLOI_ASSIST_UI_URL = "";
+  // Single swap-in for the counsellor UI. Keep this and the [data-emploi-ui]
+  // hrefs in sync. Do NOT use https://voicedoc-emploi-api.fly.dev — API-only.
+  var EMPLOI_ASSIST_UI_URL = "https://voicedoc-emploi.vercel.app";
 
   if (!EMPLOI_ASSIST_UI_URL) return;
 
@@ -23,5 +19,8 @@
     link.textContent = "Open live demo";
     link.classList.remove("btn-disabled");
     link.removeAttribute("aria-disabled");
+    if (!link.classList.contains("btn-primary")) {
+      link.classList.add("btn-primary");
+    }
   });
 })();

@@ -56,19 +56,18 @@
       Incomplete dossiers, French-first forms, and portals that do not talk to each other stall the last mile of public employment services. Emploi Assist is built for employment counsellors. It sits alongside national employment portals. It does not replace them.
     </p>
     <!--
-      Counsellor UI swap-in: set EMPLOI_ASSIST_UI_URL in js/emploi-assist-ui.js.
-      Do not enable https://voicedoc-emploi.vercel.app until the VoiceDoc counsellor
-      frontend PR merges (still a DNP shell). Do not point [data-emploi-ui] at
-      https://voicedoc-emploi-api.fly.dev (API-only).
+      Counsellor UI URL lives in js/emploi-assist-ui.js (EMPLOI_ASSIST_UI_URL)
+      and on [data-emploi-ui] anchors. Do not point the demo at
+      https://voicedoc-emploi-api.fly.dev — that host is API-only.
     -->
     <p class="rule-actions">
-      <a class="btn btn-primary" href="../../contact.html">Request a briefing</a>
-      <span class="btn btn-ghost btn-disabled" aria-disabled="true" data-emploi-ui>Counsellor UI demo coming soon</span>
+      <a class="btn btn-primary" href="https://voicedoc-emploi.vercel.app" target="_blank" rel="noopener" data-emploi-ui>Open live demo</a>
+      <a class="btn btn-ghost" href="../../contact.html">Request a briefing</a>
     </p>
     <p class="eval-note">
-      Counsellor voice intake is live as a backend service at
+      The counsellor interface is the live demo above.
       <a href="https://voicedoc-emploi-api.fly.dev" target="_blank" rel="noopener">voicedoc-emploi-api.fly.dev</a>
-      &mdash; an API for the documentation pipe, not a public counsellor interface. There is no login here.
+      is the intake API only &mdash; not a second demo.
     </p>
   </div>
 </div>
@@ -171,24 +170,24 @@
     </div>
 
     <div class="notice">
-      <strong>Honest stage.</strong> The counsellor intake API is live. A public counsellor UI is not.
-      This page describes last-mile labour pain and a workflow. It does not claim a partnership,
-      endorsement, or deployment with any ministry or national employment body. It does not
-      promise jobs, end unemployment, or treat citizen audio as training data.
+      <strong>Honest stage.</strong> The counsellor UI is live as a demo. This page describes
+      last-mile labour pain and a workflow. It does not claim a partnership, endorsement,
+      or deployment with any ministry or national employment body. It does not promise jobs,
+      end unemployment, or treat citizen audio as training data.
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap" style="text-align: center;">
-    <h2>Request a briefing.</h2>
+    <h2>Open the live counsellor demo.</h2>
     <p class="section-lede" style="margin-left: auto; margin-right: auto;">
-      If you want a walkthrough of the intake loop, the jobseeker file, or the declaration draft,
-      write to Radwan.
+      Try the counsellor flow, or write to Radwan for a walkthrough of the intake loop,
+      the jobseeker file, or the declaration draft.
     </p>
     <div class="hero-actions" style="justify-content: center;">
-      <a href="../../contact.html" class="btn btn-primary">Request a briefing</a>
-      <span class="btn btn-ghost btn-disabled" aria-disabled="true" data-emploi-ui>Counsellor UI demo coming soon</span>
+      <a href="https://voicedoc-emploi.vercel.app" class="btn btn-primary" target="_blank" rel="noopener" data-emploi-ui>Open live demo</a>
+      <a href="../../contact.html" class="btn btn-ghost">Request a briefing</a>
     </div>
   </div>
 </section>
