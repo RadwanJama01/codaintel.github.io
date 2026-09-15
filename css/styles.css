@@ -520,9 +520,28 @@ section h2 {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   align-items: stretch;
+}
+
+.products-grid .card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 28px 28px 32px;
+}
+
+.products-grid .card h3 {
+  font-size: 22px;
+}
+
+.products-grid .card > p:not(.rule-actions) {
+  flex: 1 1 auto;
+}
+
+.products-grid .rule-actions {
+  margin-top: auto;
 }
 
 .card {

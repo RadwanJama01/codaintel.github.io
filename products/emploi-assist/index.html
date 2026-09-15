@@ -52,9 +52,13 @@
     <div class="section-label">Employment intake &middot; Counsellor tools</div>
     <h1>Emploi Assist</h1>
     <p>A counsellor-led voice interview that becomes a structured, reviewable jobseeker profile. Same documentation pipe as VoiceDoc &mdash; transcript, fixed fields, human sign-off &mdash; with an employment schema instead of a field report. Not a public kiosk, and not a self-serve portal.</p>
+    <!--
+      Counsellor UI swap-in: set EMPLOI_ASSIST_UI_URL in js/emploi-assist-ui.js.
+      Do not point [data-emploi-ui] at https://voicedoc-emploi-api.fly.dev (API-only).
+    -->
     <p class="rule-actions">
       <a class="btn btn-primary" href="../../contact.html">Request a briefing</a>
-      <span class="btn btn-ghost btn-disabled" aria-disabled="true">Counsellor UI demo coming soon</span>
+      <span class="btn btn-ghost btn-disabled" aria-disabled="true" data-emploi-ui>Counsellor UI demo coming soon</span>
     </p>
     <p class="eval-note">
       Counsellor voice intake is live as a backend service at
@@ -140,7 +144,7 @@
     </p>
     <div class="hero-actions" style="justify-content: center;">
       <a href="../../contact.html" class="btn btn-primary">Request a briefing</a>
-      <span class="btn btn-ghost btn-disabled" aria-disabled="true">Counsellor UI demo coming soon</span>
+      <span class="btn btn-ghost btn-disabled" aria-disabled="true" data-emploi-ui>Counsellor UI demo coming soon</span>
     </div>
   </div>
 </section>
@@ -193,5 +197,6 @@
 </footer>
 
 <script src="../../js/main.js"></script>
+<script src="../../js/emploi-assist-ui.js"></script>
 </body>
 </html>
