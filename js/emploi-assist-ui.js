@@ -1,6 +1,9 @@
 (function () {
-  // TODO: When VoiceDoc provides the counsellor UI URL, set EMPLOI_ASSIST_UI_URL
-  // here only. Every [data-emploi-ui] control then becomes "Open live demo".
+  // TODO: When VoiceDoc's Emploi counsellor frontend PR merges, set
+  // EMPLOI_ASSIST_UI_URL here only. Every [data-emploi-ui] control then
+  // becomes "Open live demo".
+  // Intended UI (still a DNP shell — do not enable yet):
+  //   https://voicedoc-emploi.vercel.app
   // Do NOT use https://voicedoc-emploi-api.fly.dev — that host is API-only.
   var EMPLOI_ASSIST_UI_URL = "";
 
