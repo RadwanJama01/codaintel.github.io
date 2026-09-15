@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Emploi Assist: Phoenix Rising Group — Counsellor voice intake for jobseeker profiles</title>
-<meta name="description" content="Emploi Assist: a counsellor-led voice interview that becomes a structured, reviewable jobseeker profile. Same documentation pipe as VoiceDoc, with an employment schema. Not a public kiosk." />
+<title>Emploi Assist: Phoenix Rising Group — Counsellor interview to a reviewable jobseeker file</title>
+<meta name="description" content="From counsellor interview to a complete, reviewable jobseeker file — and a draft path to formal worker declaration. Built for employment counsellors. Sits alongside national employment portals." />
 <link rel="canonical" href="https://www.phoenixrisinggroups.com/products/emploi-assist/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Phoenix Rising Group" />
 <meta property="og:title" content="Emploi Assist: Phoenix Rising Group" />
-<meta property="og:description" content="Counsellor-led voice intake for jobseeker profiles. Transcript, structured fields, human review, then CSV or JSON export." />
+<meta property="og:description" content="From counsellor interview to a complete, reviewable jobseeker file — and a draft path to formal worker declaration." />
 <meta property="og:url" content="https://www.phoenixrisinggroups.com/products/emploi-assist/" />
 <meta property="og:image" content="https://www.phoenixrisinggroups.com/assets/horn-map.svg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Emploi Assist: Phoenix Rising Group" />
-<meta name="twitter:description" content="Counsellor-led voice intake for jobseeker profiles. Transcript, structured fields, human review, then CSV or JSON export." />
+<meta name="twitter:description" content="From counsellor interview to a complete, reviewable jobseeker file — and a draft path to formal worker declaration." />
 <meta name="twitter:image" content="https://www.phoenixrisinggroups.com/assets/horn-map.svg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -49,12 +49,21 @@
 
 <div class="page-header">
   <div class="wrap spine">
-    <div class="section-label">Employment intake &middot; Counsellor tools</div>
+    <div class="section-label">Last-mile employment &middot; Built for counsellors</div>
     <h1>Emploi Assist</h1>
-    <p>A counsellor-led voice interview that becomes a structured, reviewable jobseeker profile. Same documentation pipe as VoiceDoc &mdash; transcript, fixed fields, human sign-off &mdash; with an employment schema instead of a field report. Not a public kiosk, and not a self-serve portal.</p>
+    <p>From counsellor interview to a complete, reviewable jobseeker file &mdash; and a draft path to formal worker declaration.</p>
+    <p>
+      Incomplete dossiers, French-first forms, and portals that do not talk to each other stall the last mile of public employment services. Emploi Assist is built for employment counsellors. It sits alongside national employment portals. It does not replace them.
+    </p>
+    <!--
+      Counsellor UI swap-in: set EMPLOI_ASSIST_UI_URL in js/emploi-assist-ui.js.
+      Do not enable https://voicedoc-emploi.vercel.app until the VoiceDoc counsellor
+      frontend PR merges (still a DNP shell). Do not point [data-emploi-ui] at
+      https://voicedoc-emploi-api.fly.dev (API-only).
+    -->
     <p class="rule-actions">
       <a class="btn btn-primary" href="../../contact.html">Request a briefing</a>
-      <span class="btn btn-ghost btn-disabled" aria-disabled="true">Counsellor UI demo coming soon</span>
+      <span class="btn btn-ghost btn-disabled" aria-disabled="true" data-emploi-ui>Counsellor UI demo coming soon</span>
     </p>
     <p class="eval-note">
       Counsellor voice intake is live as a backend service at
@@ -66,26 +75,34 @@
 
 <section>
   <div class="wrap">
-    <div class="section-label">Overview</div>
-    <h2>Interview, draft, review, export.</h2>
+    <div class="section-label">The last mile</div>
+    <h2>The file is incomplete. Placement still stalls.</h2>
     <p class="section-lede">
-      A counsellor records the conversation. An AI pipeline transcribes it and fills structured jobseeker
-      fields. The counsellor reviews and edits every field. Nothing is auto-filed. After sign-off, the
-      profile exports as CSV or JSON for downstream systems. The model drafts; the person in the room decides.
+      Informal work, youth out of education and work, and skills mismatch put pressure on public
+      employment services. Registration is not placement. The bottleneck is often last-mile:
+      a counsellor cannot get a complete, reviewable file from the conversation in the room.
     </p>
 
-    <div class="cards-3">
-      <div class="card">
-        <h3>Counsellor-led, not a kiosk</h3>
-        <p>Built for a staffed intake conversation. The counsellor conducts the interview, owns the recording, and remains responsible for the record. This is not unattended public self-service.</p>
+    <div class="rule-list">
+      <div>
+        <h3>Incomplete dossiers</h3>
+        <p>CVs, diplomas, languages, and licenses never land in one place. Matching starts from a partial file.</p>
       </div>
-      <div class="card">
-        <h3>Same pipe, employment schema</h3>
-        <p>VoiceDoc&rsquo;s documentation loop &mdash; voice, transcript, structured draft, human review &mdash; applied to jobseeker fields rather than a field report. The schema changes; the review step does not.</p>
+      <div>
+        <h3>Registration is not placement</h3>
+        <p>A person can be on a list and still wait. Without a complete, structured profile, matching stalls.</p>
       </div>
-      <div class="card">
-        <h3>Export after review</h3>
-        <p>Structured CSV and JSON exist only after a person has reviewed the draft. The export is a signed-off profile, not a raw model dump.</p>
+      <div>
+        <h3>French-first forms freeze people out</h3>
+        <p>The conversation in the room is often Somali, Afar, or Arabic. The form is French. What was said does not become the file.</p>
+      </div>
+      <div>
+        <h3>Formalization is a second paper chase</h3>
+        <p>After a match, CNSS &ldquo;declare the worker&rdquo; paperwork starts over &mdash; another incomplete dossier, on a different desk.</p>
+      </div>
+      <div>
+        <h3>Fragmented tools</h3>
+        <p>Counsellors juggle portals that do not talk to each other. The interview, the file, and the declaration live in different systems.</p>
       </div>
     </div>
   </div>
@@ -93,65 +110,96 @@
 
 <section class="alt">
   <div class="wrap">
-    <div class="section-label">Workflow</div>
-    <h2>Five steps. A person stays in the loop.</h2>
+    <div class="section-label">What it does</div>
+    <h2>One interview. A reviewable file. A draft path to declaration.</h2>
     <p class="section-lede">
-      The counsellor stays with the jobseeker from the first question through export.
-      The system drafts fields. It does not submit them.
+      Emploi Assist helps employment counsellors turn a spoken interview into a structured
+      jobseeker profile and a CNSS-ready &ldquo;declare the worker&rdquo; draft &mdash; review, edit, export.
+      Last mile of public employment services. Same documentation pipe as VoiceDoc, with a labour schema.
     </p>
 
-    <div class="wins-grid">
-      <div class="win-card">
-        <h4>01 &middot; Voice interview</h4>
-        <p>The counsellor conducts and records the conversation in the language spoken in the room.</p>
+    <div class="cards-3">
+      <div class="card">
+        <h3>Built for employment counsellors</h3>
+        <p>A staffed intake conversation, not a public kiosk and not a self-serve jobseeker portal. The counsellor conducts the interview and remains responsible for the record.</p>
       </div>
-      <div class="win-card">
-        <h4>02 &middot; Transcript</h4>
-        <p>The recording is transcribed. The audio is kept so a reviewer can hear what the draft claims.</p>
+      <div class="card">
+        <h3>Alongside portals, not instead of them</h3>
+        <p>It sits next to national employment portals. It does not replace them, and it is not an official national platform.</p>
       </div>
-      <div class="win-card">
-        <h4>03 &middot; Structured fields</h4>
-        <p>The transcript is mapped onto a jobseeker schema &mdash; skills, experience, languages, availability, and related intake fields.</p>
+      <div class="card">
+        <h3>Same pipe, labour schema</h3>
+        <p>VoiceDoc&rsquo;s loop &mdash; voice, transcript, structured draft, human review &mdash; applied to a jobseeker file and a formal-declaration draft. The schema changes; the review step does not.</p>
       </div>
-      <div class="win-card">
-        <h4>04 &middot; Human review</h4>
-        <p>Every field is editable. A profile is not complete until a counsellor has reviewed and signed off.</p>
-      </div>
-      <div class="win-card">
-        <h4>05 &middot; Structured export</h4>
-        <p>After review, the profile exports as CSV or JSON for case systems and downstream matching tools.</p>
-      </div>
-    </div>
-
-    <div class="notice">
-      <strong>Honest stage.</strong> The counsellor intake API is live. A public counsellor UI is not.
-      This page describes the workflow. It does not claim a government endorsement, a ministry
-      partnership, or a deployed public service.
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap" style="text-align: center;">
-    <h2>Request a briefing.</h2>
-    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
-      If you want a walkthrough of the intake loop, the jobseeker schema, or how this sits next to VoiceDoc,
-      write to Radwan.
+  <div class="wrap">
+    <div class="section-label">Workflow</div>
+    <h2>Voice to a signed-off file.</h2>
+    <p class="section-lede">
+      The counsellor stays with the jobseeker from the first question through export.
+      The system drafts fields. It does not submit them, place anyone, or declare a worker.
     </p>
-    <div class="hero-actions" style="justify-content: center;">
-      <a href="../../contact.html" class="btn btn-primary">Request a briefing</a>
-      <span class="btn btn-ghost btn-disabled" aria-disabled="true">Counsellor UI demo coming soon</span>
+
+    <div class="card process-card">
+      <ol class="process-list" aria-label="Emploi Assist workflow">
+        <li>
+          <span class="rule-kicker">01 &middot; Voice interview</span>
+          <p>The counsellor conducts and records the conversation in the language spoken in the room.</p>
+        </li>
+        <li>
+          <span class="rule-kicker">02 &middot; Transcript</span>
+          <p>The recording is transcribed. The audio is kept so a reviewer can hear what the draft claims.</p>
+        </li>
+        <li>
+          <span class="rule-kicker">03 &middot; Structured file</span>
+          <p>The transcript is mapped onto a jobseeker profile &mdash; skills, experience, languages, credentials, availability.</p>
+        </li>
+        <li>
+          <span class="rule-kicker">04 &middot; Human review</span>
+          <p>Every field is editable. Nothing is complete until a counsellor has reviewed and signed off.</p>
+        </li>
+        <li>
+          <span class="rule-kicker">05 &middot; Export and draft path</span>
+          <p>After review: a structured export, plus a CNSS-ready &ldquo;declare the worker&rdquo; draft. Not an auto-filed declaration.</p>
+        </li>
+      </ol>
+      <p class="process-caption">A product capability for counsellor intake &mdash; not a claim of ministry adoption, placement outcomes, or a public jobs portal.</p>
+    </div>
+
+    <div class="notice">
+      <strong>Honest stage.</strong> The counsellor intake API is live. A public counsellor UI is not.
+      This page describes last-mile labour pain and a workflow. It does not claim a partnership,
+      endorsement, or deployment with any ministry or national employment body. It does not
+      promise jobs, end unemployment, or treat citizen audio as training data.
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap" style="text-align: center;">
+    <h2>Request a briefing.</h2>
+    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+      If you want a walkthrough of the intake loop, the jobseeker file, or the declaration draft,
+      write to Radwan.
+    </p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a href="../../contact.html" class="btn btn-primary">Request a briefing</a>
+      <span class="btn btn-ghost btn-disabled" aria-disabled="true" data-emploi-ui>Counsellor UI demo coming soon</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="text-align: center;">
     <div class="section-label">Related</div>
     <h2>The same loop as VoiceDoc.</h2>
     <p class="section-lede" style="margin-left: auto; margin-right: auto;">
       VoiceDoc is the field-documentation product on this pipe. Emploi Assist uses the same
-      draft-and-review pattern with a different schema.
+      draft-and-review pattern with a labour schema.
     </p>
     <a href="../voicedoc-dnp/index.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">View VoiceDoc</a>
   </div>
@@ -193,5 +241,6 @@
 </footer>
 
 <script src="../../js/main.js"></script>
+<script src="../../js/emploi-assist-ui.js"></script>
 </body>
 </html>
