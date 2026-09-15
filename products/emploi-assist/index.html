@@ -55,20 +55,14 @@
     <p>
       Incomplete dossiers, French-first forms, and portals that do not talk to each other stall the last mile of public employment services. Emploi Assist is built for employment counsellors. It sits alongside national employment portals. It does not replace them.
     </p>
-    <!--
-      Counsellor UI swap-in: set EMPLOI_ASSIST_UI_URL in js/emploi-assist-ui.js.
-      Do not enable https://voicedoc-emploi.vercel.app until the VoiceDoc counsellor
-      frontend PR merges (still a DNP shell). Do not point [data-emploi-ui] at
-      https://voicedoc-emploi-api.fly.dev (API-only).
-    -->
     <p class="rule-actions">
-      <a class="btn btn-primary" href="../../contact.html">Request a briefing</a>
-      <span class="btn btn-ghost btn-disabled" aria-disabled="true" data-emploi-ui>Counsellor UI demo coming soon</span>
+      <a class="btn btn-primary" href="https://voicedoc-emploi.vercel.app" target="_blank" rel="noopener">Open live demo</a>
+      <a class="btn btn-ghost" href="../../contact.html">Request a briefing</a>
     </p>
     <p class="eval-note">
-      Counsellor voice intake is live as a backend service at
+      The live demo is the counsellor interface.
       <a href="https://voicedoc-emploi-api.fly.dev" target="_blank" rel="noopener">voicedoc-emploi-api.fly.dev</a>
-      &mdash; an API for the documentation pipe, not a public counsellor interface. There is no login here.
+      remains API-only &mdash; the documentation pipe, not a login.
     </p>
   </div>
 </div>
@@ -171,7 +165,7 @@
     </div>
 
     <div class="notice">
-      <strong>Honest stage.</strong> The counsellor intake API is live. A public counsellor UI is not.
+      <strong>Honest stage.</strong> The counsellor UI is live as a demo.
       This page describes last-mile labour pain and a workflow. It does not claim a partnership,
       endorsement, or deployment with any ministry or national employment body. It does not
       promise jobs, end unemployment, or treat citizen audio as training data.
@@ -187,8 +181,8 @@
       write to Radwan.
     </p>
     <div class="hero-actions" style="justify-content: center;">
-      <a href="../../contact.html" class="btn btn-primary">Request a briefing</a>
-      <span class="btn btn-ghost btn-disabled" aria-disabled="true" data-emploi-ui>Counsellor UI demo coming soon</span>
+      <a href="https://voicedoc-emploi.vercel.app" class="btn btn-primary" target="_blank" rel="noopener">Open live demo</a>
+      <a href="../../contact.html" class="btn btn-ghost">Request a briefing</a>
     </div>
   </div>
 </section>
@@ -241,6 +235,5 @@
 </footer>
 
 <script src="../../js/main.js"></script>
-<script src="../../js/emploi-assist-ui.js"></script>
 </body>
 </html>
