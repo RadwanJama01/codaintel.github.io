@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emploi Assist: Phoenix Rising Group — Counsellor voice intake for jobseeker profiles</title>
+<meta name="description" content="Emploi Assist: a counsellor-led voice interview that becomes a structured, reviewable jobseeker profile. Same documentation pipe as VoiceDoc, with an employment schema. Not a public kiosk." />
+<link rel="canonical" href="https://www.phoenixrisinggroups.com/products/emploi-assist/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Phoenix Rising Group" />
+<meta property="og:title" content="Emploi Assist: Phoenix Rising Group" />
+<meta property="og:description" content="Counsellor-led voice intake for jobseeker profiles. Transcript, structured fields, human review, then CSV or JSON export." />
+<meta property="og:url" content="https://www.phoenixrisinggroups.com/products/emploi-assist/" />
+<meta property="og:image" content="https://www.phoenixrisinggroups.com/assets/horn-map.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Emploi Assist: Phoenix Rising Group" />
+<meta name="twitter:description" content="Counsellor-led voice intake for jobseeker profiles. Transcript, structured fields, human review, then CSV or JSON export." />
+<meta name="twitter:image" content="https://www.phoenixrisinggroups.com/assets/horn-map.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@1,400,500,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">PR</span>
+      Phoenix Rising Group
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="site-nav">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../capabilities.html">Capabilities</a></li>
+      <li><a href="../../blog/index.html">Blog</a></li>
+      <li><a href="../index.html" class="active">Products</a></li>
+      <li><a href="../../results.html">SASR Eval</a></li>
+      <li><a href="../../contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap spine">
+    <div class="section-label">Employment intake &middot; Counsellor tools</div>
+    <h1>Emploi Assist</h1>
+    <p>A counsellor-led voice interview that becomes a structured, reviewable jobseeker profile. Same documentation pipe as VoiceDoc &mdash; transcript, fixed fields, human sign-off &mdash; with an employment schema instead of a field report. Not a public kiosk, and not a self-serve portal.</p>
+    <p class="rule-actions">
+      <a class="btn btn-primary" href="../../contact.html">Request a briefing</a>
+      <span class="btn btn-ghost btn-disabled" aria-disabled="true">Counsellor UI demo coming soon</span>
+    </p>
+    <p class="eval-note">
+      Counsellor voice intake is live as a backend service at
+      <a href="https://voicedoc-emploi-api.fly.dev" target="_blank" rel="noopener">voicedoc-emploi-api.fly.dev</a>
+      &mdash; an API for the documentation pipe, not a public counsellor interface. There is no login here.
+    </p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Overview</div>
+    <h2>Interview, draft, review, export.</h2>
+    <p class="section-lede">
+      A counsellor records the conversation. An AI pipeline transcribes it and fills structured jobseeker
+      fields. The counsellor reviews and edits every field. Nothing is auto-filed. After sign-off, the
+      profile exports as CSV or JSON for downstream systems. The model drafts; the person in the room decides.
+    </p>
+
+    <div class="cards-3">
+      <div class="card">
+        <h3>Counsellor-led, not a kiosk</h3>
+        <p>Built for a staffed intake conversation. The counsellor conducts the interview, owns the recording, and remains responsible for the record. This is not unattended public self-service.</p>
+      </div>
+      <div class="card">
+        <h3>Same pipe, employment schema</h3>
+        <p>VoiceDoc&rsquo;s documentation loop &mdash; voice, transcript, structured draft, human review &mdash; applied to jobseeker fields rather than a field report. The schema changes; the review step does not.</p>
+      </div>
+      <div class="card">
+        <h3>Export after review</h3>
+        <p>Structured CSV and JSON exist only after a person has reviewed the draft. The export is a signed-off profile, not a raw model dump.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">Workflow</div>
+    <h2>Five steps. A person stays in the loop.</h2>
+    <p class="section-lede">
+      The counsellor stays with the jobseeker from the first question through export.
+      The system drafts fields. It does not submit them.
+    </p>
+
+    <div class="wins-grid">
+      <div class="win-card">
+        <h4>01 &middot; Voice interview</h4>
+        <p>The counsellor conducts and records the conversation in the language spoken in the room.</p>
+      </div>
+      <div class="win-card">
+        <h4>02 &middot; Transcript</h4>
+        <p>The recording is transcribed. The audio is kept so a reviewer can hear what the draft claims.</p>
+      </div>
+      <div class="win-card">
+        <h4>03 &middot; Structured fields</h4>
+        <p>The transcript is mapped onto a jobseeker schema &mdash; skills, experience, languages, availability, and related intake fields.</p>
+      </div>
+      <div class="win-card">
+        <h4>04 &middot; Human review</h4>
+        <p>Every field is editable. A profile is not complete until a counsellor has reviewed and signed off.</p>
+      </div>
+      <div class="win-card">
+        <h4>05 &middot; Structured export</h4>
+        <p>After review, the profile exports as CSV or JSON for case systems and downstream matching tools.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Honest stage.</strong> The counsellor intake API is live. A public counsellor UI is not.
+      This page describes the workflow. It does not claim a government endorsement, a ministry
+      partnership, or a deployed public service.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="text-align: center;">
+    <h2>Request a briefing.</h2>
+    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+      If you want a walkthrough of the intake loop, the jobseeker schema, or how this sits next to VoiceDoc,
+      write to Radwan.
+    </p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a href="../../contact.html" class="btn btn-primary">Request a briefing</a>
+      <span class="btn btn-ghost btn-disabled" aria-disabled="true">Counsellor UI demo coming soon</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap" style="text-align: center;">
+    <div class="section-label">Related</div>
+    <h2>The same loop as VoiceDoc.</h2>
+    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+      VoiceDoc is the field-documentation product on this pipe. Emploi Assist uses the same
+      draft-and-review pattern with a different schema.
+    </p>
+    <a href="../voicedoc-dnp/index.html" class="btn btn-ghost" style="color: var(--navy); border-color: var(--gray-300);">View VoiceDoc</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="../../index.html">
+        <span class="brand-mark">PR</span>
+        Phoenix Rising Group
+      </a>
+      <p>Speech technology for the Horn of Africa, starting with high-accuracy Somali ASR.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../capabilities.html">Capabilities</a></li>
+        <li><a href="../../blog/index.html">Blog</a></li>
+        <li><a href="../index.html">Products</a></li>
+        <li><a href="../../results.html">SASR Eval</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="../../docs/SASR_Eval.pdf" target="_blank" rel="noopener">SASR Eval</a></li>
+        <li><a href="mailto:radwanjama099@gmail.com">radwanjama099@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/rjama" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Phoenix Rising Group</span>
+      <span>Research stage</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>
