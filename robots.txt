@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /docs/sales/
 
 Sitemap: https://www.phoenixrisinggroups.com/sitemap.xml

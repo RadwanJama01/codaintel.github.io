@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Slide 5 · Emploi Assist</title>
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@1,400,500,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --canvas: #FAFAF8;
+    --ink: #0A0A0A;
+    --muted: #737373;
+    --line: #E5E5E5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; height: 1080px;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: "Satoshi", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .slide {
+    width: 1920px; height: 1080px;
+    padding: 56px 96px 64px;
+    display: flex;
+    flex-direction: column;
+    background: var(--canvas);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 15px; font-weight: 500;
+  }
+  .mark {
+    width: 28px; height: 28px;
+    border: 1px solid var(--ink);
+    display: grid; place-items: center;
+    font-size: 10px; font-weight: 700;
+  }
+  .num {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .body { flex: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; padding-top: 56px; }
+  .label {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .lede {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--muted);
+    max-width: 34ch;
+    margin-bottom: 40px;
+  }
+  .steps { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .steps li {
+    display: flex; gap: 16px; align-items: baseline;
+    font-size: 18px; line-height: 1.35;
+  }
+  .steps span {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 13px; color: var(--muted); min-width: 2ch;
+  }
+  .panel {
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 36px 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-self: start;
+  }
+  .panel h3 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 28px;
+  }
+  .panel p { font-size: 17px; line-height: 1.45; color: var(--muted); }
+  .cta {
+    margin-top: 8px;
+    display: inline-block;
+    background: var(--ink);
+    color: var(--canvas);
+    padding: 14px 22px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    width: fit-content;
+  }
+  .meta { font-size: 14px; color: var(--muted); }
+  .foot {
+    display: flex; justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    margin-top: 40px;
+    font-size: 13px; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="bar">
+      <div class="brand"><span class="mark">PR</span> Phoenix Rising Group</div>
+      <div class="num">05 · Product</div>
+    </div>
+    <div class="body">
+      <div>
+        <div class="label">Product 1</div>
+        <h1>Emploi Assist</h1>
+        <p class="lede">A counsellor-led voice interview becomes a structured, reviewable jobseeker profile. Same documentation pipe as VoiceDoc. Human review before export.</p>
+        <ul class="steps">
+          <li><span>01</span> Counsellor signs in (staff tool, not a kiosk)</li>
+          <li><span>02</span> Record the interview (or paste transcript)</li>
+          <li><span>03</span> Review structured fields; fill gaps in the room</li>
+          <li><span>04</span> Submit, then export JSON or CSV</li>
+        </ul>
+      </div>
+      <aside class="panel">
+        <h3>Live demo</h3>
+        <p>voicedoc-emploi.vercel.app<br />Demo login: 0001 / changeme</p>
+        <a class="cta" href="#">Open live demo</a>
+        <p class="meta">No ministry endorsement claimed. Built for counsellor workflows.</p>
+      </aside>
+    </div>
+    <div class="foot">
+      <span>Lead product for Yonis / MoL conversations</span>
+      <span>5 / 14</span>
+    </div>
+  </div>
+</body>
+</html>

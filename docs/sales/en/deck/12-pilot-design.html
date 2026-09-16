@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pilot design</title>
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@1,400,500,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+
+  :root {
+    --canvas: #FAFAF8;
+    --ink: #0A0A0A;
+    --muted: #737373;
+    --line: #E5E5E5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; height: 1080px;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: "Satoshi", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .slide {
+    width: 1920px; height: 1080px;
+    padding: 56px 96px 64px;
+    display: flex;
+    flex-direction: column;
+    background: var(--canvas);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 15px; font-weight: 500;
+  }
+  .mark {
+    width: 28px; height: 28px;
+    border: 1px solid var(--ink);
+    display: grid; place-items: center;
+    font-size: 10px; font-weight: 700;
+  }
+  .num {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    padding-top: 56px;
+  }
+  .label {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    max-width: 18ch;
+  }
+  .lede {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--muted);
+    max-width: 36ch;
+    margin-bottom: 36px;
+  }
+  .steps { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+  .steps li {
+    display: flex; gap: 16px; align-items: flex-start;
+    font-size: 22px; line-height: 1.35;
+    max-width: 38ch;
+  }
+  .steps span {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 14px; color: var(--muted); min-width: 2.5ch; padding-top: 4px;
+  }
+  .panel {
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 36px 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-self: start;
+  }
+  .panel h3 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 28px;
+  }
+  .panel p { font-size: 17px; line-height: 1.5; color: var(--muted); white-space: pre-line; }
+  .cta {
+    margin-top: 4px;
+    display: inline-block;
+    background: var(--ink);
+    color: var(--canvas);
+    padding: 14px 22px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    width: fit-content;
+  }
+  .meta { font-size: 14px; color: var(--muted); }
+  .foot {
+    display: flex; justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    margin-top: 40px;
+    font-size: 13px; color: var(--muted);
+  }
+
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="bar">
+      <div class="brand"><span class="mark">PR</span> Phoenix Rising Group</div>
+      <div class="num">12 · Pilot</div>
+    </div>
+    <div class="body">
+      <div>
+        <div class="label">Pilot</div>
+        <h1>Pilot design</h1>
+        <p class="lede">Four-week paid pilot</p>
+        <ul class="steps">
+          <li><span>01</span>Named sponsor. Ten trained users.</li>
+<li><span>02</span>Success metrics set in week one (baselines often TBD).</li>
+<li><span>03</span>MoU template for counsel review. Not legal advice.</li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="foot">
+      <span>No exclusivity unless negotiated. Exit cleanly if it does not work.</span>
+      <span>12 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
