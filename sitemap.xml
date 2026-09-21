@@ -41,6 +41,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.phoenixrisinggroups.com/products/transport/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.phoenixrisinggroups.com/blog/why-commercial-asr-fails-on-somali/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
