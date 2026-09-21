@@ -228,6 +228,10 @@ img, svg { display: block; max-width: 100%; }
   margin: 0 0 36px;
 }
 
+.hero-sub + .hero-sub {
+  margin-top: -16px;
+}
+
 .lang-row { display: none; }
 
 .hero-actions {
@@ -520,7 +524,7 @@ section h2 {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-items: stretch;
 }
@@ -542,6 +546,43 @@ section h2 {
 
 .products-grid .rule-actions {
   margin-top: auto;
+}
+
+.products-secondary {
+  margin-top: 16px;
+}
+
+.products-secondary .card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 28px 24px;
+}
+
+.products-secondary .card h3 {
+  font-size: 20px;
+}
+
+.products-secondary .card > p:not(.rule-actions) {
+  max-width: 640px;
+}
+
+.research-footnote {
+  margin: 28px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 700px;
+}
+
+.research-footnote a {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+}
+
+.research-footnote a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
 }
 
 .card {
@@ -600,6 +641,10 @@ section h2 {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.process-list.process-list-pipe {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .process-list li {
@@ -1608,7 +1653,8 @@ form.contact button[type="submit"]:disabled {
   .cards-3,
   .card-grid,
   .products-grid,
-  .process-list { grid-template-columns: 1fr; }
+  .process-list,
+  .process-list.process-list-pipe { grid-template-columns: 1fr; }
   .card-grid .featured,
   .partners-grid .featured { grid-column: auto; }
   .post-list.cols-2 { grid-template-columns: 1fr; }
