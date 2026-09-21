@@ -585,10 +585,6 @@ section h2 {
   text-decoration-color: var(--ink);
 }
 
-.process-list-pipe {
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-}
-
 .card {
   background: var(--canvas);
   border: 1px solid var(--line);
@@ -645,6 +641,10 @@ section h2 {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.process-list.process-list-pipe {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .process-list li {
@@ -1653,7 +1653,8 @@ form.contact button[type="submit"]:disabled {
   .cards-3,
   .card-grid,
   .products-grid,
-  .process-list { grid-template-columns: 1fr; }
+  .process-list,
+  .process-list.process-list-pipe { grid-template-columns: 1fr; }
   .card-grid .featured,
   .partners-grid .featured { grid-column: auto; }
   .post-list.cols-2 { grid-template-columns: 1fr; }
