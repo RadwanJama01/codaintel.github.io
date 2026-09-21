@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Phoenix Rising Group — Speech and documentation AI for the Horn of Africa</title>
-<meta name="description" content="Phoenix Rising builds speech and documentation AI for the Horn of Africa — Somali, Afar, Arabic, and French — so public institutions can work in the languages people actually speak, with humans in the loop." />
+<meta name="description" content="Phoenix Rising builds the language layer for Djibouti and Horn of Africa public-service last mile: spoken Somali, Afar, Arabic, and French become official-style forms, with a human in the loop." />
 <link rel="canonical" href="https://www.phoenixrisinggroups.com/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Phoenix Rising Group" />
 <meta property="og:title" content="Phoenix Rising Group — Speech and documentation AI for the Horn of Africa" />
-<meta property="og:description" content="Somali, Afar, Arabic, and French. Validated ASR, archive digitization, and applied documentation systems — with a human in the loop." />
+<meta property="og:description" content="Spoken Somali, Afar, Arabic, and French become official-style drafts a person can review. One pipe: audio, transcript, structured form, human sign-off, export." />
 <meta property="og:url" content="https://www.phoenixrisinggroups.com/" />
 <meta property="og:image" content="https://www.phoenixrisinggroups.com/assets/og-share.png" />
 <meta property="og:image:width" content="1200" />
@@ -18,7 +18,7 @@
 <meta property="og:image:type" content="image/png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Phoenix Rising Group — Speech and documentation AI for the Horn of Africa" />
-<meta name="twitter:description" content="Somali, Afar, Arabic, and French. Validated ASR and documentation systems, with a human in the loop." />
+<meta name="twitter:description" content="Spoken Somali, Afar, Arabic, and French become official-style drafts a person can review — with a human in the loop." />
 <meta name="twitter:image" content="https://www.phoenixrisinggroups.com/assets/og-share.png" />
 
 <script type="application/ld+json">
@@ -27,7 +27,7 @@
   "@type": "ResearchOrganization",
   "name": "Phoenix Rising Group",
   "url": "https://www.phoenixrisinggroups.com/",
-  "description": "Phoenix Rising builds speech and documentation AI for the Horn of Africa — Somali, Afar, Arabic, and French — so public institutions can work in the languages people actually speak, with humans in the loop.",
+  "description": "Phoenix Rising builds the language layer for Djibouti and Horn of Africa public-service last mile: spoken Somali, Afar, Arabic, and French become official-style forms, with a human in the loop.",
   "email": "radwanjama099@gmail.com",
   "areaServed": ["Horn of Africa", "Djibouti", "California"],
   "knowsAbout": ["Somali speech recognition", "Afar language technology", "Automatic speech recognition", "Institutional documentation", "Horn of Africa languages"],
@@ -76,100 +76,75 @@
 <main id="main">
 <section class="hero">
   <div class="wrap spine">
-    <h1>Speech and documentation AI for the Horn of Africa.</h1>
+    <h1>From spoken language to official-style forms.</h1>
     <p class="hero-fr" lang="fr">Langues nationales. Services publics. Humains dans la boucle.</p>
     <p class="hero-sub">
-      Phoenix Rising builds systems so public institutions can work in Somali, Afar,
-      Arabic, and French &mdash; the languages people actually speak &mdash; with
-      humans in the loop.
+      Phoenix Rising is the language layer for Djibouti and Horn of Africa public-service
+      last mile. Spoken Somali, Afar, Arabic, and French become a structured draft an
+      officer or counsellor can review &mdash; not another jobs portal, and not a
+      camera-corridor product.
+    </p>
+    <p class="hero-sub">
+      The national conversation on AI keeps returning to sovereignty, national languages,
+      and public services. We build the missing speech-to-intake desk tool.
     </p>
     <div class="hero-actions">
-      <a href="results.html" class="btn btn-primary">Read SASR Eval</a>
-      <a href="#products" class="btn btn-ghost">See products</a>
+      <a href="https://dnp-voiceai.vercel.app" class="btn btn-primary" target="_blank" rel="noopener">Open VoiceDoc demo</a>
+      <a href="https://voicedoc-emploi.vercel.app" class="btn btn-ghost" target="_blank" rel="noopener">Open Emploi Assist demo</a>
     </div>
-  </div>
-</section>
-
-<section class="eval-section">
-  <div class="wrap spine">
-    <div class="section-label">Honest evaluation</div>
-    <h2>Validated on public data. Methods in the open.</h2>
-    <p class="section-lede">
-      SASR Eval is a ground-truth evaluation of commercial and fine-tuned ASR systems on Somali speech.
-      The current result is public-data validation: 50 stitched clips, ~550 seconds total, scored against
-      verified references. Broadcast-domain validation on regional archives is in progress.
-    </p>
-  </div>
-
-  <div class="wrap">
-    <div class="card eval-card">
-      <div class="eval-figure">
-        <div class="eval-number ours">0.368</div>
-        <p class="eval-caption">Mean WER &middot; Fine-tuned Whisper small (ours)</p>
-      </div>
-      <p class="compare-line">
-        <span><b>37.8%</b> relative WER reduction vs. ElevenLabs Scribe v1 (0.592)</span>
-        <span><b>57.8%</b> vs. Whisper large-v3 (0.871)</span>
-        <span><b>50</b> clips &middot; ~550 seconds</span>
-      </p>
-    </div>
-  </div>
-
-  <div class="wrap spine">
-    <p class="eval-note">
-      Model: fine-tuned Whisper-small (244M parameters), trained in ~1 hour on a single T4 GPU (500 steps).
-      Evaluation set: public Somali speech data (skydheere/soomali-asr-dataset test split).
-      <a href="results.html">Full SASR Eval methodology and per-clip results &rarr;</a>
-    </p>
   </div>
 </section>
 
 <section>
   <div class="wrap spine">
-    <div class="section-label">What we build</div>
-    <h2>Speech systems for archives and institutions.</h2>
+    <div class="section-label">The pipe</div>
+    <h2>Audio to a signed record. One loop, many desks.</h2>
     <p class="section-lede">
-      The layer the region has been missing between raw speech and a file someone can review,
-      correct, and keep. Policy into <span lang="fr">actions concrètes</span> &mdash; not a black box offshore.
+      A statement in the language spoken. A transcript. A structured draft. A person
+      who edits every field. Then export and an audit trail. The schema changes by
+      desk; the review step does not.
     </p>
-
   </div>
 
   <div class="wrap">
     <div class="card process-card">
-      <ol class="process-list" aria-label="Documentation workflow">
+      <ol class="process-list process-list-pipe" aria-label="Documentation workflow">
         <li>
-          <span class="rule-kicker">01 &middot; Voice</span>
+          <span class="rule-kicker">01 &middot; Audio</span>
           <p>A statement, in the language spoken.</p>
         </li>
         <li>
-          <span class="rule-kicker">02 &middot; Structured draft</span>
+          <span class="rule-kicker">02 &middot; Transcript</span>
+          <p>Speech becomes text the reviewer can hear against.</p>
+        </li>
+        <li>
+          <span class="rule-kicker">03 &middot; Structured draft</span>
           <p>AI fills fixed fields. Nothing is filed.</p>
         </li>
         <li>
-          <span class="rule-kicker">03 &middot; Human review</span>
+          <span class="rule-kicker">04 &middot; Human review</span>
           <p>A person edits every field.</p>
         </li>
         <li>
-          <span class="rule-kicker">04 &middot; Signed record</span>
-          <p>Submit, then a durable PDF.</p>
+          <span class="rule-kicker">05 &middot; Export &amp; audit</span>
+          <p>A durable record. Every step is reconstructable.</p>
         </li>
       </ol>
-      <p class="process-caption">A product capability for field documentation &mdash; not a claim of adoption.</p>
+      <p class="process-caption">One pipe, tenanted per public-service desk &mdash; not a claim of ministry adoption.</p>
     </div>
 
     <div class="card-grid">
       <article class="card featured">
-        <h3>Filing speed and an audit trail</h3>
-        <p>Voice to a structured record, then review, then a signed PDF. Faster filing without silent automation &mdash; every step is reconstructable.</p>
+        <h3>Voice intake, not a portal</h3>
+        <p>The missing layer is speech to a reviewable form. We do not replace national employment sites, and we do not sell a camera corridor.</p>
       </article>
       <article class="card">
         <h3>National languages, first-class</h3>
         <p>Somali, Afar, Arabic, and French are the working languages &mdash; not an afterthought bolted onto an English-only pipeline.</p>
       </article>
       <article class="card">
-        <h3>Honest evaluation</h3>
-        <p>SASR Eval publishes method, clips, and scores. No &ldquo;best ASR in Africa.&rdquo; No magic number without a published eval.</p>
+        <h3>Officer and counsellor trust</h3>
+        <p>The model drafts. The person at the desk decides. A police incident file and a jobseeker dossier use the same review step.</p>
       </article>
       <article class="card">
         <h3>Skills and local capacity</h3>
@@ -186,43 +161,49 @@
 <section id="products">
   <div class="wrap spine">
     <div class="section-label">Products</div>
-    <h2>Three tools. A person remains in the loop.</h2>
+    <h2>Two live desks. A person remains in the loop.</h2>
     <p class="section-lede">
-      Voice documentation for field agencies, counsellor-led employment intake, and
-      annotation for the languages we evaluate. AI drafts; a human decides.
+      VoiceDoc for police incident and PV-style files. Emploi Assist for counsellor-led
+      employment intake. AI drafts; a human decides.
     </p>
   </div>
 
   <div class="wrap">
     <div class="products-grid">
       <article class="card">
-        <span class="rule-kicker">Voice documentation &middot; Field agencies</span>
+        <span class="rule-kicker">Voice documentation &middot; Police / field desks</span>
         <h3>VoiceDoc</h3>
-        <p>Record a statement, review an AI-structured draft, submit. The person in the field decides.</p>
+        <p>Officer trust model for incident and PV-style docs: record a statement, review an AI-structured draft, submit. The person at the desk decides.</p>
         <p class="rule-actions">
           <a class="btn btn-primary" href="https://dnp-voiceai.vercel.app" target="_blank" rel="noopener">Open live demo</a>
-          <a class="btn btn-ghost" href="products/voicedoc-dnp/index.html">Case study (partners)</a>
-        </p>
-      </article>
-      <article class="card">
-        <span class="rule-kicker">Annotation &middot; Somali &amp; Afar</span>
-        <h3>Horn Transcribe</h3>
-        <p>AI drafts a broadcast transcript. A transcriber corrects it.</p>
-        <p class="rule-actions">
-          <a class="btn btn-primary" href="https://horn-transcribe.vercel.app" target="_blank" rel="noopener">Open live demo</a>
-          <a class="btn btn-ghost" href="products/horn-transcribe/index.html">About</a>
+          <a class="btn btn-ghost" href="products/voicedoc-dnp/index.html">About</a>
         </p>
       </article>
       <article class="card">
         <span class="rule-kicker">Last-mile employment &middot; Counsellors</span>
         <h3>Emploi Assist</h3>
-        <p>From counsellor interview to a complete, reviewable jobseeker file &mdash; and a draft path to formal worker declaration.</p>
+        <p>Voice layer on Djibouti Emploi-shaped counsellor intake, with a CNSS &ldquo;declare the worker&rdquo; draft. Sits beside national portals. Does not replace them.</p>
         <p class="rule-actions">
           <a class="btn btn-primary" href="https://voicedoc-emploi.vercel.app" target="_blank" rel="noopener">Open live demo</a>
           <a class="btn btn-ghost" href="products/emploi-assist/index.html">About</a>
         </p>
       </article>
     </div>
+    <div class="products-secondary">
+      <article class="card">
+        <span class="rule-kicker">Annotation &middot; Somali &amp; Afar</span>
+        <h3>Horn Transcribe</h3>
+        <p>A secondary workspace: AI drafts a broadcast transcript, a transcriber corrects it. Same human-in-the-loop habit, built for archives rather than intake desks.</p>
+        <p class="rule-actions">
+          <a class="btn btn-ghost" href="https://horn-transcribe.vercel.app" target="_blank" rel="noopener">Open live demo</a>
+          <a class="btn btn-ghost" href="products/horn-transcribe/index.html">About</a>
+        </p>
+      </article>
+    </div>
+    <p class="research-footnote">
+      SASR Eval is a research yardstick for long-game Somali ASR &mdash; not a live product.
+      <a href="results.html">Methods and scores &rarr;</a>
+    </p>
     <p class="eval-note">
       <a href="products/index.html">View all products &rarr;</a>
     </p>
@@ -244,9 +225,9 @@
         </p>
         <p>The project combines:</p>
         <ul class="about-list">
-          <li>Fine-tuned speech recognition, validated in public as SASR Eval</li>
-          <li>Human-in-the-loop tools for annotation and institutional documentation</li>
-          <li>Applied systems designed for public-service records, not unattended transcription</li>
+          <li>Voice-intake tools for public-service desks &mdash; VoiceDoc and Emploi Assist</li>
+          <li>A human-in-the-loop pipe: audio, transcript, structured draft, review, export</li>
+          <li>SASR Eval, a public research yardstick for long-game Somali ASR</li>
         </ul>
         <p>
           Radwan studied Computer Science at Colgate University and has previously worked
@@ -280,25 +261,29 @@
 <section>
   <div class="wrap spine">
     <div class="section-label">Current stage</div>
-    <h2>Public-data validation complete. Broadcast validation in progress.</h2>
+    <h2>Live desks first. Research on the long game.</h2>
 
     <div class="timeline">
       <div class="timeline-item current">
-        <div class="date">June 22, 2026 &middot; Complete</div>
-        <h4>SASR Eval: public-data validation</h4>
-        <p>50 clips, ~550 seconds, from the skydheere/soomali-asr-dataset test split. Fine-tuned Whisper-small (244M parameters) achieves mean WER 0.368.</p>
+        <div class="date">Live</div>
+        <h4>VoiceDoc and Emploi Assist</h4>
+        <p>Public demos of the intake pipe &mdash; police incident / PV-style files, and counsellor-led employment intake with a declare-the-worker draft.</p>
+      </div>
+      <div class="timeline-item current">
+        <div class="date">Live &middot; Secondary</div>
+        <h4>Horn Transcribe</h4>
+        <p>Annotation workspace for Somali and Afar broadcast clips. AI drafts; a transcriber corrects.</p>
       </div>
       <div class="timeline-item future">
-        <div class="date">August 2026 &middot; In progress</div>
-        <h4>SASR Eval: broadcast-domain validation</h4>
-        <p>Validation on in-domain broadcast recordings from regional archives. Tests generalization from public data to the media the platform is built to process.</p>
+        <div class="date">Research yardstick</div>
+        <h4>SASR Eval</h4>
+        <p>A published Somali ASR evaluation on public data. The ASR lab track is frozen; scores stay up as a long-game yardstick, not a product push.</p>
       </div>
     </div>
 
     <p class="notice">
-      <strong>Honest stage.</strong> Proof-of-concept is validated on public Somali speech data.
-      Broadcast-domain results are not yet published. Archive specifications are available to
-      qualified partners under NDA.
+      <strong>Honest stage.</strong> The live demos are the product. SASR Eval is research,
+      not a featured offering. This site does not claim ministry adoption or endorsement.
     </p>
   </div>
 </section>
@@ -336,7 +321,7 @@
     <div class="section-label">Contact</div>
     <h2>Reach Radwan directly.</h2>
     <p class="section-lede">
-      For SASR Eval briefings, partnership discussions, or a restricted product walkthrough.
+      For partnership inquiries or questions about the live desks.
       <span lang="fr">Écrire à Radwan.</span>
     </p>
     <p class="contact-line">
