@@ -25,7 +25,7 @@
       const org = (form.org && form.org.value) || '';
       const role = (form.role && form.role.value) || '';
       const interest = (form.interest && form.interest.value) || '';
-      const subject = encodeURIComponent('Phoenix Rising Group — inquiry from ' + name);
+      const subject = encodeURIComponent('Phoenix Rising Group: inquiry from ' + name);
       const body = encodeURIComponent(
         'Name: ' + name +
         '\nEmail: ' + email +
