@@ -1334,7 +1334,7 @@ form.contact button[type="submit"]:disabled {
 
 .site-footer .wrap {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 40px;
 }
 
