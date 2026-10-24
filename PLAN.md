@@ -1,0 +1,157 @@
+# PLAN — Store-required privacy & support pages + footer seller attribution
+
+Branch: `site/legal-privacy-support` (base `main` @ 9c6b1a1)
+Workflow: ECC loop — PLAN → failing test → implement → passing proof + screenshots → REVIEW → commit/push/PR.
+
+## 1. Goal
+
+Apple App Store and Google Play both require a reachable **privacy policy URL** and a
+**support URL** for every listing. Production currently 404s on both. Meta Business
+verification additionally needs the visible seller name to match the registered legal
+entity exactly.
+
+Therefore:
+
+1. Ship `privacy.html` and `support.html` at the site root, so the store URLs are
+   `https://www.phoenixrisinggroups.com/privacy.html` and `.../support.html`.
+2. Make the footer seller attribution read exactly **`Phoenix Rising Group LLC`** on every
+   public page — both the `footer-brand` link text and the `&copy;` line.
+3. Make the two new pages reachable from every page without crowding the top nav.
+
+### Explicit brand-scope rule
+
+`Phoenix Rising Group LLC` is a **seller/legal attribution**, not the display brand. It
+goes **only** in:
+
+- the `footer-brand` anchor text, and
+- the `&copy; 2026 …` line in `footer-bottom`.
+
+The header brand, hero copy, `<h1>`s, `<title>`s, meta descriptions and Open Graph tags
+keep reading `Phoenix Rising Group` (no `LLC`). The new pages' own `<title>`/meta carry
+`LLC` because they are legal documents and the drafts already say so.
+
+## 2. Files to add / change
+
+### Added
+
+| Path | Purpose |
+| --- | --- |
+| `privacy.html` | Privacy policy, adapted from `/workspace/store-assets/legal/privacy.html` |
+| `support.html` | Support page, adapted from `/workspace/store-assets/legal/support.html` |
+| `scripts/test_legal_pages.sh` | Executable contract test for every requirement below |
+| `PLAN.md`, `TEST_PROOF.md`, `REVIEW.md` | ECC evidence |
+| `docs/legal-screenshots/privacy-phone.png`, `support-phone.png` | 390×844 renders |
+
+### Changed
+
+| Path | Change |
+| --- | --- |
+| `index.html`, `contact.html`, `capabilities.html`, `results.html` | footer seller name → `LLC`; add Legal column |
+| `blog/index.html`, `products/index.html` | same, `../` link prefix |
+| `blog/*/index.html` (5 posts), `products/*/index.html` (4 desks) | same, `../../` link prefix |
+| `sitemap.xml` | add the two new URLs |
+| `css/styles.css` | `.site-footer .wrap` grid `1.5fr 1fr 1fr` → `1.5fr 1fr 1fr 1fr` for the 4th column |
+
+15 existing public pages carry `site-footer`; with `privacy.html` and `support.html` added
+the test runs section (e), (f) and (h) over **17** pages, since the new pages ship the same
+footer chrome and should be held to the same contract. `google10b527549df2d462.html` and
+`googlee43e9ac03ab14222.html` are Search Console verification stubs with no chrome and are
+excluded everywhere.
+
+### Content adaptation from the drafts
+
+Keep the drafts' legal body verbatim in substance (all 12 privacy sections, all support
+sections), and keep their `.legal` inline `<style>` block. Replace the drafts' chrome:
+
+- Font/`<link>` tags reordered to match `contact.html` byte-for-byte.
+- Header: brand `Phoenix Rising Group`, `menu-toggle` SVG copied from `contact.html`
+  (24×24, `stroke-width="2"`, `M3 6h18M3 12h18M3 18h18`) — the drafts shipped a 22×22
+  1.5-weight variant that would not match.
+- `site-nav`: the six `contact.html` items (Home, Capabilities, Blog, Products, SASR Eval,
+  Contact). The drafts' `Privacy` + `Support` nav entries are **removed**.
+- Footer: full four-column footer (`footer-brand` + Pages + Resources + Legal) +
+  `footer-bottom`, not the drafts' reduced two-column footer.
+- Privacy's absolute `https://…/support.html` link becomes relative `support.html` so it
+  resolves in local preview as well as production.
+
+## 3. Footer Legal column (preferred over top nav)
+
+Top nav already holds six items and collapses to a hamburger at ≤760px; adding Privacy and
+Support would make seven and crowd it. The brief also says to prefer a footer column. So a
+new third-level column is inserted **immediately before `<div class="footer-bottom">`** on
+every page:
+
+```html
+<div>
+  <h4>Legal</h4>
+  <ul>
+    <li><a href="PREFIXprivacy.html">Privacy</a></li>
+    <li><a href="PREFIXsupport.html">Support</a></li>
+  </ul>
+</div>
+```
+
+`.site-footer .wrap` goes to four columns above 900px; the existing `max-width: 900px`
+rule already collapses the footer to a single column, so no new breakpoint is needed.
+
+## 4. Relative-path rules
+
+The site is served as plain static files, so every link is depth-relative. The two legal
+pages live at the root, so `PREFIX` is `../` repeated once per directory level:
+
+| Page tier | Example | `PREFIX` | Legal links |
+| --- | --- | --- | --- |
+| Root | `index.html`, `contact.html`, `capabilities.html`, `results.html`, `privacy.html`, `support.html` | *(empty)* | `privacy.html`, `support.html` |
+| One level | `blog/index.html`, `products/index.html` | `../` | `../privacy.html`, `../support.html` |
+| Two levels | `blog/<post>/index.html`, `products/<desk>/index.html` | `../../` | `../../privacy.html`, `../../support.html` |
+
+The test derives `PREFIX` from each file's own directory depth and then checks the link
+target **resolves to a real file on disk**, so a wrong number of `../` fails rather than
+merely looking plausible.
+
+## 5. Test plan — `scripts/test_legal_pages.sh`
+
+One executable bash script, no dependencies beyond coreutils/grep/awk/iconv. It prints one
+`ok`/`FAIL` line per assertion and exits non-zero if any failed. 204 assertions:
+
+- **(a)** `privacy.html` and `support.html` exist at the repo root.
+- **(b)** Both contain `Phoenix Rising Group LLC`, `mailto:radwanjama099@gmail.com`, and
+  link to each other (`href="support.html"` / `href="privacy.html"`).
+- **(c)** Both load `css/styles.css` and `js/main.js`; both carry `site-header`,
+  `menu-toggle`, `site-nav`; the nav contains Home, Capabilities, Blog, Products, Contact
+  (plus SASR Eval, for parity with `contact.html`); the nav does **not** link Privacy or
+  Support; the `menu-toggle` SVG and the font `<link>` sequence match `contact.html`.
+- **(d)** `sitemap.xml` contains both `https://www.phoenixrisinggroups.com/privacy.html`
+  and `.../support.html`.
+- **(e)** For every HTML page with a `site-footer` (excluding `google*.html`): the
+  `footer-brand` anchor text and the `&copy;` line both read `Phoenix Rising Group LLC`,
+  and **no** line inside the footer says `Phoenix Rising` without the full `Group LLC`
+  suffix — so a leftover bare `Phoenix Rising` or `Phoenix Rising Group` fails.
+- **(f)** Every such page has a `<h4>Legal</h4>` column whose Privacy and Support links use
+  the depth-correct prefix and resolve to existing files.
+- **(g)** The new pages contain no accuracy percentage (`\d+%` or the word "accuracy"), no
+  `pilot`, and no government/ministry endorsement claim.
+- **(h)** On the 15 pre-existing pages, every occurrence of `LLC` lies **inside** the footer
+  and there are exactly two of them (brand link + copyright) — so a future edit that leaks
+  the entity name into a `<title>`, `<h1>`, meta or `og:*` tag fails the suite. The two legal
+  pages are exempt: they legitimately carry `LLC` in their own title and meta.
+- Plus: both new pages are valid UTF-8 and declare `charset="UTF-8"`.
+
+The script is run **before** implementing and must fail (recorded in `TEST_PROOF.md`), then
+again after, and must pass.
+
+## 6. Visual proof
+
+Serve the repo with `python3 -m http.server` and capture headless Chrome screenshots at
+390×844 (phone viewport) of both pages into `docs/legal-screenshots/`, referenced from
+`TEST_PROOF.md`.
+
+## 7. Out of scope
+
+- Renaming the hero/product/header brand, `<title>`s, meta or Open Graph copy. Only footer
+  seller attribution and copyright change.
+- Any product-page or capability copy edits.
+- `google*.html` Search Console stubs.
+- Adding `products/voicedoc-dnp/` to `sitemap.xml` (pre-existing gap, unrelated).
+- Deploying or merging. **The PR is for CTO review only — do not merge, do not deploy.**
+- Moving support email off `radwanjama099@gmail.com` (no domain mailbox exists yet).
