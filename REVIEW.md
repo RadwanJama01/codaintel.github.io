@@ -206,8 +206,10 @@ the suite is green at 204/204. **No corruption occurred.**
 
 Co-CEO authorized a soft-fix of `privacy.html` §4, §6, §7 to resolve F5 above (the
 operational commitments this repo cannot independently verify), against ground truth from
-phoenix-engine's `deploy.md` and `engine.env.example`. **Verdict: approved, no merge.** No
-CRITICAL/HIGH findings; one wording issue found and fixed during self-review.
+phoenix-engine's `deploy.md` and `engine.env.example`. **Verdict: approved, no merge
+(author's self-review).** No CRITICAL/HIGH findings; one wording issue found and fixed
+during self-review. This is not Gate 4; Gate 4 privacy independent review is recorded in
+the Independent review table under the CI section below.
 
 | Severity | Found | Fixed |
 | --- | --- | --- |
@@ -440,8 +442,25 @@ Checked against the GitHub Actions items in the project security rules:
 - **Supply-chain / egress:** the job installs nothing and makes no network calls beyond the
   checkout itself.
 
-**Verdict: approve.** No CRITICAL or HIGH findings. Both MEDIUM findings were fixed in this
-branch before commit; the remaining LOW/INFO items are documented accepted trade-offs.
+**Verdict: approve (author's self-review).** No CRITICAL or HIGH findings. Both MEDIUM
+findings were fixed in this branch before commit; the remaining LOW/INFO items are
+documented accepted trade-offs.
+
+This verdict is the **author's own self-review** of the CI workflow PR (#16). It does
+**not** clear Gate 4 (independent review). An independent review must be recorded
+separately below and must come from someone other than the author of the change.
+
+## Independent review (Gate 4) — recorded separately
+
+| Subject | Reviewer | Where | Result |
+| --- | --- | --- | --- |
+| Live `privacy.html` soft-fix (Gate 4 catch-up) | CTO (independent of Design & Site authorship) | [PR #17 COMMENT](https://github.com/RadwanJama01/codaintel.github.io/pull/17#pullrequestreview-5642322698) and earlier soft-fix COMMENT | COMMENT, no blockers — ZDR-as-gate, 7-day backups, 30-day = account SLA only |
+| CI workflow (`.github/workflows/ci.yml`) in #16 | CodeRabbit bot only before merge | [PR #16 CodeRabbit review](https://github.com/RadwanJama01/codaintel.github.io/pull/16#pullrequestreview-5642307939) | 2 actionable doc findings (this follow-up). **No human independent review of the CI workflow was recorded before #16 merged** — Gate 4 gap called by Co-CEO. |
+| Docs-only follow-up that labels the self-review and corrects TEST_PROOF line refs (this PR) | Pending — request CTO independent COMMENT on this PR's tip before merge | this PR | not yet reviewed |
+
+Do not treat the author's self-review above, or CodeRabbit alone, as Gate 4 clearance for
+the CI workflow. Human independent review of this docs follow-up (and acknowledgment of
+the #16 Gate 4 gap) is still required before merge.
 
 ## Verification after fixes
 
@@ -459,3 +478,40 @@ PASS: 211/211 checks passed
 
 Full red/green evidence, including the mutation test proving the job turns red on a
 regression, is in `TEST_PROOF.md`.
+
+---
+
+# REVIEW — Docs follow-up (#16 CodeRabbit findings)
+
+Change under review: docs-only edits to `REVIEW.md` / `TEST_PROOF.md` / `PLAN.md` on
+branch `docs/coderabbit-16-followup` off `main` @ 638822e.
+
+## Scope check
+
+- `.github/workflows/ci.yml`: **untouched**
+- `scripts/test_legal_pages.sh`: **untouched**
+- `privacy.html` / `support.html`: **untouched**
+- Diff is evidence docs only
+
+## Code review (author's self-review of this follow-up)
+
+| # | Severity | Finding | Resolution |
+|---|----------|---------|------------|
+| 1 | MEDIUM (doc) | CI section `Verdict: approve` looked like Gate 4 clearance | **Fixed** — labelled `(author's self-review)`; added Independent review table |
+| 2 | LOW (doc) | TEST_PROOF claimed `ci.yml` line 38 for the `run:` step | **Fixed** — prose + transcript now say line **44** |
+| 3 | INFO | Soft-fix verdict nearby also read as an independent approve | **Fixed** — labelled `(author's self-review)` and pointed at Gate 4 table |
+
+**Verdict: approve for PR (author's self-review of this docs follow-up).** No CRITICAL or
+HIGH findings. This self-review does **not** clear Gate 4 — @CTO please leave an
+independent COMMENT on this PR's tip before merge.
+
+## Security review
+
+Docs-only; no workflow, secret, permission, or deploy surface changed. N/A beyond confirming
+`git diff` excludes `.github/workflows` and `scripts/`.
+
+## Independent review (Gate 4) — requested
+
+Pending CTO COMMENT on this PR. Prior related independent review already on record:
+
+- Privacy soft-fix Gate 4: [PR #17 CTO COMMENT](https://github.com/RadwanJama01/codaintel.github.io/pull/17#pullrequestreview-5642322698) — no blockers.
