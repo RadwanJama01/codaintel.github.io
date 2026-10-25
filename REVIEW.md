@@ -255,3 +255,102 @@ semantically identical, with no overlap with the forbidden phrase. Re-verified: 
   pre-existing support email and the unchanged entity name.
 - **Static-only.** Plain prose edits inside existing `<p>` tags; no new markup, scripts, or
   dependencies.
+
+---
+
+# REVIEW — CI workflow for the legal-pages contract test
+
+Change under review: new file `.github/workflows/ci.yml` (44 lines), branch
+`ci/legal-pages-workflow` off `main` @ 90a2f7b. Nothing else is modified except `PLAN.md`
+and appended sections in `TEST_PROOF.md` / this file.
+
+Appended rather than rewritten so the Design & Site follow-up merges without conflict.
+
+## Scope check
+
+```console
+$ git diff --stat main...HEAD
+ .github/workflows/ci.yml |  44 +++++
+ PLAN.md                  | ...
+ REVIEW.md                | ...
+ TEST_PROOF.md            | ...
+```
+
+- `privacy.html` / `support.html` wording: **untouched** (zero diff).
+- `.github/workflows/static.yml`: **untouched** (zero diff) — Pages deploy unchanged.
+- `scripts/test_legal_pages.sh`: **untouched** — the two open CodeRabbit findings (footer
+  silent-skip; TEST_PROOF red steps) are left to the Design & Site follow-up, and neither
+  was required to make CI run.
+
+## Code review
+
+| # | Severity | Finding | Resolution |
+|---|----------|---------|------------|
+| 1 | MEDIUM | `actions/checkout` persisted a credential in `.git/config` by default, giving later steps ambient git write access the job never needs. | **Fixed** — `persist-credentials: false`. |
+| 2 | MEDIUM | No `timeout-minutes`, so a hung job could hold a runner for the 6-hour default. The job is grep over a few HTML files. | **Fixed** — `timeout-minutes: 5`. |
+| 3 | LOW | `actions/checkout@v4` is a mutable major tag, not a pinned commit SHA. | **Accepted, not changed.** `static.yml` pins the same way; diverging in one workflow buys little and costs consistency. A repo-wide move to SHA pinning belongs in its own change. |
+| 4 | LOW | `cancel-in-progress: true` also cancels superseded `push`-to-`main` runs. | **Accepted.** The job is test-only — cancelling it cannot interrupt a deploy, and the newest commit on `main` is the one whose result matters. |
+| 5 | INFO | `pull_request` has no `branches:` filter, so the check runs on PRs targeting any branch. | **Intended** — the contract should hold on every PR, not just those into `main`. |
+
+Positive observations:
+
+- Least privilege: `permissions: contents: read` at workflow level, so the job's
+  `GITHUB_TOKEN` cannot write to the repo, packages, or Pages.
+- No deploy surface: no `pages:` or `id-token:` permission, no `environment:`, no
+  `actions/deploy-pages` or `upload-pages-artifact` step. Deploying stays solely in
+  `static.yml`.
+- No `continue-on-error` and no `if:` guard on the test step, so a failure cannot be
+  silently skipped — it fails the job and the check.
+- Single responsibility and no premature generality: one job, two steps, no matrix, no
+  caching, no dependency install. The script is self-contained bash + grep and `cd`s to the
+  repo root itself, so a runtime setup step would be dead weight.
+- Concurrency group is keyed on both workflow and ref, so unrelated branches do not cancel
+  each other.
+- Readability: 44 lines, under every file/function size limit; comments explain *why*
+  (store requirements, least privilege, no runtime needed) rather than restating the YAML.
+
+## Security review
+
+Checked against the GitHub Actions items in the project security rules:
+
+- **Hardcoded secrets / credentials:** none. `grep -nE "secrets\.|GITHUB_TOKEN|id-token"`
+  over `ci.yml` exits 1 — the workflow references no secret and no token, so there is
+  nothing for a fork PR to exfiltrate.
+- **Token write permissions:** none. `contents: read` only; every other permission scope is
+  dropped to `none` by GitHub once the block is declared.
+- **Untrusted-input / script injection:** none. No `${{ ... }}` interpolation appears inside
+  any `run:` block (`grep -nE '^\s+run:.*\$\{\{'` exits 1), so no PR title, branch name or
+  body can be expanded into the shell. The one `run:` line is a static string.
+- **Trigger choice:** `pull_request`, not `pull_request_target`. Fork PR code therefore
+  executes in the unprivileged context — read-only token, no access to repository secrets.
+  This is the correct trigger for a workflow that runs code from the PR's own checkout.
+- **Running a script from the checkout:** a fork PR could modify
+  `scripts/test_legal_pages.sh` and have the runner execute it. That is inherent to any
+  CI that tests PR code, and here the blast radius is bounded to an ephemeral runner with
+  a read-only token and no secrets. Accepted risk; no mitigation needed at this trust
+  level. (If secrets are ever added to this workflow, that calculus changes and the job
+  would need to move behind an approval gate.)
+- **Third-party actions:** one, `actions/checkout`, first-party GitHub and the same version
+  `static.yml` already trusts. No third-party actions introduced.
+- **Supply-chain / egress:** the job installs nothing and makes no network calls beyond the
+  checkout itself.
+
+**Verdict: approve.** No CRITICAL or HIGH findings. Both MEDIUM findings were fixed in this
+branch before commit; the remaining LOW/INFO items are documented accepted trade-offs.
+
+## Verification after fixes
+
+```console
+$ python3 -c "yaml.safe_load(...)"
+triggers:    ['pull_request', 'push', 'workflow_dispatch'] | push: {'branches': ['main']}
+permissions: {'contents': 'read'}
+timeout:     5
+  step: actions/checkout@v4 | with: {'persist-credentials': False}
+  step: bash scripts/test_legal_pages.sh | with: None
+
+$ bash scripts/test_legal_pages.sh | tail -1
+PASS: 211/211 checks passed
+```
+
+Full red/green evidence, including the mutation test proving the job turns red on a
+regression, is in `TEST_PROOF.md`.
