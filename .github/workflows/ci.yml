@@ -1,0 +1,44 @@
+# Contract tests for the public site.
+#
+# Runs scripts/test_legal_pages.sh, which asserts the store-required privacy and support
+# pages stay reachable and that the footer seller attribution matches the registered
+# entity. Apple App Store, Google Play and Meta Business verification all depend on those
+# facts, so they are checked on every change rather than only before a store submission.
+#
+# This workflow only tests. Deploying the site to GitHub Pages stays in static.yml.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Least privilege: the job reads the checkout and publishes nothing.
+permissions:
+  contents: read
+
+# Superseded pushes to the same branch cancel their in-progress run; the latest commit is
+# the only one whose result matters.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  legal-pages:
+    name: Legal pages contract test
+    runs-on: ubuntu-latest
+    # The whole job is grep over a handful of HTML files; anything slower than this is
+    # stuck, and a stuck job should not hold a runner for the 6-hour default.
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Nothing here talks to git, so do not leave a credential in .git/config.
+          persist-credentials: false
+
+      # The script is self-contained bash + grep and cd's to the repo root itself, so no
+      # runtime setup or dependency install is needed.
+      - name: Run legal-pages contract test
+        run: bash scripts/test_legal_pages.sh

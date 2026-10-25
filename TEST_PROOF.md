@@ -881,3 +881,180 @@ missing-footer RED (Fix 1's own proof) instead uses a plain scratch copy (`cp -r
 of the current branch tip with one page's footer removed, since that fix is about behavior
 on the *current* tree, not about reproducing a historical base state. Both methods are
 documented inline above so the base/script pairing used for each run is unambiguous.
+
+---
+
+# TEST_PROOF — CI workflow for the legal-pages contract test
+
+Change: add `.github/workflows/ci.yml` running `scripts/test_legal_pages.sh`.
+Branch: `ci/legal-pages-workflow` (base `main` @ 90a2f7b).
+
+Appended rather than rewritten so the Design & Site follow-up on `TEST_PROOF.md`
+(CodeRabbit: red steps) merges without conflict.
+
+What is under test here is the **CI wiring**, not the legal pages. The contract script
+already passes on `main`; what was missing is anything that runs it. So the red step proves
+the absence of that automation, and the green steps prove a workflow now invokes it, that
+the script still passes, and that a regression would actually turn the job red.
+
+## RED — before the change: no workflow runs the contract test
+
+Run in a clean worktree at base `main` @ 90a2f7b with `.github/` untouched.
+
+```console
+$ ls -1 .github/workflows/
+static.yml
+
+$ grep -rn "test_legal_pages" .github/ ; echo "exit=$?"
+exit=1
+
+$ grep -rln "scripts/" .github/workflows/ ; echo "exit=$?"
+exit=1
+
+$ grep -n "uses:\|run:" .github/workflows/static.yml
+33:        uses: actions/checkout@v4
+35:        uses: actions/configure-pages@v5
+37:        uses: actions/upload-pages-artifact@v3
+43:        uses: actions/deploy-pages@v5
+```
+
+Reading those four results:
+
+1. The only workflow in the repo is `static.yml`, the GitHub Pages deploy.
+2. `grep` exits **1** (no lines selected) for `test_legal_pages` anywhere under
+   `.github/` — nothing references the contract test.
+3. `grep` exits **1** for `scripts/` across all workflow files — no workflow runs *any*
+   repo script, so the gap is not hidden behind an indirect invocation.
+4. `static.yml` has no `run:` step at all: its four steps are checkout, configure-pages,
+   upload-pages-artifact, deploy-pages. It deploys; it never tests.
+
+**Red conclusion:** a change breaking the store-required privacy/support pages or the
+footer seller attribution would deploy to Pages with no check objecting. That is the
+defect this PR fixes.
+
+## GREEN — after adding `.github/workflows/ci.yml`
+
+### 1. A workflow now invokes the contract test
+
+The grep that exited 1 above now matches — line 3 is the header comment, line 38 the step
+that runs it:
+
+```console
+$ grep -rn "test_legal_pages" .github/workflows/ci.yml
+3:# Runs scripts/test_legal_pages.sh, which asserts the store-required privacy and support
+38:        run: bash scripts/test_legal_pages.sh
+```
+
+### 2. `ci.yml` is valid YAML with the intended shape
+
+```console
+$ python3 -c "import yaml; d = yaml.safe_load(open('.github/workflows/ci.yml')); ..."
+name:         CI
+triggers:     ['pull_request', 'push', 'workflow_dispatch']
+push:         {'branches': ['main']}
+permissions:  {'contents': 'read'}
+concurrency:  {'group': '${{ github.workflow }}-${{ github.ref }}', 'cancel-in-progress': True}
+job:          legal-pages | runs-on: ubuntu-latest
+  step:       actions/checkout@v4
+  step:       bash scripts/test_legal_pages.sh
+```
+
+All three required triggers are present, the only permission is `contents: read`, and the
+job is two steps: checkout, then the script. (`actionlint` is not installed in this
+environment, so validation is the YAML parse plus the shape assertions above.)
+
+### 3. No secrets, no write permissions, no skip switch
+
+```console
+$ grep -nE "secrets\.|GITHUB_TOKEN|id-token|^[[:space:]]+pages:|continue-on-error" \
+    .github/workflows/ci.yml ; echo "exit=$?"
+exit=1
+```
+
+grep exits 1: `ci.yml` references no secret and no token, grants neither Pages-deploy
+permission, and has no `continue-on-error` that could mask a failure.
+
+### 4. `static.yml` is untouched
+
+```console
+$ git diff --stat main...HEAD -- .github/workflows/static.yml ; echo "exit=$?"
+exit=0
+```
+
+Empty diff — the Pages deploy workflow is unchanged by this branch.
+
+### 5. The contract test still passes locally (211/211)
+
+```console
+$ bash scripts/test_legal_pages.sh ; echo "exit=$?"
+...
+ok   privacy.html states the modest claim: customers see their own organization's data
+ok   privacy.html does not promise deletion certificates as an unconditional guarantee
+
+PASS: 211/211 checks passed
+exit=0
+```
+
+### 6. The job would actually go red on a regression
+
+A passing job proves nothing unless failure propagates. Mutating the footer seller
+attribution in `privacy.html` (`Phoenix Rising Group LLC` → `Phoenix Rising Group`) and
+re-running:
+
+```console
+$ sed -i 's/Phoenix Rising Group LLC/Phoenix Rising Group/g' privacy.html
+$ bash scripts/test_legal_pages.sh ; echo "exit=$?"
+FAIL: 4 of 211 checks failed
+exit=1
+
+$ git checkout privacy.html   # mutation reverted
+$ bash scripts/test_legal_pages.sh | tail -1
+PASS: 211/211 checks passed
+```
+
+Non-zero exit from the `run:` step fails the step, and with no `continue-on-error` that
+fails the job and the check. The mutation was reverted; `privacy.html` is byte-identical to
+`main` on this branch.
+
+## What runs on GitHub after push
+
+Pushing this branch and opening the PR triggers `ci.yml` through its `pull_request` event:
+the `legal-pages` job checks the repo out and runs `bash scripts/test_legal_pages.sh`. The
+run appears in the PR's checks tab and under the workflow name **CI** in the Actions tab.
+After merge the same workflow runs on every `push` to `main`, and can be started by hand
+from the Actions tab via `workflow_dispatch`.
+
+Making this check *required* for merge is deliberately left to the repo owner in GitHub
+branch-protection settings; this PR does not configure it.
+
+### Confirmed green on GitHub Actions
+
+Run [40177348062](https://github.com/RadwanJama01/codaintel.github.io/actions/runs/40177348062),
+triggered by the `pull_request` event on PR #16 (head `d2358f1`):
+
+```console
+$ gh run view 40177348062 --json conclusion,event,jobs
+conclusion: success
+event:      pull_request
+job "Legal pages contract test": success
+  Set up job                      success
+  Checkout                        success
+  Run legal-pages contract test   success
+  Post Checkout                   success
+  Complete job                    success
+
+$ gh run view 40177348062 --log | grep -E "PASS:|FAIL:"
+Run legal-pages contract test  PASS: 211/211 checks passed
+```
+
+Same 211/211 as locally, in 5 seconds, with no deployment step. One advisory warning from
+the runner, not a failure:
+
+```
+##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are
+being forced to run on Node.js 24: actions/checkout@v4.
+```
+
+`actions/checkout@v5` is the version that targets Node 24. This branch deliberately stays
+on `@v4` to match `static.yml`; bumping both workflows together is the right follow-up, and
+until then GitHub runs `@v4` on Node 24 anyway.
