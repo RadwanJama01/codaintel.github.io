@@ -199,3 +199,59 @@ the suite is green at 204/204. **No corruption occurred.**
   change, left for a separate PR rather than smuggled in here.
 - The support email staying `radwanjama099@gmail.com` until a domain mailbox exists.
 - Deploying or merging. **This PR is for CTO review only.**
+
+---
+
+## Follow-up — soft-fix privacy copy overclaims (PR #15, no merge)
+
+Co-CEO authorized a soft-fix of `privacy.html` §4, §6, §7 to resolve F5 above (the
+operational commitments this repo cannot independently verify), against ground truth from
+phoenix-engine's `deploy.md` and `engine.env.example`. **Verdict: approved, no merge.** No
+CRITICAL/HIGH findings; one wording issue found and fixed during self-review.
+
+| Severity | Found | Fixed |
+| --- | --- | --- |
+| CRITICAL | 0 | — |
+| HIGH | 0 | — |
+| MEDIUM | 1 | 1 |
+| LOW | 0 | — |
+
+### F6 — MEDIUM — §4's denial sentence contained the literal phrase it was meant to deny
+
+While tightening §4 to deny a present-tense signed-ZDR claim, the first wording ("not a
+statement that every provider agreement is **already signed**") embedded the exact phrase
+a human skimming the page could misread as the claim itself, inside a negation easy to miss.
+Caught by the new contract assertion in `scripts/test_legal_pages.sh` (which uses the same
+naive substring match a skimming reader effectively does), not by eye.
+
+**Fixed.** Reworded to "not a claim that it is in place for every provider today" —
+semantically identical, with no overlap with the forbidden phrase. Re-verified: 211/211.
+
+### Explicitly checked, no findings
+
+- **§6 retention.** Deletion-certificate language is now scoped ("confirms the active copy
+  was removed") and paired with the backup caveat (default 7-day window, matching
+  `ENGINE_BACKUP_KEEP_DAYS=7` in ground truth); the 30-day figure is now explicitly scoped to
+  account processing, not backups or all data — matches ground-truth rule 1 and rule 2.
+- **§4 AI/DPA.** Reads as a gate ("before any real customer file is sent, we require…") with
+  an explicit denial that it's already in place for every provider — matches ground-truth
+  rule 3. The customs/government-portal denial sentence is untouched.
+- **§7 security.** "Customer data is separated by organization" (an isolation claim this repo
+  can't verify) is replaced with "customers see their own organization's dossiers and
+  reports, not other customers' data" plus "review actions… are logged" — matches
+  ground-truth rule 4, no certificate/full-isolation marketing added.
+- **`support.html`.** "We process within 30 days" read against the same ground truth; it's
+  already an account-processing SLA and doesn't claim backups or all data are gone in 30
+  days. Left unchanged — editing it for no reason would be its own risk.
+- **Forbidden claims (section g).** No percentage, "accuracy", "pilot", ministry, or
+  government-endorsement language introduced by the new wording. Re-verified by the full
+  suite run (section (g) still 10/10 green).
+- **Scope discipline.** Diff touches only the `<p>` bodies of §4/§6/§7 and the "Last updated"
+  date in `privacy.html`, plus the new section (i) in the test script and these three
+  evidence files. Footer, nav, chrome, seller name, support email, and `support.html` markup
+  are untouched — confirmed by re-running the full 211-assertion suite, not just the new
+  section.
+- **Secrets/PII.** No secrets, keys, or new PII introduced; the only identifiers are the
+  pre-existing support email and the unchanged entity name.
+- **Static-only.** Plain prose edits inside existing `<p>` tags; no new markup, scripts, or
+  dependencies.

@@ -155,3 +155,40 @@ Serve the repo with `python3 -m http.server` and capture headless Chrome screens
 - Adding `products/voicedoc-dnp/` to `sitemap.xml` (pre-existing gap, unrelated).
 - Deploying or merging. **The PR is for CTO review only — do not merge, do not deploy.**
 - Moving support email off `radwanjama099@gmail.com` (no domain mailbox exists yet).
+
+---
+
+## Follow-up — soft-fix privacy copy overclaims (PR #15, no merge)
+
+Co-CEO authorized a **soft-fix only** of `privacy.html` before merge, to correct three
+operational commitments the review (F5 above) flagged as unverifiable from this repo.
+Ground truth: copies of `deploy.md` and `engine.env.example` from phoenix-engine, placed at
+`/tmp/privacy-softfix/` for this pass.
+
+1. **Retention/deletion (§6).** `engine retention purge` deletes a dossier and issues a
+   certificate, but the purged dossier still exists in backups taken before the purge until
+   those backups expire — default `ENGINE_BACKUP_KEEP_DAYS=7`. The old copy promised a
+   deletion certificate with no backup caveat. Fix: state that a certificate confirms the
+   active copy only, and that backup purge follows the backup-retention window (7 days by
+   default). Keep the 30-day figure, but scope it explicitly to account-processing, not to
+   backups or all data.
+2. **AI / ZDR (§4).** `ENGINE_READER_DPA_CONFIRMED` gates whether real customer files reach
+   the reader; that confirmation is not yet in place for every provider. The old copy already
+   used "we require…" framing but did not clearly deny that the requirement is already met
+   everywhere. Fix: keep the gate framing, add an explicit denial that it is a claim the
+   agreement is already in place for every provider today. Demo/synthetic-data wording and the
+   customs/government denial sentence are unchanged.
+3. **Security (§7).** "Customer data is separated by organization" implies a tenant-isolation
+   guarantee this repo cannot verify. Fix: restate as the modest, verifiable claim — named
+   accounts, customers see only their own organization's data, review actions are logged.
+4. **`support.html`.** Checked the "We process within 30 days" account-deletion line against
+   the same ground truth — it already reads as an account-processing SLA and does not imply
+   backups or all data are purged in 30 days. No change needed.
+
+Out of scope for this pass: everything else in section 7 above, plus merging and deploying —
+deploy remains with the CTO after merge, and this pass does not merge PR #15.
+
+Test plan: extend `scripts/test_legal_pages.sh` with a new section (i) — assertions that the
+backup-retention window is stated, that the ZDR/DPA requirement reads as a gate (not a
+present-tense signed fact), and that the organization-isolation claim stays modest. Written
+red against the pre-fix copy, then green after the edit (see `TEST_PROOF.md`).

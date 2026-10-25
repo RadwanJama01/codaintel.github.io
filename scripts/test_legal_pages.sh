@@ -294,6 +294,39 @@ for page in "${NEW_PAGES[@]}"; do
 done
 
 # ---------------------------------------------------------------------------
+section '(i) soft-fix: retention, AI/DPA, and security claims stay accurate'
+
+grep -qiF 'backups' privacy.html
+assert_ok 'privacy.html retention section mentions backups' $?
+
+grep -qiF '7 days' privacy.html
+assert_ok 'privacy.html states the backup retention window (7 days)' $?
+
+if grep -qiE 'we have (a )?signed|already signed|is signed' privacy.html; then
+  fail 'privacy.html does not claim a signed zero-retention/DPA agreement as current fact'
+else
+  pass 'privacy.html does not claim a signed zero-retention/DPA agreement as current fact'
+fi
+
+grep -qiF 'before any real customer file' privacy.html
+assert_ok 'privacy.html frames the ZDR/DPA requirement as a gate before real customer files' $?
+
+if grep -qiF 'separated by organization' privacy.html; then
+  fail 'privacy.html does not claim blanket organization-separated isolation'
+else
+  pass 'privacy.html does not claim blanket organization-separated isolation'
+fi
+
+grep -qiF 'own organization' privacy.html
+assert_ok "privacy.html states the modest claim: customers see their own organization's data" $?
+
+if grep -qiE 'guarantee(d)?[[:space:]]+(a[[:space:]]+)?deletion certificate|always issue a deletion certificate' privacy.html; then
+  fail 'privacy.html does not promise deletion certificates as an unconditional guarantee'
+else
+  pass 'privacy.html does not promise deletion certificates as an unconditional guarantee'
+fi
+
+# ---------------------------------------------------------------------------
 printf '\n'
 if [ "$failures" -eq 0 ]; then
   printf 'PASS: %d/%d checks passed\n' "$checks" "$checks"

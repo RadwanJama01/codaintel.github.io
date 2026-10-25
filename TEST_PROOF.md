@@ -613,3 +613,68 @@ Run alongside the contract test; all clean. Commands and detail in [`REVIEW.md`]
 | Inline `<script>`, `javascript:` URL, or `on*=` handler on the new pages | none |
 | `sitemap.xml` well-formed XML (`xml.dom.minidom.parse`) | pass |
 | Credential-shaped strings in changed/new files | none |
+
+---
+
+## Follow-up — soft-fix privacy copy overclaims (PR #15, no merge)
+
+Three new assertion groups added to section (i) of `scripts/test_legal_pages.sh`, written
+against the pre-fix copy of `privacy.html` first (RED), then re-run after the edit (GREEN).
+Suite grew from 204 to 211 assertions.
+
+### RED — assertions written before the copy was fixed
+
+```console
+$ ./scripts/test_legal_pages.sh
+...
+== (i) soft-fix: retention, AI/DPA, and security claims stay accurate ==
+FAIL privacy.html retention section mentions backups
+FAIL privacy.html states the backup retention window (7 days)
+ok   privacy.html does not claim a signed zero-retention/DPA agreement as current fact
+FAIL privacy.html frames the ZDR/DPA requirement as a gate before real customer files
+FAIL privacy.html does not claim blanket organization-separated isolation
+ok   privacy.html states the modest claim: customers see their own organization's data
+ok   privacy.html does not promise deletion certificates as an unconditional guarantee
+
+FAIL: 4 of 211 checks failed
+```
+
+**Result: FAIL — 4 of 211 checks failed**, all in the new section; the pre-existing 204
+assertions stayed green. The three passing checks in this section were already true of the
+old copy (no present-tense "signed" claim, no unconditional-guarantee phrasing), confirming
+the new assertions discriminate rather than trivially passing.
+
+### Intermediate catch — the fix itself tripped its own negative-claim guard
+
+The first wording for §4 ("not a statement that every provider agreement is already
+signed") contains the literal substring "already signed" inside a negation, which the
+naive `grep` guard can't distinguish from an actual overclaim:
+
+```console
+FAIL privacy.html does not claim a signed zero-retention/DPA agreement as current fact
+PASS: 210/211 checks passed
+```
+
+Reworded to avoid the ambiguous phrase entirely ("not a claim that it is in place for every
+provider today") rather than special-casing the regex — the copy itself should not read as
+ambiguous to a human either.
+
+### GREEN — full suite after the soft-fix
+
+```console
+$ ./scripts/test_legal_pages.sh
+...
+== (i) soft-fix: retention, AI/DPA, and security claims stay accurate ==
+ok   privacy.html retention section mentions backups
+ok   privacy.html states the backup retention window (7 days)
+ok   privacy.html does not claim a signed zero-retention/DPA agreement as current fact
+ok   privacy.html frames the ZDR/DPA requirement as a gate before real customer files
+ok   privacy.html does not claim blanket organization-separated isolation
+ok   privacy.html states the modest claim: customers see their own organization's data
+ok   privacy.html does not promise deletion certificates as an unconditional guarantee
+
+PASS: 211/211 checks passed
+```
+
+**Result: PASS (exit 0) — 211 of 211 checks passed.** All 204 pre-existing assertions remain
+green; the 7 new assertions confirm the soft-fix wording.
