@@ -58,16 +58,16 @@ font_links_of() {
   grep -E 'fonts\.googleapis\.com|fonts\.gstatic\.com|api\.fontshare\.com' "$1"
 }
 
-# Pages that render the shared site chrome. The google*.html files are Search Console
-# verification stubs with no chrome and are excluded by design.
-collect_footer_pages() {
+# Every public HTML page that is expected to carry the shared site-footer chrome. The
+# google*.html files are Search Console verification stubs with no chrome and are excluded
+# by design. Pages are NOT filtered by whether they already have a footer — a page missing
+# it entirely must still be checked, so the (e) section below can fail on it by name instead
+# of silently dropping it from the set.
+collect_public_pages() {
   find . -name '*.html' -not -path './.git/*' -not -name 'google*.html' -print0 \
     | sort -z \
     | while IFS= read -r -d '' page; do
-        page=${page#./}
-        if grep -q '<footer class="site-footer">' "$page"; then
-          printf '%s\n' "$page"
-        fi
+        printf '%s\n' "${page#./}"
       done
 }
 
@@ -176,20 +176,28 @@ for page in "${NEW_PAGES[@]}"; do
 done
 
 # ---------------------------------------------------------------------------
-footer_pages=()
+public_pages=()
 while IFS= read -r line; do
-  footer_pages+=("$line")
-done < <(collect_footer_pages)
+  public_pages+=("$line")
+done < <(collect_public_pages)
 
-section "(e) footer seller attribution across ${#footer_pages[@]} public pages"
+section "(e) footer presence and seller attribution across ${#public_pages[@]} public pages"
 
-if [ "${#footer_pages[@]}" -eq 0 ]; then
-  fail 'found at least one public page with a site-footer'
+if [ "${#public_pages[@]}" -eq 0 ]; then
+  fail 'found at least one public page to check'
 else
-  pass "found ${#footer_pages[@]} public pages with a site-footer"
+  pass "found ${#public_pages[@]} public pages to check"
 fi
 
-for page in "${footer_pages[@]}"; do
+# Every public page must carry the footer. A page missing it entirely must FAIL here by
+# name, not be silently dropped from the seller-attribution / Legal-column / LLC-scope
+# checks that follow.
+for page in "${public_pages[@]}"; do
+  grep -qF '<footer class="site-footer">' "$page"
+  assert_ok "$page has <footer class=\"site-footer\">" $?
+done
+
+for page in "${public_pages[@]}"; do
   footer_brand_of "$page" | grep -qF -- "$SELLER_NAME"
   assert_ok "$page footer-brand link text reads '$SELLER_NAME'" $?
 
@@ -207,7 +215,7 @@ done
 # ---------------------------------------------------------------------------
 section '(f) footer Legal column with depth-correct, resolvable links'
 
-for page in "${footer_pages[@]}"; do
+for page in "${public_pages[@]}"; do
   footer=$(footer_of "$page")
   prefix=$(prefix_for "$page")
   page_dir=$(dirname "$page")
@@ -240,7 +248,7 @@ done
 # ---------------------------------------------------------------------------
 section '(h) LLC confined to footer attribution on pre-existing pages'
 
-for page in "${footer_pages[@]}"; do
+for page in "${public_pages[@]}"; do
   # The two legal pages legitimately carry the entity name in their own <title>
   # and meta tags. Every other page must mention it only as footer attribution:
   # exactly twice, both inside the footer (brand link text + copyright line).
