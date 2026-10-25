@@ -289,6 +289,7 @@ $ git diff --stat main...HEAD
 | 1 | MEDIUM | `actions/checkout` persisted a credential in `.git/config` by default, giving later steps ambient git write access the job never needs. | **Fixed** — `persist-credentials: false`. |
 | 2 | MEDIUM | No `timeout-minutes`, so a hung job could hold a runner for the 6-hour default. The job is grep over a few HTML files. | **Fixed** — `timeout-minutes: 5`. |
 | 3 | LOW | `actions/checkout@v4` is a mutable major tag, not a pinned commit SHA. | **Accepted, not changed.** `static.yml` pins the same way; diverging in one workflow buys little and costs consistency. A repo-wide move to SHA pinning belongs in its own change. |
+| 3b | LOW | The first CI run emitted `Node.js 20 is deprecated ... actions/checkout@v4 ... forced to run on Node.js 24`. | **Accepted, not changed.** `actions/checkout@v5` targets Node 24, but `static.yml` is also on `@v4`; bumping both together is the correct follow-up. Advisory only — the run succeeded. |
 | 4 | LOW | `cancel-in-progress: true` also cancels superseded `push`-to-`main` runs. | **Accepted.** The job is test-only — cancelling it cannot interrupt a deploy, and the newest commit on `main` is the one whose result matters. |
 | 5 | INFO | `pull_request` has no `branches:` filter, so the check runs on PRs targeting any branch. | **Intended** — the contract should hold on every PR, not just those into `main`. |
 

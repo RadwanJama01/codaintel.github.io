@@ -823,3 +823,35 @@ from the Actions tab via `workflow_dispatch`.
 
 Making this check *required* for merge is deliberately left to the repo owner in GitHub
 branch-protection settings; this PR does not configure it.
+
+### Confirmed green on GitHub Actions
+
+Run [40177348062](https://github.com/RadwanJama01/codaintel.github.io/actions/runs/40177348062),
+triggered by the `pull_request` event on PR #16 (head `d2358f1`):
+
+```console
+$ gh run view 40177348062 --json conclusion,event,jobs
+conclusion: success
+event:      pull_request
+job "Legal pages contract test": success
+  Set up job                      success
+  Checkout                        success
+  Run legal-pages contract test   success
+  Post Checkout                   success
+  Complete job                    success
+
+$ gh run view 40177348062 --log | grep -E "PASS:|FAIL:"
+Run legal-pages contract test  PASS: 211/211 checks passed
+```
+
+Same 211/211 as locally, in 5 seconds, with no deployment step. One advisory warning from
+the runner, not a failure:
+
+```
+##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are
+being forced to run on Node.js 24: actions/checkout@v4.
+```
+
+`actions/checkout@v5` is the version that targets Node 24. This branch deliberately stays
+on `@v4` to match `static.yml`; bumping both workflows together is the right follow-up, and
+until then GitHub runs `@v4` on Node 24 anyway.
