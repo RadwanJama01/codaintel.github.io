@@ -10,6 +10,20 @@ covering requirements (a) through (g) in [`PLAN.md`](PLAN.md). Every run below u
 runs were reproduced in throwaway `git worktree` sandboxes checked out at the base commit
 `9c6b1a1`, with only the stated files added.
 
+> **2026-10-25 correction (CodeRabbit finding on PR #15, fixed in the
+> `site/legal-test-hardening` follow-up):** the console blocks below originally showed
+> `git worktree add --detach /tmp/red1-sandbox HEAD` / `...red2-sandbox HEAD`, contradicting
+> the prose above, which always claimed base `9c6b1a1`. The commands now correctly show
+> `9c6b1a1`, and both RED runs were **actually re-executed** in fresh worktrees at that
+> commit, using the current (follow-up-fixed) version of `scripts/test_legal_pages.sh` —
+> which is why the totals below read **228** rather than the original **204**: the follow-up
+> added 17 footer-presence assertions (one per public page, see the dedicated section at the
+> bottom of this file) on top of the 7 soft-fix assertions already folded in from the earlier
+> PR #15 follow-up. The failure *counts* are otherwise unaffected by that growth — compare
+> "2 of 2" and "137 of 228" below to the pre-correction "2 of 2" and "137 of 204".
+
+
+
 ---
 
 ## RED 1 — test written, nothing implemented
@@ -18,10 +32,12 @@ Base commit plus the test script alone. It fails at the first gate and short-cir
 because every downstream assertion depends on the pages existing.
 
 ```console
-$ git worktree add --detach /tmp/red1-sandbox HEAD
+$ git worktree add --detach /tmp/red1-sandbox 9c6b1a1
 $ mkdir -p /tmp/red1-sandbox/scripts
 $ cp scripts/test_legal_pages.sh /tmp/red1-sandbox/scripts/
 $ cd /tmp/red1-sandbox && ./scripts/test_legal_pages.sh; echo "EXIT CODE: $?"
+Preparing worktree (detached HEAD 9c6b1a1)
+HEAD is now at 9c6b1a1 Site: VoiceDoc CTA to Book a demo (temp, demo login exposure) (#14)
 
 == (a) new pages exist at repo root ==
 FAIL privacy.html exists at repo root
@@ -44,11 +60,13 @@ assertions, while every unimplemented requirement is reported individually, per 
 the exact relative path it expected.
 
 ```console
-$ git worktree add --detach /tmp/red2-sandbox HEAD
+$ git worktree add --detach /tmp/red2-sandbox 9c6b1a1
 $ mkdir -p /tmp/red2-sandbox/scripts
 $ cp scripts/test_legal_pages.sh /tmp/red2-sandbox/scripts/
 $ cp privacy.html support.html /tmp/red2-sandbox/
 $ cd /tmp/red2-sandbox && ./scripts/test_legal_pages.sh; echo "EXIT CODE: $?"
+Preparing worktree (detached HEAD 9c6b1a1)
+HEAD is now at 9c6b1a1 Site: VoiceDoc CTA to Book a demo (temp, demo login exposure) (#14)
 
 == (a) new pages exist at repo root ==
 ok   privacy.html exists at repo root
@@ -100,8 +118,25 @@ ok   support.html is valid UTF-8
 FAIL sitemap.xml lists https://www.phoenixrisinggroups.com/privacy.html
 FAIL sitemap.xml lists https://www.phoenixrisinggroups.com/support.html
 
-== (e) footer seller attribution across 17 public pages ==
-ok   found 17 public pages with a site-footer
+== (e) footer presence and seller attribution across 17 public pages ==
+ok   found 17 public pages to check
+ok   blog/afar-language-speech-recognition/index.html has <footer class="site-footer">
+ok   blog/djiboutian-somali-dialect-asr/index.html has <footer class="site-footer">
+ok   blog/horn-of-africa-language-technology-gap/index.html has <footer class="site-footer">
+ok   blog/index.html has <footer class="site-footer">
+ok   blog/sasr-eval-somali-asr-benchmark/index.html has <footer class="site-footer">
+ok   blog/why-commercial-asr-fails-on-somali/index.html has <footer class="site-footer">
+ok   capabilities.html has <footer class="site-footer">
+ok   contact.html has <footer class="site-footer">
+ok   index.html has <footer class="site-footer">
+ok   privacy.html has <footer class="site-footer">
+ok   products/emploi-assist/index.html has <footer class="site-footer">
+ok   products/horn-transcribe/index.html has <footer class="site-footer">
+ok   products/index.html has <footer class="site-footer">
+ok   products/transport/index.html has <footer class="site-footer">
+ok   products/voicedoc-dnp/index.html has <footer class="site-footer">
+ok   results.html has <footer class="site-footer">
+ok   support.html has <footer class="site-footer">
 FAIL blog/afar-language-speech-recognition/index.html footer-brand link text reads 'Phoenix Rising Group LLC'
 FAIL blog/afar-language-speech-recognition/index.html &copy; line reads 'Phoenix Rising Group LLC'
 FAIL blog/afar-language-speech-recognition/index.html footer has no bare 'Phoenix Rising' without 'Phoenix Rising Group LLC'
@@ -270,13 +305,25 @@ ok   support.html does not use the word 'pilot'
 ok   support.html claims no ministry involvement
 ok   support.html claims no government endorsement
 
-FAIL: 137 of 204 checks failed
+== (i) soft-fix: retention, AI/DPA, and security claims stay accurate ==
+ok   privacy.html retention section mentions backups
+ok   privacy.html states the backup retention window (7 days)
+ok   privacy.html does not claim a signed zero-retention/DPA agreement as current fact
+ok   privacy.html frames the ZDR/DPA requirement as a gate before real customer files
+ok   privacy.html does not claim blanket organization-separated isolation
+ok   privacy.html states the modest claim: customers see their own organization's data
+ok   privacy.html does not promise deletion certificates as an unconditional guarantee
+
+FAIL: 137 of 228 checks failed
 EXIT CODE: 1
 ```
 
-**Result: FAIL (exit 1) — 137 of 204 checks failed:** (d) both sitemap entries missing,
+**Result: FAIL (exit 1) — 137 of 228 checks failed:** (d) both sitemap entries missing,
 (e) the footer seller name still read `Phoenix Rising` / `Phoenix Rising Group` on all 15
-existing pages, (f) no Legal column anywhere.
+existing pages (the footer tag itself is still present on every page at this base commit, so
+all 17 new footer-*presence* checks pass — that's the correct behavior now covered by Fix 1
+below), (f) no Legal column anywhere. Section (i) passes because this run copies in the
+already-soft-fixed `privacy.html` from the current branch tip, not a pre-fix draft.
 
 ---
 
@@ -678,3 +725,159 @@ PASS: 211/211 checks passed
 
 **Result: PASS (exit 0) — 211 of 211 checks passed.** All 204 pre-existing assertions remain
 green; the 7 new assertions confirm the soft-fix wording.
+
+---
+
+## Follow-up — test hardening (branch `site/legal-test-hardening`, no merge)
+
+**This section is the source of truth for the current PR.** It fixes two CodeRabbit findings
+left open after PR #15 (`90a2f7b`, squashed to `main`): (1) `collect_footer_pages` silently
+dropped any public page missing its footer instead of failing the suite, and (2) the RED
+reproduction commands above showed `HEAD` instead of the base commit `9c6b1a1` they claimed
+to use — already fixed in place above. This section covers Fix 1 end-to-end: the bug as it
+existed, the fix, and mutation proof that it now fails loudly.
+
+Suite grew from 211 to **228** assertions (17 new footer-presence checks, one per public
+page). All 211 pre-existing assertions stay green throughout.
+
+### Bug demo — the pre-fix script on the current branch tip
+
+Before changing the script, a scratch `git worktree` at `HEAD` (`90a2f7b`, i.e. current
+`main`) had one public page's `<footer>` block stripped entirely, to show the **pre-fix**
+`collect_footer_pages` silently drops it instead of failing:
+
+```console
+$ git worktree add --detach /tmp/bugdemo-sandbox HEAD
+Preparing worktree (detached HEAD 90a2f7b)
+$ cd /tmp/bugdemo-sandbox
+$ python3 -c "... strip <footer class=\"site-footer\">...</footer> from results.html ..."
+$ grep -c 'site-footer' results.html
+0
+$ ./scripts/test_legal_pages.sh; echo "EXIT CODE: $?"
+...
+ok   found 16 public pages with a site-footer
+...
+PASS: 202/202 checks passed
+EXIT CODE: 0
+```
+
+**Confirmed bug:** `results.html` has zero occurrences of `site-footer` (verified by the
+`grep -c` above), yet the suite reports `PASS: 202/202` and silently drops the page count
+from 17 to 16 — no `FAIL` anywhere names `results.html`. This is the silent-skip CodeRabbit
+flagged.
+
+### Fix 1 implementation
+
+`scripts/test_legal_pages.sh`:
+- `collect_footer_pages()` (filtered to pages that already had the footer) renamed to
+  `collect_public_pages()`, which now enumerates **every** `*.html` except `.git/*` and
+  `google*.html` — unconditionally, with no footer pre-filter.
+- Section (e) now asserts, for every page in that full set, that it has
+  `<footer class="site-footer">` — a missing footer is a named `FAIL`, not an omission.
+- Sections (e)'s seller-attribution checks, (f)'s Legal-column checks, and (h)'s LLC-scope
+  checks all now iterate the same full `public_pages` set (renamed from `footer_pages`)
+  instead of a pre-filtered "already has footer" subset.
+
+### RED — mutation proof that a missing footer now fails, naming the page
+
+A scratch copy of the fixed branch tip (`cp -r`, excluding `.git`) was confirmed green first,
+then `products/transport/index.html`'s `<footer>` block was stripped and the suite re-run:
+
+```console
+$ ./scripts/test_legal_pages.sh   # before mutation
+...
+PASS: 228/228 checks passed
+
+$ python3 -c "... strip <footer class=\"site-footer\">...</footer> from products/transport/index.html ..."
+$ grep -c 'site-footer' products/transport/index.html
+0
+
+$ ./scripts/test_legal_pages.sh; echo "EXIT CODE: $?"
+...
+FAIL products/transport/index.html has <footer class="site-footer">
+FAIL products/transport/index.html footer-brand link text reads 'Phoenix Rising Group LLC'
+FAIL products/transport/index.html &copy; line reads 'Phoenix Rising Group LLC'
+ok   products/transport/index.html footer has no bare 'Phoenix Rising' without 'Phoenix Rising Group LLC'
+FAIL products/transport/index.html footer has a Legal column
+FAIL products/transport/index.html Legal column links privacy.html as '../../privacy.html'
+FAIL products/transport/index.html shipped link '<missing>' resolves to an existing file
+FAIL products/transport/index.html Legal column links support.html as '../../support.html'
+FAIL products/transport/index.html shipped link '<missing>' resolves to an existing file
+FAIL products/transport/index.html mentions LLC only as footer attribution (brand + copyright) — found 0 in footer of 0 total, expected 2 of 2
+
+FAIL: 9 of 228 checks failed
+EXIT CODE: 1
+```
+
+**Result: FAIL (exit 1) — 9 of 228 checks failed, every one naming
+`products/transport/index.html`.** The first failure is the new footer-presence assertion
+itself; the other 8 are the pre-existing seller/Legal-column/LLC checks correctly cascading
+once the footer is gone, instead of being silently skipped as before.
+
+### GREEN — restore and re-run
+
+```console
+$ cp /workspace/codaintel.github.io/products/transport/index.html products/transport/index.html
+$ ./scripts/test_legal_pages.sh; echo "EXIT CODE: $?"
+...
+PASS: 228/228 checks passed
+EXIT CODE: 0
+```
+
+### Mutation table addendum
+
+| # | Mutation | Caught by |
+| --- | --- | --- |
+| 6 | Strip `<footer class="site-footer">…</footer>` entirely from `products/transport/index.html` | `products/transport/index.html has <footer class="site-footer">` (new), plus the 8 cascading seller/Legal-column/LLC failures that would previously have been silently skipped |
+
+### GREEN — full suite on this branch's tip
+
+```console
+$ cd /workspace/codaintel.github.io
+$ ./scripts/test_legal_pages.sh; echo "EXIT CODE: $?"
+...
+== (e) footer presence and seller attribution across 17 public pages ==
+ok   found 17 public pages to check
+ok   blog/afar-language-speech-recognition/index.html has <footer class="site-footer">
+ok   blog/djiboutian-somali-dialect-asr/index.html has <footer class="site-footer">
+ok   blog/horn-of-africa-language-technology-gap/index.html has <footer class="site-footer">
+ok   blog/index.html has <footer class="site-footer">
+ok   blog/sasr-eval-somali-asr-benchmark/index.html has <footer class="site-footer">
+ok   blog/why-commercial-asr-fails-on-somali/index.html has <footer class="site-footer">
+ok   capabilities.html has <footer class="site-footer">
+ok   contact.html has <footer class="site-footer">
+ok   index.html has <footer class="site-footer">
+ok   privacy.html has <footer class="site-footer">
+ok   products/emploi-assist/index.html has <footer class="site-footer">
+ok   products/horn-transcribe/index.html has <footer class="site-footer">
+ok   products/index.html has <footer class="site-footer">
+ok   products/transport/index.html has <footer class="site-footer">
+ok   products/voicedoc-dnp/index.html has <footer class="site-footer">
+ok   results.html has <footer class="site-footer">
+ok   support.html has <footer class="site-footer">
+...
+PASS: 228/228 checks passed
+EXIT CODE: 0
+```
+
+**Result: PASS (exit 0) — 228 of 228 checks passed** (up from 211; +17 new footer-presence
+assertions, 0 regressions).
+
+### Red→green summary for this PR
+
+| Run | Base / tree | Script assertions | Result |
+| --- | --- | --- | --- |
+| Historical RED 1 (corrected) | worktree @ `9c6b1a1`, script only | 228 total, bails at (a) | FAIL — 2/2 checks failed, exit 1 |
+| Historical RED 2 (corrected) | worktree @ `9c6b1a1`, + `privacy.html`/`support.html` | 228 | FAIL — 137/228 checks failed, exit 1 |
+| Bug demo (pre-fix script, `HEAD`=`90a2f7b`, footer stripped from `results.html`) | worktree @ `HEAD` | 202 (pre-fix script) | **Bug confirmed:** PASS 202/202 — page silently dropped, no FAIL |
+| Fix 1 mutation RED (scratch `cp -r` of branch tip, footer stripped from `products/transport/index.html`) | branch tip | 228 | FAIL — 9/228 checks failed, naming the page, exit 1 |
+| Fix 1 mutation GREEN (restored) | branch tip | 228 | PASS — 228/228, exit 0 |
+| Branch tip GREEN | `site/legal-test-hardening` HEAD | 228 | PASS — 228/228, exit 0 |
+
+**Note on methodology:** the two historical RED reproductions above use worktrees genuinely
+checked out at base `9c6b1a1` (the Fix 2 correction), run with the current, Fix-1-updated
+script — not the script version that was contemporary with `9c6b1a1`. The new
+missing-footer RED (Fix 1's own proof) instead uses a plain scratch copy (`cp -r`, no `.git`)
+of the current branch tip with one page's footer removed, since that fix is about behavior
+on the *current* tree, not about reproducing a historical base state. Both methods are
+documented inline above so the base/script pairing used for each run is unambiguous.

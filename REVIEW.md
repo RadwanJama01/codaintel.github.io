@@ -255,3 +255,107 @@ semantically identical, with no overlap with the forbidden phrase. Re-verified: 
   pre-existing support email and the unchanged entity name.
 - **Static-only.** Plain prose edits inside existing `<p>` tags; no new markup, scripts, or
   dependencies.
+
+---
+
+## Follow-up — test hardening, two CodeRabbit findings (branch `site/legal-test-hardening`, no merge)
+
+Base `main` @ `90a2f7b` (current `origin/main`, includes PR #15). Reviewed: one script file
+(`scripts/test_legal_pages.sh`) and three evidence docs. **No HTML, CSS, or site content
+changed.**
+
+**Verdict: approved for PR. No CRITICAL or HIGH findings.**
+
+| Severity | Found | Fixed |
+| --- | --- | --- |
+| CRITICAL | 0 | — |
+| HIGH | 0 | — |
+| MEDIUM | 0 | — |
+| LOW | 0 | — |
+
+### Code review — `scripts/test_legal_pages.sh`
+
+- **Fix verified correct.** `collect_public_pages()` now enumerates every `*.html` except
+  `.git/*` and `google*.html` unconditionally — no footer pre-filter. The new per-page
+  assertion `grep -qF '<footer class="site-footer">' "$page"` in section (e) runs before any
+  downstream check consumes that page, so a page missing the footer fails there by name, and
+  the rename from `footer_pages` to `public_pages` is applied consistently across sections
+  (e), (f), and (h) (checked by `grep -n 'footer_pages\|public_pages'
+  scripts/test_legal_pages.sh` — no stale references remain).
+- **Downstream behavior on a missing footer is still sane.** `footer_of()`,
+  `footer_brand_of()`, and the Legal-column extraction in (f) all return empty string for a
+  footerless page (`awk` ranges that never match print nothing), which fails the dependent
+  assertions individually rather than erroring the script — confirmed by the mutation test
+  (9 failures, all naming the mutated page, exit 1, no script crash).
+- **No new injection/quoting risk.** The new assertion is a straight `grep -qF` (fixed
+  string) against a filename already produced by the existing `find -print0 | sort -z` /
+  `IFS= read -r -d ''` pipeline (NUL-delimited, so filenames with spaces or newlines are
+  still handled correctly — this was F3 in the original review and remains fixed).
+  `SELLER_NAME`/footer markup is still matched with `-F` throughout, so no regex metacharacter
+  in page content can alter match semantics.
+- **No functional change to sections (a)–(d) and (g)–(i).** Confirmed by diff: the only hunks
+  touch the `collect_footer_pages`/`collect_public_pages` function and the three `for page in
+  "${footer_pages[@]}"` → `"${public_pages[@]}"` loop headers plus the new assertion loop.
+- **Assertion count.** 211 → 228 (+17, one new footer-presence check per public page). All
+  211 pre-existing assertions pass unchanged on the branch tip (`TEST_PROOF.md` GREEN run).
+
+### Security review — `scripts/test_legal_pages.sh`
+
+- **No new external input surface.** The script still only reads files already tracked in
+  this repo; no network calls, no `eval`, no unsanitized interpolation into a shell command
+  (`grep -qF -- "$SELLER_NAME" "$page"` — `--` guards against a page name or constant that
+  starts with `-`).
+- **No secrets, credentials, or PII touched.** The diff is pure test logic; no change to
+  `SUPPORT_MAILTO`, `SELLER_NAME`, or any other constant.
+- **Scratch sandboxes used for evidence (`/tmp/bugdemo-sandbox`, `/tmp/mutation-sandbox`,
+  `/tmp/red1-sandbox`, `/tmp/red2-sandbox`) were plain `git worktree` copies / `cp -r` copies
+  of already-public site content**, created and removed within this session, outside the
+  repo's `.git` — no residual state left in the working tree or on `main`.
+
+### Docs review — `TEST_PROOF.md`, `PLAN.md`
+
+- **Fix 2 verified correct.** The RED 1/RED 2 console blocks now show
+  `git worktree add --detach … 9c6b1a1`, matching the surrounding prose's long-standing claim
+  of that base commit, and both blocks were re-executed for real (not hand-edited transcripts
+  — see the `Preparing worktree (detached HEAD 9c6b1a1)` line captured from the actual `git`
+  output in each block).
+- **Assertion-count consistency.** Every count mentioned in `TEST_PROOF.md` (`202` pre-fix
+  bug demo, `228` post-fix RED/GREEN) was taken directly from the `PASS:`/`FAIL:` summary
+  line the script itself prints — not computed by hand.
+- **No stale cross-references.** `PLAN.md`'s new follow-up section and `TEST_PROOF.md`'s new
+  follow-up section cross-link consistently; the historical PR #15 and soft-fix sections above
+  them are left intact except for the minimal RED 1/RED 2 command/output correction.
+
+### privacy.html — unchanged, matches `main`'s soft-fix
+
+```console
+$ git diff origin/main -- privacy.html
+(empty)
+```
+
+`privacy.html` on this branch is **byte-identical** to `origin/main` (`90a2f7b`). Confirmed
+present, verbatim, in the current file:
+
+- *"purged data can remain in encrypted backups made before the deletion until those backups
+  expire — by default within **7 days**"* (backup retention window).
+- *"That 30-day figure covers account processing only, not backups"* (30-day scoped to
+  account-deletion SLA, not a blanket data-purge claim).
+- *"this is a gate we enforce, not a claim that it is in place for every provider today"*
+  (no signed ZDR/DPA claimed as current fact).
+- *"Access is limited to named accounts. Customers see their own organization's dossiers and
+  reports, not other customers' data. Review actions … are logged."* (modest,
+  named-account / own-organization / logged-review wording, no blanket isolation guarantee).
+
+No wording was touched in this PR — this section is evidence only, per the task's
+instruction not to rewrite privacy copy absent a regression, and none was found.
+
+**@CTO / reviewers — Gate 4 catch-up requested:** please independently review the
+`privacy.html` wording quoted above, now live on `main` and unchanged in this PR, before
+relying on it for store listings. This PR does not supersede or complete that review.
+
+### Out of scope — deliberately not changed
+
+- `privacy.html` / `support.html` content — evidence-only in this PR.
+- `.github/workflows/ci.yml` — left untracked/untouched; CTO owns wiring CI for
+  `scripts/test_legal_pages.sh`.
+- Deploying or merging. **This PR is for review only — do not merge.**

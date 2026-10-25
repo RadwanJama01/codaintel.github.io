@@ -192,3 +192,60 @@ Test plan: extend `scripts/test_legal_pages.sh` with a new section (i) — asser
 backup-retention window is stated, that the ZDR/DPA requirement reads as a gate (not a
 present-tense signed fact), and that the organization-isolation claim stays modest. Written
 red against the pre-fix copy, then green after the edit (see `TEST_PROOF.md`).
+
+---
+
+## Follow-up — test hardening, two open CodeRabbit findings (branch `site/legal-test-hardening`, no merge)
+
+Branch: `site/legal-test-hardening` (base `main` @ `90a2f7b`, i.e. current `origin/main`,
+which already includes PR #15).
+
+### 1. Goal
+
+PR #15 squash-merged to `main` as `90a2f7b`. Two CodeRabbit findings were left open:
+
+1. **Silent footer skip.** `collect_footer_pages` in `scripts/test_legal_pages.sh` only
+   collected pages that **already** had `<footer class="site-footer">`, so a public page
+   missing its footer entirely was silently dropped from every downstream check instead of
+   failing the suite.
+2. **Stale red-repro commands.** `TEST_PROOF.md`'s RED 1/RED 2 console blocks showed
+   `git worktree add --detach … HEAD`, contradicting the surrounding prose, which always
+   claimed base `9c6b1a1`.
+
+This follow-up fixes both, with real red→green evidence, and does **not** touch
+`privacy.html`/`support.html` wording, add CI, or merge anything.
+
+### 2. Files touched
+
+| Path | Change |
+| --- | --- |
+| `scripts/test_legal_pages.sh` | `collect_footer_pages` → `collect_public_pages` (no footer pre-filter); new per-page footer-presence assertion in section (e); sections (e)/(f)/(h) now iterate the full public-page set instead of a "already has footer" subset |
+| `TEST_PROOF.md` | RED 1/RED 2 commands corrected to `9c6b1a1`, re-run for real with current script; new "Follow-up — test hardening" section with bug demo, mutation RED/GREEN, and a red→green summary table |
+| `PLAN.md` | this section |
+| `REVIEW.md` | new follow-up review section |
+
+Explicitly **not** touched: `privacy.html`, `support.html`, any other page content,
+`sitemap.xml`, `css/styles.css`, and `.github/workflows/ci.yml` (CTO's CI job stays out of
+scope for this PR).
+
+### 3. Test plan
+
+1. Demonstrate the pre-fix bug on the current `main` tip (`90a2f7b`) in a scratch worktree:
+   strip one page's footer, show the unfixed script still reports `PASS`.
+2. Fix the script as described above.
+3. Mutation-prove the fix: strip a different page's footer in a scratch copy of the fixed
+   tree, confirm the suite `FAIL`s and names that page; restore, confirm green again.
+4. Re-run the historical RED 1/RED 2 reproductions in worktrees genuinely checked out at
+   `9c6b1a1`, with the current (fixed) script copied in; record real console output.
+5. Full suite GREEN on the branch tip.
+
+All evidence lives in `TEST_PROOF.md`; assertion count grows from 211 to 228 (17 new
+footer-presence checks), with zero regressions in the pre-existing 211.
+
+### 4. Out of scope
+
+- Any wording change to `privacy.html` or `support.html`. The Gate 4 catch-up in this PR is
+  **evidence that the soft-fix wording is unchanged and matches `main`**, not a rewrite —
+  confirmed by `git diff origin/main -- privacy.html` being empty.
+- Adding `.github/workflows/ci.yml` — CTO owns wiring CI for this script.
+- Deploying or merging. **This PR is for review only.**
