@@ -936,13 +936,14 @@ defect this PR fixes.
 
 ### 1. A workflow now invokes the contract test
 
-The grep that exited 1 above now matches — line 3 is the header comment, line 38 the step
-that runs it:
+The grep that exited 1 above now matches — line 3 is the header comment, **line 44** the
+`run:` step that executes the script (checkout is lines 35–39; the test step name is
+line 43):
 
 ```console
 $ grep -rn "test_legal_pages" .github/workflows/ci.yml
 3:# Runs scripts/test_legal_pages.sh, which asserts the store-required privacy and support
-38:        run: bash scripts/test_legal_pages.sh
+44:        run: bash scripts/test_legal_pages.sh
 ```
 
 ### 2. `ci.yml` is valid YAML with the intended shape
@@ -1058,3 +1059,59 @@ being forced to run on Node.js 24: actions/checkout@v4.
 `actions/checkout@v5` is the version that targets Node 24. This branch deliberately stays
 on `@v4` to match `static.yml`; bumping both workflows together is the right follow-up, and
 until then GitHub runs `@v4` on Node 24 anyway.
+
+---
+
+# TEST_PROOF — Docs follow-up (#16 CodeRabbit findings)
+
+Change: label CI self-review in `REVIEW.md`; correct `ci.yml` line ref in `TEST_PROOF.md`.
+Branch: `docs/coderabbit-16-followup` (base `main` @ 638822e).
+Docs only — workflow and script untouched.
+
+## RED — before the doc fix (on `main` @ 638822e)
+
+Stale claim in `TEST_PROOF.md` (CI section) said the `run:` step was on line 38. Reality on
+the same tree:
+
+```console
+$ grep -rn "test_legal_pages" .github/workflows/ci.yml
+3:# Runs scripts/test_legal_pages.sh, which asserts the store-required privacy and support
+44:        run: bash scripts/test_legal_pages.sh
+
+$ grep -n "line 38 the step" TEST_PROOF.md
+939:The grep that exited 1 above now matches — line 3 is the header comment, line 38 the step
+```
+
+Mismatch: proof text said **38**, workflow file has the step on **44**. That is the defect
+this follow-up fixes (finding 2).
+
+Finding 1 (REVIEW self-review labelling) is documentary — red state is that
+`REVIEW.md` contained an unlabelled `**Verdict: approve.**` in the CI section with no
+separate Gate 4 table:
+
+```console
+$ grep -n "^\*\*Verdict: approve\.\*\*" REVIEW.md
+443:**Verdict: approve.** No CRITICAL or HIGH findings. Both MEDIUM findings were fixed in this
+```
+
+## GREEN — after the doc fix
+
+```console
+$ grep -rn "test_legal_pages" .github/workflows/ci.yml
+3:# Runs scripts/test_legal_pages.sh, which asserts the store-required privacy and support
+44:        run: bash scripts/test_legal_pages.sh
+
+$ grep -n "line 44\|line 38 the step\|Verdict: approve (author" TEST_PROOF.md REVIEW.md
+TEST_PROOF.md:… line **44** the `run:` step …
+REVIEW.md:… **Verdict: approve (author's self-review).** …
+REVIEW.md:… ## Independent review (Gate 4) — recorded separately …
+
+$ bash scripts/test_legal_pages.sh | tail -1
+PASS: 228/228 checks passed
+
+$ git diff --stat origin/main -- .github/workflows scripts privacy.html support.html
+(empty — docs only)
+```
+
+CI on `main` already green for the #16 merge (`run 40178365176`, Legal pages contract test
+success). This PR does not change the workflow.

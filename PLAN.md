@@ -314,3 +314,38 @@ setup, dependency install or cache step is needed.
 Low — additive file that cannot affect the deployed site, since Pages still deploys solely
 from `static.yml` on `main`. If a later change breaks the contract this job goes red; that
 is the intent, so it must not be skipped or made `continue-on-error`.
+
+---
+
+# PLAN — Docs follow-up: label #16 self-review + fix TEST_PROOF ci.yml line ref
+
+Branch: `docs/coderabbit-16-followup` (base `main` @ 638822e)
+Workflow: ECC loop — PLAN → failing proof (stale line ref / unlabelled verdict) → fix docs → green proof → REVIEW → commit/push/PR.
+**Do not merge** — open for independent review.
+
+## 1. Goal
+
+Close the two post-merge CodeRabbit findings from [#16](https://github.com/RadwanJama01/codaintel.github.io/pull/16) that Co-CEO flagged after merge:
+
+1. `REVIEW.md`'s CI-section "**Verdict: approve**" was the author's self-review but was not labelled as such, and Gate 4 independent review was not recorded separately.
+2. `TEST_PROOF.md` claimed the test `run:` step was on **line 38** of `ci.yml`; after comments were added above the step, it is on **line 44**.
+
+## 2. Change (docs only)
+
+| File | Edit |
+| --- | --- |
+| `REVIEW.md` | Label the CI verdict as **(author's self-review)**; add an **Independent review (Gate 4)** table that points at CTO's privacy COMMENT on #17 and honestly records that #16's CI workflow had no human independent review before merge. |
+| `TEST_PROOF.md` | Correct the prose and the grep transcript to line **44**. |
+| `PLAN.md` / `TEST_PROOF.md` / `REVIEW.md` | Append this follow-up's ECC sections (this plan, red/green proof, review of the doc fix). |
+
+## 3. Non-goals
+
+- No change to `.github/workflows/ci.yml` (already green on `main` @ 638822e).
+- No HTML / script / Pages changes.
+- No merge; no label removal.
+
+## 4. Verification
+
+1. Red: current `main` docs claim line 38; `grep -rn test_legal_pages .github/workflows/ci.yml` actually prints `44:`.
+2. Green: after the edit, TEST_PROOF matches that grep; REVIEW labels self-review and separates Gate 4.
+3. `bash scripts/test_legal_pages.sh` still `PASS: 228/228` (untouched).
