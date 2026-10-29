@@ -21,9 +21,14 @@ readonly SITE_ORIGIN='https://www.phoenixrisinggroups.com'
 readonly CHROME_REFERENCE='contact.html'
 readonly NEW_PAGES=(privacy.html support.html)
 
-# Nav labels every page must expose. Privacy/Support are deliberately absent: the top nav
-# is already six items deep, so the legal pages are reached from the footer instead.
-readonly REQUIRED_NAV_LABELS=(Home Capabilities Blog Products Contact)
+# Nav labels every page must expose. Privacy/Support are deliberately absent: the legal
+# pages are reached from the footer so the top nav stays a short company menu.
+readonly REQUIRED_NAV_LABELS=(Home Capabilities Contact)
+
+# The public site is a company site for city halls, forwarders and institutions. Speech
+# research and retired product pages must not leak back onto it.
+readonly RETIRED_NAV_TARGETS='results\.html|blog/|products/'
+readonly RETIRED_CONTENT='\bASR\b|SASR|speech recognition|Somali|Afar'
 
 failures=0
 checks=0
@@ -140,10 +145,6 @@ for page in "${NEW_PAGES[@]}"; do
     nav_of "$page" | grep -qF ">$label<"
     assert_ok "$page site-nav offers '$label'" $?
   done
-
-  # Parity with contact.html: SASR Eval is the sixth item on every other page.
-  nav_of "$page" | grep -qF 'results.html'
-  assert_ok "$page site-nav offers SASR Eval (results.html)" $?
 
   # The top nav must stay uncrowded — legal pages are footer-only.
   if nav_of "$page" | grep -qE 'privacy\.html|support\.html'; then
@@ -333,6 +334,37 @@ if grep -qiE 'guarantee(d)?[[:space:]]+(a[[:space:]]+)?deletion certificate|alwa
 else
   pass 'privacy.html does not promise deletion certificates as an unconditional guarantee'
 fi
+
+# ---------------------------------------------------------------------------
+section '(j) company-site scope: no retired pages or speech research on public pages'
+
+for page in "${public_pages[@]}"; do
+  if nav_of "$page" | grep -qE "$RETIRED_NAV_TARGETS"; then
+    fail "$page site-nav links no retired page (results/blog/products)"
+  else
+    pass "$page site-nav links no retired page (results/blog/products)"
+  fi
+
+  if grep -qiE "$RETIRED_CONTENT" "$page"; then
+    fail "$page carries no speech-research content"
+  else
+    pass "$page carries no speech-research content"
+  fi
+done
+
+for loc in $(grep -oE "<loc>[^<]+</loc>" sitemap.xml | sed -e 's/<loc>//' -e 's/<\/loc>//'); do
+  path=${loc#"$SITE_ORIGIN"/}
+  [ -z "$path" ] && path='index.html'
+  [ -f "$REPO_ROOT/$path" ]
+  assert_ok "sitemap.xml entry '$loc' resolves to an existing file" $?
+done
+
+for page in "${public_pages[@]}"; do
+  for asset in $(grep -oE "$SITE_ORIGIN/assets/[^\"]+" "$page" | sort -u); do
+    [ -f "$REPO_ROOT/${asset#"$SITE_ORIGIN"/}" ]
+    assert_ok "$page share image '$asset' resolves to an existing file" $?
+  done
+done
 
 # ---------------------------------------------------------------------------
 printf '\n'
