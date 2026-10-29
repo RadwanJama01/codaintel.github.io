@@ -1,0 +1,24 @@
+# Pages PR #19 retired, and where each one now sends a visitor.
+#
+# Format: <path the file used to live at>  <destination URL path>
+#
+# Read by scripts/test_redirects.sh (which asserts vercel.json and the on-disk Pages stubs
+# both honour this map) and by scripts/test_legal_pages.sh (which excludes these paths from
+# its public-page scan, because a stub that bounces in zero seconds is not a page a customer
+# reads the seller name on). Stating the map once keeps those two scripts from drifting.
+#
+# Destination rationale lives in PLAN.md. In short: retired product and benchmark pages go to
+# capabilities.html, retired research writing goes to the home page rather than into a pitch.
+
+products/index.html                                      /capabilities.html
+products/emploi-assist/index.html                        /capabilities.html
+products/horn-transcribe/index.html                      /capabilities.html
+products/transport/index.html                            /capabilities.html
+products/voicedoc-dnp/index.html                         /capabilities.html
+results.html                                             /capabilities.html
+blog/index.html                                          /
+blog/afar-language-speech-recognition/index.html         /
+blog/djiboutian-somali-dialect-asr/index.html            /
+blog/horn-of-africa-language-technology-gap/index.html   /
+blog/sasr-eval-somali-asr-benchmark/index.html           /
+blog/why-commercial-asr-fails-on-somali/index.html       /
