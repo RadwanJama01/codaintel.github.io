@@ -187,17 +187,21 @@ fi
 section "(b) $VERCEL_CONFIG redirect rules"
 
 [ -f "$VERCEL_HELPER" ]
-assert_ok "$VERCEL_HELPER exists" $?
+helper_present=$?
+assert_ok "$VERCEL_HELPER exists" "$helper_present"
 
+[ -f "$VERCEL_CONFIG" ]
+config_present=$?
+assert_ok "$VERCEL_CONFIG exists" "$config_present"
+
+# Read the rules once; every assertion below works off this. A missing file is already
+# reported above, so here it just leaves the rule list empty.
 rules=''
 rules_readable=1
-if [ -f "$VERCEL_CONFIG" ] && [ -f "$VERCEL_HELPER" ]; then
+if [ "$helper_present" -eq 0 ] && [ "$config_present" -eq 0 ]; then
   rules=$(python3 "$VERCEL_HELPER" list "$VERCEL_CONFIG" 2>&1)
   rules_readable=$?
 fi
-
-[ -f "$VERCEL_CONFIG" ]
-assert_ok "$VERCEL_CONFIG exists" $?
 
 if [ "$rules_readable" -eq 0 ]; then
   pass "$VERCEL_CONFIG parses with a well-formed \"redirects\" array"
@@ -263,7 +267,7 @@ for index in "${!retired_paths[@]}"; do
 done
 
 matches=''
-if [ -f "$VERCEL_CONFIG" ] && [ -f "$VERCEL_HELPER" ] && [ "$rules_readable" -eq 0 ]; then
+if [ "$rules_readable" -eq 0 ]; then
   matches=$(python3 "$VERCEL_HELPER" match "$VERCEL_CONFIG" "${urls[@]}" 2>/dev/null)
 fi
 
