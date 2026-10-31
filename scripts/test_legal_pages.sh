@@ -19,6 +19,7 @@ readonly SELLER_NAME='Phoenix Rising Group LLC'
 readonly SUPPORT_MAILTO='mailto:radwanjama099@gmail.com'
 readonly SITE_ORIGIN='https://www.phoenixrisinggroups.com'
 readonly CHROME_REFERENCE='contact.html'
+readonly NOT_FOUND_PAGE='404.html'
 readonly NEW_PAGES=(privacy.html support.html)
 
 # Nav labels every page must expose. Privacy/Support are deliberately absent: the legal
@@ -29,6 +30,29 @@ readonly REQUIRED_NAV_LABELS=(Home Capabilities Contact)
 # research and retired product pages must not leak back onto it.
 readonly RETIRED_NAV_TARGETS='results\.html|blog/|products/'
 readonly RETIRED_CONTENT='\bASR\b|SASR|speech recognition|Somali|Afar'
+
+# Those retired URLs are kept alive as redirect stubs, listed in scripts/redirect_map.txt.
+# They are excluded from the public-page scan below. A file whose entire job is to bounce a
+# visitor in zero seconds is not a page anyone reads the seller name on, and giving each of
+# the twelve the full 40-line footer would render site chrome only to yank it away. The
+# exemption is not a loophole: scripts/test_redirects.sh asserts that every meta-refresh file
+# in the repo is one of these, and holds the stubs to their own contract instead.
+readonly REDIRECT_MAP='scripts/redirect_map.txt'
+
+if [ ! -f "$REDIRECT_MAP" ]; then
+  printf 'FAIL %s is missing; cannot tell redirect stubs from public pages\n' "$REDIRECT_MAP"
+  exit 2
+fi
+
+# An empty map is deliberately not an error here. It would mean nothing is excluded, so
+# every stub falls back into the scan below and fails loudly on its missing footer. That is
+# the safe direction, and scripts/test_redirects.sh is the script that treats an empty map
+# as fatal.
+redirect_stubs=()
+while read -r stub _target _rest; do
+  case "$stub" in '' | '#'*) continue ;; esac
+  redirect_stubs+=("$stub")
+done < "$REDIRECT_MAP"
 
 failures=0
 checks=0
@@ -65,19 +89,32 @@ font_links_of() {
 
 # Every public HTML page that is expected to carry the shared site-footer chrome. The
 # google*.html files are Search Console verification stubs with no chrome and are excluded
-# by design. Pages are NOT filtered by whether they already have a footer — a page missing
-# it entirely must still be checked, so the (e) section below can fail on it by name instead
-# of silently dropping it from the set.
+# by design, as are the redirect stubs named in $REDIRECT_MAP. Pages are NOT filtered by
+# whether they already have a footer — a page missing it entirely must still be checked, so
+# the (e) section below can fail on it by name instead of silently dropping it from the set.
 collect_public_pages() {
   find . -name '*.html' -not -path './.git/*' -not -name 'google*.html' -print0 \
     | sort -z \
     | while IFS= read -r -d '' page; do
-        printf '%s\n' "${page#./}"
+        page=${page#./}
+        if printf '%s\n' "${redirect_stubs[@]}" | grep -qxF -- "$page"; then
+          continue
+        fi
+        printf '%s\n' "$page"
       done
 }
 
 # Depth-relative prefix from a page back to the repo root ("" / "../" / "../../").
+#
+# 404.html is the exception: the host serves that one file for every unmatched URL, however
+# deep, so a depth-relative href would resolve against the missing path — "privacy.html" on
+# a 404 served at /a/b/c is fetched from /a/b/privacy.html. Its links are root-absolute, so
+# its prefix is "/".
 prefix_for() {
+  if [ "$1" = "$NOT_FOUND_PAGE" ]; then
+    printf '/'
+    return
+  fi
   local dir
   dir=$(dirname "$1")
   if [ "$dir" = "." ]; then

@@ -5,6 +5,10 @@
 # entity. Apple App Store, Google Play and Meta Business verification all depend on those
 # facts, so they are checked on every change rather than only before a store submission.
 #
+# Runs scripts/test_redirects.sh alongside it, which asserts the URLs retired in PR #19
+# still land somewhere: a 308 from vercel.json in production, a meta-refresh stub for the
+# GitHub Pages mirror, and a branded 404.html for anything neither covers.
+#
 # This workflow only tests. Deploying the site to GitHub Pages stays in static.yml.
 name: CI
 
@@ -25,6 +29,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Job id and name are deliberately unchanged even though this job now runs two scripts.
+  # Branch protection matches a required status check by name, and renaming one makes the
+  # required check never report, which blocks every PR. Rename only after confirming no
+  # protection rule references it.
   legal-pages:
     name: Legal pages contract test
     runs-on: ubuntu-latest
@@ -38,7 +46,14 @@ jobs:
           # Nothing here talks to git, so do not leave a credential in .git/config.
           persist-credentials: false
 
-      # The script is self-contained bash + grep and cd's to the repo root itself, so no
-      # runtime setup or dependency install is needed.
+      # Both scripts are self-contained bash and cd to the repo root themselves, so no
+      # runtime setup or dependency install is needed. test_redirects.sh additionally
+      # shells out to python3 to read vercel.json, which ubuntu-latest ships by default.
       - name: Run legal-pages contract test
         run: bash scripts/test_legal_pages.sh
+
+      # Not `if: success()` — this must report its own result even when the step above
+      # fails, so one run shows every broken contract instead of only the first.
+      - name: Run redirect contract test
+        if: always()
+        run: bash scripts/test_redirects.sh

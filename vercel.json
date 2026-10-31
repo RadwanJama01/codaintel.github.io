@@ -3,5 +3,12 @@
   "buildCommand": null,
   "installCommand": null,
   "framework": null,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    { "source": "/products", "destination": "/capabilities.html", "permanent": true },
+    { "source": "/products/:path*", "destination": "/capabilities.html", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/", "permanent": true },
+    { "source": "/results.html", "destination": "/capabilities.html", "permanent": true }
+  ]
 }
