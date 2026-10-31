@@ -27,6 +27,34 @@ Neither host currently has a branded 404 page either.
 Out of scope: pushing, merging, deploying, `TEST_PROOF.md`, any wording in `support.html`,
 and the share image or its fonts.
 
+## Why this PR is ~1,300 lines
+
+The diff against `main` is 37 files, +1,313 / -60 (`git diff --shortstat origin/main...HEAD`
+at `ff53024`), of which 14 files are PNG screenshots counting as binary (0 lines) and only
+about 405 lines are shipped site code.
+
+| Category | Files | Lines (+/-) |
+|---|---|---|
+| Shipped site: `404.html` | 1 | +108 |
+| Shipped site: 12 GitHub Pages redirect stubs (`blog/*`, `products/*`, `results.html`, 24 lines each) | 12 | +288 |
+| Shipped site: `vercel.json` redirects | 1 | +9 / -2 |
+| **Shipped site subtotal** | 14 | **+405 / -2** |
+| Tests: `scripts/test_redirects.sh` | 1 | +364 |
+| Tests: `scripts/vercel_redirects.py` (checks vercel.json against the map) | 1 | +120 |
+| Tests: `scripts/redirect_map.txt` (single source of truth) | 1 | +24 |
+| Tests: `scripts/test_legal_pages.sh` | 1 | +41 / -4 |
+| **Tests subtotal** | 4 | **+549 / -4** |
+| Evidence docs: PLAN.md, REVIEW.md, TEST_PROOF.md (before this section) | 3 | +340 / -52 |
+| CI: `.github/workflows/ci.yml` | 1 | +17 / -2 |
+| `.gitignore` | 1 | +2 |
+| Screenshots `docs/pr19-followup/*.png` (390px before/after) | 14 | binary |
+
+About 70% of the added lines are tests and evidence documents, not site code. It was not
+split because the 404 page, the redirects and their test are one contract: shipping the
+test first leaves CI red, shipping the redirects without the test leaves them unguarded,
+and holding the redirects back leaves the twelve URLs deleted by #19 returning 404 in
+production. This section itself adds about 30 lines to PLAN.md.
+
 ## Redirect map
 
 Source of truth is `scripts/redirect_map.txt` (`<deleted file path> <destination>`), read by
